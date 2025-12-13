@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HerbaLawn LLC — Landscaping • Tree Service</title>
+  <style>
+    :root{
+      --bg:#0f201b; --bg-2:#152a24; --accent:#b7ff4a; --accent-2:#d7ff93;
+      --text:#f2f6f4; --muted:#9fb3ab; --gold:#f2d072; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:1200px;margin:auto;padding:20px}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.9));backdrop-filter:saturate(130%) blur(4px);box-shadow:var(--shadow)}
+    .nav{display:flex;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
+    .brand img{height:44px;width:44px;object-fit:contain;filter:drop-shadow(0 3px 10px rgba(0,0,0,.35))}
+    .menu{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
+    .dropdown{position:relative}
+    .drop-btn{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:10px 12px;border-radius:12px;cursor:pointer}
+    .dropdown:hover .panel{display:block}
+    .panel{display:none;position:absolute;top:54px;left:0;background:var(--bg-2);border:1px solid rgba(255,255,255,.08);border-radius:12px;min-width:220px;box-shadow:var(--shadow)}
+    .panel a{display:block;color:var(--text);padding:10px 12px}
+    .panel a:hover{background:rgba(255,255,255,.06)}
+    .cta{background:var(--accent);color:#0b140f;font-weight:800;border:none;border-radius:999px;padding:12px 16px;cursor:pointer;display:inline-block}
+
+    .hero{padding:48px 0 10px}
+    .hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .hero-card{background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+    .badge{display:inline-block;background:rgba(183,255,74,.15);color:var(--accent);border:1px solid rgba(183,255,74,.4);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.85rem;margin-bottom:12px}
+    h1{font-size:40px;margin:10px 0 8px;line-height:1.08}
+    .sub{color:var(--muted)}
+    section{padding:32px 0}
+    .section-title{font-size:28px;margin:0 0 12px}
+    .grid{display:grid;gap:18px}
+    .grid.cards{grid-template-columns:repeat(12,1fr)}
+    .card{grid-column:span 12;background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    @media(min-width:700px){.card.span-6{grid-column:span 6}.card.span-3{grid-column:span 3}.hero-wrap{grid-template-columns:1.2fr .8fr}}
+    .card > .pad{padding:20px}
+    .card h3{margin:0 0 8px}
+
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .shot{grid-column:span 12;aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg, rgba(183,255,74,.12), rgba(242,208,114,.12));border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+    .shot img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+    @media(min-width:800px){.shot{grid-column:span 4}}
+
+    .pricing{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .price-card{grid-column:span 12;background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.5));border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    @media(min-width:780px){.price-card{grid-column:span 3}}
+    .price-img{height:110px;background:radial-gradient(120px 70px at 50% 30%, rgba(183,255,74,.22), transparent),linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:800}
+    .price-body{padding:14px 16px}
+    .pill{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;font-size:.85rem;color:var(--muted)}
+
+    .field{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+    .field input, .field select, .field textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:var(--text);padding:12px;border-radius:12px;outline:none}
+    .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--accent)}
+
+    .footer{margin-top:30px;padding:28px;background:#0b1613;border-top:1px solid rgba(255,255,255,.07)}
+    .small{font-size:.92rem;color:var(--muted)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent-2)}
+    .disclaimer{font-size:.9rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- YOUR LOGO -->
+        <img alt="HerbaLawn Logo" src="assets/images/logo.png"/>
+        <div>
+          <div style="font-size:14px;color:var(--accent)">LANDSCAPING / TREE SERVICE</div>
+          <div style="font-size:18px">HERBALAWN LLC</div>
+        </div>
+      </div>
+      <nav class="menu">
+        <div class="dropdown">
+          <button class="drop-btn">Mowing Services ▾</button>
+          <div class="panel">
+            <a href="#mowing-pricing">Pricing</a>
+            <a href="#gallery">Our Work</a>
+            <a href="#qa">Q & A</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="drop-btn">Mulching & Weed Barriers ▾</button>
+          <div class="panel">
+            <a href="#mulch">Pricing</a>
+            <a href="#gallery">Our Work</a>
+            <a href="#qa">Q & A</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="drop-btn">Tree Services ▾</button>
+          <div class="panel">
+            <a href="#tree">Pricing</a>
+            <a href="#gallery">Our Work</a>
+            <a href="#qa">Q & A</a>
+          </div>
+        </div>
+        <!-- GOES TO CALENDAR PAGE -->
+        <a class="cta" href="schedule.html">Schedule</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-wrap">
+        <div class="hero-card">
+          <span class="badge">Residential & Commercial • Insured • Waco, TX</span>
+          <h1>Spring Clean-Ups, Mowing, Mulch & Professional Tree Care</h1>
+          <p class="sub">Book online with clear pricing. Weekly, bi-weekly, one-time.</p>
+          <div style="display:flex;gap:10px;margin-top:14px">
+            <a class="cta" href="#mowing-pricing">See Mowing Prices</a>
+            <a class="cta" style="background:var(--gold)" href="schedule.html">Book Now</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3 style="margin-top:0">Add Your Photos</h3>
+          <p class="sub">Replace the three shots below with your images.</p>
+          <div class="gallery">
+            <!-- REPLACE WITH YOUR PHOTOS -->
+            <div class="shot"><img src="assets/images/work1.jpg" alt="Project 1"></div>
+            <div class="shot"><img src="assets/images/work2.jpg" alt="Project 2"></div>
+            <div class="shot"><img src="assets/images/work3.jpg" alt="Project 3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mowing Pricing -->
+    <section id="mowing-pricing">
+      <h2 class="section-title">Mowing — Simple Pricing</h2>
+      <p class="sub">Trimming & blow-off included. Final quote may vary by terrain and obstacles.</p>
+      <div class="pricing" style="margin-top:14px">
+        <div class="price-card"><div class="price-img">Small Yard</div><div class="price-body"><div class="pill">Up to ~4,000 sq ft</div><p class="small">Choose Small at checkout.</p></div></div>
+        <div class="price-card"><div class="price-img">Medium Yard</div><div class="price-body"><div class="pill">~4,001–8,000 sq ft</div><p class="small">Choose Medium.</p></div></div>
+        <div class="price-card"><div class="price-img">Large Yard</div><div class="price-body"><div class="pill">~8,001–12,000 sq ft</div><p class="small">Choose Large.</p></div></div>
+        <div class="price-card"><div class="price-img">Acreage / Complex</div><div class="price-body"><div class="pill">>12,000 sq ft or complex</div><p class="small">We’ll walk it with you.</p></div></div>
+      </div>
+
+      <div class="card span-6" style="margin-top:16px">
+        <div class="pad">
+          <h3>Quick Estimator</h3>
+          <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+            <label class="field"><span>Yard Size</span>
+              <select id="yardSize">
+                <option value="small">Small</option><option value="medium">Medium</option>
+                <option value="large">Large</option><option value="xl">Acreage / Complex</option>
+              </select>
+            </label>
+            <label class="field"><span>Visit Type</span>
+              <select id="visitType">
+                <option value="weekly">Weekly</option><option value="biweekly">Bi-Weekly</option>
+                <option value="onetime">One-Time</option>
+              </select>
+            </label>
+          </div>
+          <div class="field"><button class="cta" onclick="calcMowing()">Show Price</button></div>
+          <div id="mowingResult" class="mono"></div>
+          <p class="disclaimer">Weekly: $30/$35/$40 • Bi-Weekly: $65/$75/$85 • One-Time: $70/$80/$90 • Acreage quoted on-site</p>
+          <a class="cta" style="background:var(--gold)" href="schedule.html">Book This</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <h2 class="section-title">Recent Work</h2>
+      <div class="gallery">
+        <div class="shot"><img src="assets/images/before-after1.jpg" alt="Before After 1"></div>
+        <div class="shot"><img src="assets/images/before-after2.jpg" alt="Before After 2"></div>
+        <div class="shot"><img src="assets/images/before-after3.jpg" alt="Before After 3"></div>
+      </div>
+    </section>
+
+    <!-- Q&A -->
+    <section id="qa">
+      <h2 class="section-title">Q & A</h2>
+      <div class="grid cards">
+        <div class="card span-6"><div class="pad"><h3>Do prices vary?</h3><p>Yes, by yard conditions, trimming detail, slope, and access.</p></div></div>
+        <div class="card span-6"><div class="pad"><h3>What areas?</h3><p>Waco and nearby communities.</p></div></div>
+        <div class="card span-6"><div class="pad"><h3>Payments?</h3><p>One-time or recurring. Card on file available.</p></div></div>
+        <div class="card span-6"><div class="pad"><h3>Insured?</h3><p>Yes. Professional equipment, safe practices.</p></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid cards">
+        <div class="card span-6"><div class="pad">
+          <h3>Policies</h3>
+          <ul class="small">
+            <li>Prices are typical ranges; final quote after review.</li>
+            <li>Weather delays rescheduled ASAP.</li>
+            <li>Mulch calculator is materials only; labor quoted.</li>
+          </ul>
+        </div></div>
+        <div class="card span-6"><div class="pad">
+          <h3>Contact</h3>
+          <p class="small">Call/Text: <b>254-301-4883</b> • <b>254-716-0351</b><br/>Instagram: <b>@HerbaLawn</b><br/>Email: <b>hello@yourdomain.com</b></p>
+          <p class="small">Serving Waco, TX and surrounding areas.</p>
+        </div></div>
+      </div>
+      <p class="small" style="margin-top:16px">© <span id="yr"></span> HerbaLawn LLC</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const priceMap = {
+      weekly:{small:[30,30],medium:[35,35],large:[40,40],xl:[null,null]},
+      biweekly:{small:[65,65],medium:[75,75],large:[85,85],xl:[null,null]},
+      onetime:{small:[70,70],medium:[80,80],large:[90,90],xl:[null,null]}
+    };
+    function calcMowing(){
+      const s = document.getElementById('yardSize').value;
+      const v = document.getElementById('visitType').value;
+      const res = document.getElementById('mowingResult');
+      const vPair = priceMap[v][s];
+      if(!vPair || vPair[0]===null){res.innerHTML='Acreage is quoted on-site.';return;}
+      const [lo,hi]=vPair; const label = v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time';
+      res.textContent = `${label} • ${s.toUpperCase()} • $${lo}${hi!==lo?('–$'+hi):''}`;
+    }
+  </script>
+</body>
+</html>
