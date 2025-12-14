@@ -21,7 +21,6 @@
     .top{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:12px}
     .brand{font-weight:800;letter-spacing:.3px}
     .muted{color:var(--muted)}
-
     h1{margin:10px 0 6px}
     p{margin:8px 0}
 
@@ -33,60 +32,39 @@
       padding:18px;
     }
 
-    .step{margin:16px 0}
-    .step h2{margin:0 0 8px;font-size:20px}
-
-    /* Frequency selector */
-    .freq{
-      display:flex;gap:10px;flex-wrap:wrap
-    }
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.16);
-      padding:10px 14px;border-radius:999px;cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-      user-select:none;
-    }
-    .chip:hover{box-shadow:var(--glow-soft)}
-    .chip.active{background:var(--accent);color:#0b140f;border-color:transparent;box-shadow:var(--glow);transform:translateY(-1px)}
-    .chip input{display:none}
-
-    /* Plan buttons */
-    .plans{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .plan{
+    /* Size cards (image grid) */
+    .sizes{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:12px}
+    .size{
       grid-column:span 12;
-      background:linear-gradient(180deg, rgba(242,208,114,.18), rgba(183,255,74,.12));
+      background:linear-gradient(180deg,var(--bg2),rgba(21,42,36,.6));
       border:1px solid rgba(255,255,255,.12);
       border-radius:16px;
-      position:relative;
       overflow:hidden;
       box-shadow:var(--glow-soft);
       transition:box-shadow .2s ease, transform .2s ease, filter .2s ease;
     }
-    .plan:hover{box-shadow:var(--glow);transform:translateY(-2px);filter:saturate(110%)}
-    .plan .inner{padding:18px}
-    .plan h3{margin:2px 0 6px}
-    .pill{display:inline-block;font-size:.85rem;border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;color:#0b140f;background:var(--gold);font-weight:700}
-    .go{
-      display:inline-block;margin-top:10px;
-      background:var(--accent);color:#0b140f;font-weight:800;
-      border:none;border-radius:999px;padding:12px 16px;cursor:pointer
+    .size:hover{box-shadow:var(--glow);transform:translateY(-2px);filter:saturate(110%)}
+    @media(min-width:900px){ .size{grid-column:span 3} }
+
+    .size a{display:block;color:inherit}
+    .thumb{
+      height:140px;background-size:cover;background-position:center;position:relative
     }
-    .go:hover{filter:brightness(1.04)}
-    @media(min-width:780px){ .plan{grid-column:span 4} }
+    .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35))}
+    .thumb .label{
+      position:absolute;left:0;right:0;bottom:10px;text-align:center;
+      font-weight:800;z-index:1
+    }
+    .body{padding:14px 16px}
+    .pill{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:6px 10px;border-radius:999px;font-size:.85rem;color:#dce7e2;background:rgba(255,255,255,.05)}
+    .tip{margin-top:8px;color:var(--muted);font-size:.95rem}
 
     /* Complex card */
-    .complex{
-      display:flex;flex-direction:column;gap:8px
-    }
+    .complex{display:flex;flex-direction:column;gap:10px}
     .ctaRow{display:flex;gap:10px;flex-wrap:wrap}
-    .ctaGhost{
-      display:inline-block;border:1px solid rgba(255,255,255,.18);
-      padding:10px 14px;border-radius:999px;color:var(--text)
-    }
+    .go{display:inline-block;background:var(--accent);color:#0b140f;font-weight:800;border:none;border-radius:999px;padding:12px 16px}
+    .ghost{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:10px 14px;border-radius:999px;color:var(--text)}
 
-    /* Footer note */
     .note{font-size:.92rem;color:var(--muted);margin-top:12px}
   </style>
 </head>
@@ -105,94 +83,79 @@
     <div class="card">
       <h1>Book Online (Secure Payments via Cal.com)</h1>
       <p class="muted">
-        Pick how often you want service (weekly, bi-weekly, or one-time). Then choose a plan (GreenStart, LawnPro, or EliteCut).
-        You’ll finish checkout on <b>Cal.com</b>, a trusted and secure platform. Your card is handled there.
+        Tap your yard size below to choose a plan. We’ll send you to <b>Cal.com</b> to finish booking & payment (trusted & secure).
+        Frequency defaults to <b>Weekly</b>—you can switch to Bi-Weekly or One-Time on the plan page.
       </p>
     </div>
 
-    <!-- STEP 1 -->
-    <div class="step">
-      <h2>Step 1 — Choose Frequency</h2>
-      <div class="freq" id="freq">
-        <label class="chip active" data-freq="weekly"><input type="radio" name="freq" checked/> Weekly</label>
-        <label class="chip" data-freq="biweekly"><input type="radio" name="freq"/> Bi-Weekly</label>
-        <label class="chip" data-freq="onetime"><input type="radio" name="freq"/> One-Time</label>
-      </div>
-      <p class="note">We’ll carry this choice to the next page so you see the right plan links.</p>
-    </div>
-
-    <!-- STEP 2 -->
-    <div class="step">
-      <h2>Step 2 — Pick a Plan</h2>
-      <div class="plans" id="plans">
-        <!-- GreenStart -->
-        <article class="plan">
-          <div class="inner">
-            <span class="pill">GreenStart</span>
-            <h3>Great basic cut • Trim • Blow-off</h3>
-            <p class="muted">Clean cut and tidy edges for typical small yards.</p>
-            <a class="go" id="go-green" href="greenstart.html?freq=weekly">See GreenStart options →</a>
+    <!-- Image size selector -->
+    <section class="sizes" aria-label="Choose your yard size">
+      <!-- Small -> GreenStart -->
+      <article class="size">
+        <a href="greenstart.html?freq=weekly" title="Small Yard → GreenStart">
+          <div class="thumb" style="background-image:url('assets/images/SmallYard.jpg')">
+            <div class="label">Small Yard</div>
           </div>
-        </article>
-
-        <!-- LawnPro -->
-        <article class="plan">
-          <div class="inner">
-            <span class="pill">LawnPro</span>
-            <h3>More space • More detail</h3>
-            <p class="muted">For medium yards or more trim/detail time.</p>
-            <a class="go" id="go-pro" href="lawnpro.html?freq=weekly">See LawnPro options →</a>
+          <div class="body">
+            <span class="pill">Up to ~4,000 sq ft</span>
+            <div class="tip">Opens GreenStart plans (change frequency there).</div>
           </div>
-        </article>
+        </a>
+      </article>
 
-        <!-- EliteCut -->
-        <article class="plan">
-          <div class="inner">
-            <span class="pill">EliteCut</span>
-            <h3>Large yards • Higher coverage</h3>
-            <p class="muted">For large footprints or extra cutting time.</p>
-            <a class="go" id="go-elite" href="elitecut.html?freq=weekly">See EliteCut options →</a>
+      <!-- Medium -> LawnPro -->
+      <article class="size">
+        <a href="lawnpro.html?freq=weekly" title="Medium Yard → LawnPro">
+          <div class="thumb" style="background-image:url('assets/images/MediumYard.jpg')">
+            <div class="label">Medium Yard</div>
           </div>
-        </article>
-      </div>
-    </div>
+          <div class="body">
+            <span class="pill">~4,001–8,000 sq ft</span>
+            <div class="tip">Opens LawnPro plans.</div>
+          </div>
+        </a>
+      </article>
 
-    <!-- Complex / Acreage -->
-    <div class="step">
+      <!-- Large -> EliteCut -->
+      <article class="size">
+        <a href="elitecut.html?freq=weekly" title="Large Yard → EliteCut">
+          <div class="thumb" style="background-image:url('assets/images/LargeYard.jpg')">
+            <div class="label">Large Yard</div>
+          </div>
+          <div class="body">
+            <span class="pill">~8,001–12,000 sq ft</span>
+            <div class="tip">Opens EliteCut plans.</div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Acreage / Complex -> Contact -->
+      <article class="size">
+        <a href="#complex" title="Acreage / Complex → Contact">
+          <div class="thumb" style="background-image:url('assets/images/ACYard.jpg')">
+            <div class="label">Acreage / Complex</div>
+          </div>
+          <div class="body">
+            <span class="pill">&gt;12,000 sq ft or complex</span>
+            <div class="tip">Tap to contact us for a walkthrough quote.</div>
+          </div>
+        </a>
+      </article>
+    </section>
+
+    <!-- Complex / Acreage contact -->
+    <section id="complex" style="margin-top:18px">
       <div class="card complex">
         <h2>> 12,000 sq ft or Complex Property</h2>
         <p class="muted">We’ll walk it with you and create a fair quote.</p>
         <div class="ctaRow">
           <a class="go" href="tel:2543014883">Call/Text: 254-301-4883</a>
-          <a class="ctaGhost" href="mailto:hello@yourdomain.com">Email: hello@yourdomain.com</a>
+          <a class="ghost" href="mailto:hello@yourdomain.com">Email: hello@yourdomain.com</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <p class="note">Questions? Call/text anytime. You can cancel a subscription anytime right in Cal.com.</p>
+    <p class="note">You can cancel a subscription anytime right in Cal.com.</p>
   </main>
-
-  <script>
-    // Frequency selection
-    const chips = document.querySelectorAll('.chip');
-    const green = document.getElementById('go-green');
-    const pro   = document.getElementById('go-pro');
-    const elite = document.getElementById('go-elite');
-
-    function setFreq(freq){
-      chips.forEach(c=>c.classList.toggle('active', c.dataset.freq===freq));
-      // keep frequency in querystring to the plan page
-      green.href = `greenstart.html?freq=${freq}`;
-      pro.href   = `lawnpro.html?freq=${freq}`;
-      elite.href = `elitecut.html?freq=${freq}`;
-    }
-
-    chips.forEach(c=>{
-      c.addEventListener('click', ()=> setFreq(c.dataset.freq));
-    });
-
-    // Default weekly
-    setFreq('weekly');
-  </script>
 </body>
 </html>
