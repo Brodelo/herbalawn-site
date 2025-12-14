@@ -29,7 +29,7 @@
     header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.9));backdrop-filter:saturate(130%) blur(4px);box-shadow:var(--shadow)}
     .nav{display:flex;align-items:center;gap:16px;}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
-    .brand img{display:none} /* hide logo, keep name */
+    .brand img{display:none} /* hide logo on desktop, show on mobile below */
     .menu{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
     .dropdown{position:relative}
 
@@ -46,7 +46,7 @@
       color:#0b140f;
       border-color:transparent;
     }
-    /* panel now has green shadow */
+    /* panel with green shadow */
     .panel{
       display:none;position:absolute;top:54px;left:0;
       background:var(--bg-2);
@@ -142,15 +142,41 @@
       .container{padding:16px}
       h1{font-size:28px;line-height:1.2}
 
-      /* Stack hero cards & shrink gaps */
-      .hero-wrap{grid-template-columns:1fr;gap:16px}
+      /* Center brand at very top; menu under it */
+      .nav{
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+        padding:10px 0;
+      }
+      .brand{
+        flex-direction:column;      /* stack logo + text */
+        align-items:center;
+        text-align:center;
+        gap:6px;
+      }
+      .brand img{
+        display:block !important;   /* show logo on mobile */
+        height:56px; width:56px; object-fit:contain;
+        filter:drop-shadow(0 3px 10px rgba(0,0,0,.35));
+      }
+      .menu{
+        width:100%;
+        margin-left:0;              /* override desktop push-right */
+        justify-content:center;
+        gap:10px;
+        flex-wrap:wrap;
+      }
 
       /* Larger tap targets */
-      .menu{gap:10px}
       .drop-btn,.cta{padding:14px 16px;border-radius:14px}
 
-      /* Panels flow under button on mobile */
+      /* Panels flow under buttons on mobile */
       .panel{position:static;margin-top:8px;width:100%}
+
+      /* Stack hero cards & shrink gaps */
+      .hero-wrap{grid-template-columns:1fr;gap:16px}
 
       /* Cards & grids single column */
       .grid.cards{grid-template-columns:1fr}
@@ -167,7 +193,7 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- logo is hidden with CSS; leave src if you ever want to show it -->
+        <!-- logo shown on mobile via CSS; hidden on desktop -->
         <img alt="HerbaLawn Logo" src="assets/images/Logo.png"/>
         <div>
           <div style="font-size:14px;color:var(--accent)">LANDSCAPING / TREE SERVICE</div>
