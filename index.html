@@ -13,7 +13,12 @@
       --text:#f2f6f4;         /* near-white */
       --muted:#9fb3ab;        /* muted text */
       --gold:#f2d072;         /* subtle gold for highlights */
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+      /* shadows */
+      --shadow: 0 10px 30px rgba(0,0,0,.35); /* keep for header */
+      --shadow-green-soft: 0 10px 28px rgba(183,255,74,.16), 0 0 0 1px rgba(183,255,74,.18);
+      --shadow-green-strong: 0 14px 40px rgba(183,255,74,.24), 0 0 0 1px rgba(183,255,74,.28);
+
       --radius:18px;
     }
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;overflow-x:hidden}
@@ -41,7 +46,15 @@
       color:#0b140f;
       border-color:transparent;
     }
-    .panel{display:none;position:absolute;top:54px;left:0;background:var(--bg-2);border:1px solid rgba(255,255,255,.12);border-radius:12px;min-width:220px;box-shadow:var(--shadow)}
+    /* panel now has green shadow */
+    .panel{
+      display:none;position:absolute;top:54px;left:0;
+      background:var(--bg-2);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;min-width:220px;
+      box-shadow:var(--shadow-green-soft);
+      transition:box-shadow .2s ease, transform .2s ease;
+    }
     .dropdown.open .panel{display:block}
     .panel a{display:block;color:#fff;padding:10px 12px}
     .panel a:hover{background:var(--accent);color:#0b140f}
@@ -52,7 +65,16 @@
     /* Hero */
     .hero{padding:48px 0 10px}
     .hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-    .hero-card{background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+    .hero-card{
+      background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow-green-soft);
+      transition:box-shadow .2s ease, transform .2s ease;
+    }
+    .hero-card:hover{box-shadow:var(--shadow-green-strong)}
+
     .badge{display:inline-block;background:rgba(183,255,74,.15);color:var(--accent);border:1px solid rgba(183,255,74,.4);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.85rem;margin-bottom:12px}
     h1{font-size:40px;margin:10px 0 8px;line-height:1.08}
     .sub{color:var(--muted)}
@@ -62,7 +84,15 @@
     .section-title{font-size:28px;margin:0 0 12px}
     .grid{display:grid;gap:18px}
     .grid.cards{grid-template-columns:repeat(12,1fr)}
-    .card{grid-column:span 12;background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card{
+      grid-column:span 12;
+      background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-green-soft);
+      transition:box-shadow .2s ease, transform .2s ease;
+    }
+    .card:hover{box-shadow:var(--shadow-green-strong)}
     @media(min-width:700px){.card.span-6{grid-column:span 6}.card.span-3{grid-column:span 3}.hero-wrap{grid-template-columns:1.2fr .8fr}}
     .card > .pad{padding:20px}
     .card h3{margin:0 0 8px}
@@ -75,7 +105,15 @@
 
     /* Pricing cards */
     .pricing{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .price-card{grid-column:span 12;background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.5));border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .price-card{
+      grid-column:span 12;
+      background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.5));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;overflow:hidden;
+      box-shadow:var(--shadow-green-soft);
+      transition:box-shadow .2s ease, transform .2s ease;
+    }
+    .price-card:hover{box-shadow:var(--shadow-green-strong)}
     @media(min-width:780px){.price-card{grid-column:span 3}}
 
     /* Image headers on pricing */
@@ -315,7 +353,7 @@
       <h2 class="section-title">Q & A</h2>
       <div class="grid cards">
         <div class="card span-6"><div class="pad"><h3>Do prices vary?</h3><p>Yes, by yard conditions, trimming detail, slope, and access.</p></div></div>
-        <div class="card span-6"><div class="pad"><h3>What areas?</h3><p>Serving Waco, Bellmead, Lacy Lakeview, China Spring, Robinson, Elm Mott, Axtell, and nearby communities.</p></div></div>
+        <div class="card span-6"><div class="pad"><h3>What areas?</h3><p>Waco and nearby communities.</p></div></div>
         <div class="card span-6"><div class="pad"><h3>Payments?</h3><p>One-time or recurring. Card on file available.</p></div></div>
         <div class="card span-6"><div class="pad"><h3>Insured?</h3><p>Yes. Professional equipment, safe practices.</p></div></div>
       </div>
@@ -335,7 +373,7 @@
         </div></div>
         <div class="card span-6"><div class="pad">
           <h3>Contact</h3>
-          <p class="small">Call/Text: <b>254-301-4883</b> • <b>254-716-0351</b><br/>Instagram: <b>@HerbaLawn</b><br/>Email: <b>HerbaLawn@outlook.com</b></p>
+          <p class="small">Call/Text: <b>254-301-4883</b> • <b>254-716-0351</b><br/>Instagram: <b>@HerbaLawn</b><br/>Email: <b>hello@yourdomain.com</b></p>
           <p class="small">Serving Waco, TX and surrounding areas.</p>
         </div></div>
       </div>
@@ -397,5 +435,3 @@
   </script>
 </body>
 </html>
-
-
