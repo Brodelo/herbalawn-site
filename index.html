@@ -67,11 +67,17 @@
     .card > .pad{padding:20px}
     .card h3{margin:0 0 8px}
 
-    /* Gallery */
+    /* Gallery (base) */
     .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
     .shot{grid-column:span 12;aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg, rgba(183,255,74,.12), rgba(242,208,114,.12));border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
     .shot img{width:100%;height:100%;object-fit:cover;border-radius:14px}
     @media(min-width:800px){.shot{grid-column:span 4}}
+
+    /* Bigger hero gallery (2-up on desktop, 1-up on mobile) */
+    .gallery.hero-big .shot{grid-column:span 12;aspect-ratio:4/3}
+    @media(min-width:900px){
+      .gallery.hero-big .shot{grid-column:span 6;aspect-ratio:3/2}
+    }
 
     /* Pricing cards */
     .pricing{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
@@ -90,8 +96,8 @@
     .pill{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;font-size:.85rem;color:var(--muted)}
 
     /* Forms */
-    .field{display:flex;flex-direction:column;gap:6px;margin:10px 0}
-    .field input, .field select, .field textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:var(--text);padding:12px;border-radius:12px;outline:none}
+    .field{display:flex;flex-direction:column;gap:6px;margin:10px 0;min-width:0}
+    .field input, .field select, .field textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:var(--text);padding:12px;border-radius:12px;outline:none;width:100%}
     .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--accent)}
 
     .footer{margin-top:30px;padding:28px;background:#0b1613;border-top:1px solid rgba(255,255,255,.07)}
@@ -123,6 +129,11 @@
       .gallery{grid-template-columns:repeat(2,1fr);gap:10px}
       .shot{grid-column:span 1;aspect-ratio:4/3}
     }
+
+    /* Mulch calculator responsive grid */
+    .calc-grid{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){ .calc-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:600px){ .calc-grid{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
@@ -179,11 +190,11 @@
           </div>
         </div>
 
-        <!-- OUR PROJECTS: two images -->
+        <!-- TREE SERVICE hero gallery (bigger on desktop) -->
         <div class="hero-card">
-          <h3 style="margin-top:0">Our Projects</h3>
+          <h3 style="margin-top:0">Tree Service</h3>
           <p class="sub">Recent tree service jobs.</p>
-          <div class="gallery">
+          <div class="gallery hero-big">
             <div class="shot"><img loading="lazy" src="assets/images/TreeService1.jpg" alt="Tree Service 1"></div>
             <div class="shot"><img loading="lazy" src="assets/images/TreeService2.jpg" alt="Tree Service 2"></div>
           </div>
@@ -265,7 +276,8 @@
 
       <div class="card span-6">
         <div class="pad">
-          <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+          <!-- responsive grid: 3→2→1 columns -->
+          <div class="grid calc-grid">
             <label class="field"><span>Area (sq ft)</span>
               <input id="sqft" type="number" min="1" placeholder="e.g. 250">
             </label>
