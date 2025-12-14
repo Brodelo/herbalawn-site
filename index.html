@@ -16,7 +16,7 @@
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
     }
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;overflow-x:hidden}
     a{color:var(--accent);text-decoration:none}
     .container{max-width:1200px;margin:auto;padding:20px}
 
@@ -98,6 +98,31 @@
     .small{font-size:.92rem;color:var(--muted)}
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent-2)}
     .disclaimer{font-size:.9rem;color:var(--muted)}
+
+    /* ===== Mobile tweaks ===== */
+    @media (max-width:700px){
+      .container{padding:16px}
+      h1{font-size:28px;line-height:1.2}
+
+      /* Stack hero cards & shrink gaps */
+      .hero-wrap{grid-template-columns:1fr;gap:16px}
+
+      /* Larger tap targets */
+      .menu{gap:10px}
+      .drop-btn,.cta{padding:14px 16px;border-radius:14px}
+
+      /* Panels flow under button on mobile */
+      .panel{position:static;margin-top:8px;width:100%}
+
+      /* Cards & grids single column */
+      .grid.cards{grid-template-columns:1fr}
+      .card{grid-column:span 12}
+      .card.span-6,.card.span-3{grid-column:span 12}
+
+      /* Gallery becomes 2-up */
+      .gallery{grid-template-columns:repeat(2,1fr);gap:10px}
+      .shot{grid-column:span 1;aspect-ratio:4/3}
+    }
   </style>
 </head>
 <body>
@@ -159,8 +184,8 @@
           <h3 style="margin-top:0">Our Projects</h3>
           <p class="sub">Recent tree service jobs.</p>
           <div class="gallery">
-            <div class="shot"><img src="assets/images/TreeService1.jpg" alt="Tree Service 1"></div>
-            <div class="shot"><img src="assets/images/TreeService2.jpg" alt="Tree Service 2"></div>
+            <div class="shot"><img loading="lazy" src="assets/images/TreeService1.jpg" alt="Tree Service 1"></div>
+            <div class="shot"><img loading="lazy" src="assets/images/TreeService2.jpg" alt="Tree Service 2"></div>
           </div>
         </div>
       </div>
@@ -269,7 +294,7 @@
       </div>
     </section>
 
-    <!-- Tree Services (kept simple) -->
+    <!-- Tree Services -->
     <section id="tree">
       <h2 class="section-title">Professional Tree Services</h2>
       <p class="sub">Proper PPE and tools, safe rigging, controlled cuts, clean-up and haul-off. Insured and experienced.</p>
@@ -279,9 +304,9 @@
     <section id="gallery">
       <h2 class="section-title">Recent Work</h2>
       <div class="gallery">
-        <div class="shot"><img src="assets/images/work1.jpg" alt="Work 1"></div>
-        <div class="shot"><img src="assets/images/work2.jpg" alt="Work 2"></div>
-        <div class="shot"><img src="assets/images/work3.jpg" alt="Work 3"></div>
+        <div class="shot"><img loading="lazy" src="assets/images/work1.jpg" alt="Work 1"></div>
+        <div class="shot"><img loading="lazy" src="assets/images/work2.jpg" alt="Work 2"></div>
+        <div class="shot"><img loading="lazy" src="assets/images/work3.jpg" alt="Work 3"></div>
       </div>
     </section>
 
