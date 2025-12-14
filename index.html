@@ -62,7 +62,6 @@
     .price-body{padding:14px 16px}
     .pill{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;font-size:.85rem;color:var(--muted)}
 
-    /* make the whole price card clickable without changing colors */
     .price-link{display:block;color:inherit}
     .price-link:visited{color:inherit}
 
@@ -156,7 +155,7 @@
       </div>
     </section>
 
-    <!-- Mowing Pricing (cards now clickable) -->
+    <!-- Mowing Pricing (cards clickable) -->
     <section id="mowing-pricing">
       <h2 class="section-title">Mowing — Simple Pricing</h2>
       <p class="sub">Trimming & blow-off included. Final quote may vary by terrain and obstacles.</p>
@@ -203,7 +202,7 @@
         </a>
       </div>
 
-      <!-- Estimator (unchanged) -->
+      <!-- Estimator -->
       <div class="card span-6" style="margin-top:16px">
         <div class="pad">
           <h3>Quick Estimator</h3>
@@ -232,7 +231,7 @@
       </div>
     </section>
 
-    <!-- Mulch Calculator, Tree, Gallery, Q&A (unchanged) -->
+    <!-- Mulch Calculator -->
     <section id="mulch">
       <h2 class="section-title">Mulch Calculator (Materials Only)</h2>
       <p class="sub">Price uses <b>$3.00 per cubic foot</b> for mulch. Labor will be added after a quick quote. Depth default is 2", choose up to 4".</p>
@@ -246,15 +245,33 @@
         </div>
         <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
           <button class="cta" onclick="calcMulch()">Calculate</button>
-          <a class="cta" style="background:var(--gold)" href="schedule.html">Schedule with us</a>
+          <!-- send to mulch page -->
+          <a class="cta" style="background:var(--gold)" href="mulch.html">Schedule with us</a>
         </div>
         <div id="mulchResult" class="mono" style="margin-top:10px"></div>
         <p class="small">This is materials only. We’ll confirm photos or visit on-site and add labor to your quote.</p>
       </div></div>
     </section>
 
-    <section id="tree"><h2 class="section-title">Professional Tree Services</h2><p class="sub">Proper PPE and tools, safe rigging, controlled cuts, clean-up and haul-off. Insured and experienced.</p></section>
+    <!-- Tree Services -->
+    <section id="tree">
+      <h2 class="section-title">Professional Tree Services</h2>
+      <p class="sub">Proper PPE and tools, safe rigging, controlled cuts, clean-up and haul-off. Insured and experienced.</p>
 
+      <!-- Contact card you asked for -->
+      <div class="grid cards" style="margin-top:12px">
+        <div class="card span-6"><div class="pad">
+          <h3>Need Tree Work?</h3>
+          <p class="small">Contact us by email or phone. We’ll look at photos or stop by and give you a quick quote.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="cta" href="mailto:HerbaLawn@outlook.com">Email: HerbaLawn@outlook.com</a>
+            <a class="cta" href="tel:2543014883">Call/Text: 254-301-4883</a>
+          </div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- Recent Work -->
     <section id="gallery"><h2 class="section-title">Recent Work</h2>
       <div class="gallery">
         <div class="shot"><img loading="lazy" src="assets/images/work1.jpg" alt="Work 1"></div>
@@ -263,6 +280,7 @@
       </div>
     </section>
 
+    <!-- Q&A -->
     <section id="qa"><h2 class="section-title">Q & A</h2>
       <div class="grid cards">
         <div class="card span-6"><div class="pad"><h3>Do prices vary?</h3><p>Yes, by yard conditions, trimming detail, slope, and access.</p></div></div>
@@ -284,7 +302,7 @@
           </ul>
         </div></div>
         <div class="card span-6"><div class="pad"><h3>Contact</h3>
-          <p class="small">Call/Text: <b>254-301-4883</b> • <b>254-716-0351</b><br/>Instagram: <b>@HerbaLawn</b><br/>Email: <b>hello@yourdomain.com</b></p>
+          <p class="small">Call/Text: <b>254-301-4883</b> • <b>254-716-0351</b><br/>Instagram: <b>@HerbaLawn</b><br/>Email: <b>HerbaLawn@outlook.com</b></p>
           <p class="small">Serving Waco, TX and surrounding areas.</p>
         </div></div>
       </div>
