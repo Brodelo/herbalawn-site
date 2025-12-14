@@ -11,12 +11,30 @@
       --shadow: 0 10px 28px rgba(183,255,74,.18), 0 0 0 1px rgba(183,255,74,.22);
       --radius:18px;
     }
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;
+    }
     .wrap{max-width:820px;margin:auto;padding:24px}
     h1{margin:0 0 8px}
     p{color:var(--muted)}
-    .card{background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-top:16px}
-    .cta{display:inline-block;background:var(--gold);color:#0b140f;padding:12px 16px;border-radius:999px;font-weight:800;text-decoration:none}
+    .card{
+      background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+      margin-top:16px;
+    }
+    .cta{
+      display:inline-block;
+      background:var(--gold);
+      color:#0b140f;
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:800;
+      text-decoration:none;
+    }
     .cta.alt{background:var(--accent)}
     a{color:var(--accent)}
   </style>
@@ -27,15 +45,32 @@
     <p>Thanks for using the calculator! Materials are priced at <b>$3.00 per cubic foot</b>. Labor is added after a quick quote. Choose one of the options below to move forward.</p>
 
     <div class="card">
-      <h3>Start a Mulch Quote</h3>
+      <h3>1️⃣ Call or Text — Recommended</h3>
+      <p>We respond fastest by phone. You can call or text us directly to set up your mulch service or schedule a quick walkthrough.</p>
+      <p>
+        <a class="cta alt" href="tel:2543014883">Call/Text: 254-301-4883</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>2️⃣ Email Your Details</h3>
       <p>Send us your name, address, photos, and the calculator result. We’ll confirm material cost and quote labor.</p>
       <p>
         <a class="cta" href="mailto:HerbaLawn@outlook.com?subject=Mulch%20Quote%20Request&body=Hi%20HerbaLawn%2C%0A%0AMy%20mulch%20area%20is%20____%20sq%20ft%20at%20____%20inches%20deep.%20Calculator%20estimated%20$____%20in%20materials.%0A%0AName%3A%20___%0AAddress%3A%20___%0APhone%3A%20___%0APictures%3A%20(attached)%0A%0AThanks!">Email Us</a>
-        &nbsp;
-        <a class="cta alt" href="tel:2543014883">Call/Text: 254-301-4883</a>
       </p>
-      <p><a href="index.html">← Back to Home</a></p>
     </div>
+
+    <div class="card">
+      <h3>3️⃣ Use Our Online Scheduler (If We’re Busy)</h3>
+      <p>If we’re out on jobs and can’t answer right away, you can book a mulch estimate or yard walkthrough securely through our scheduling page below.</p>
+      <p>
+        <a class="cta" style="background:var(--accent)" href="https://cal.com/herbalawn/mulch-estimate-yard-walkthrough" target="_blank">
+          Schedule Mulch Estimate on Cal.com
+        </a>
+      </p>
+    </div>
+
+    <p style="margin-top:18px"><a href="index.html">← Back to Home</a></p>
   </div>
 </body>
 </html>
