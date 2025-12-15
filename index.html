@@ -167,36 +167,124 @@
       </div>
     </div>
 
-    <!-- Quick Estimator -->
-    <div class="card" style="margin-top:16px">
-      <div class="pad">
-        <h3>Quick Estimator</h3>
-        <div class="est-grid">
-          <label class="field"><span>Yard Size</span>
-            <select id="yardSize">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-              <option value="xl">Acreage / Complex</option>
-            </select>
-          </label>
-          <label class="field"><span>Visit Type</span>
-            <select id="visitType">
-              <option value="weekly">Weekly</option>
-              <option value="biweekly">Bi-Weekly</option>
-              <option value="onetime">One-Time</option>
-            </select>
-          </label>
-        </div>
-        <div class="field" style="margin-top:12px">
-          <button class="cta" onclick="calcMowing()">Show Price</button>
-        </div>
-        <div id="mowingResult" class="mono"></div>
-        <p class="disclaimer">Weekly: $30/$35/$40 • Bi-Weekly: $65/$75/$85 • One-Time: $70/$80/$90 • Acreage quoted on-site</p>
-        <a class="cta" style="background:var(--gold)" href="schedule.html">Book This</a>
-      </div>
+<!-- Quick Estimator -->
+<div class="card" style="margin-top:16px">
+  <div class="pad">
+    <h3>Quick Estimator</h3>
+    <div class="est-grid">
+      <label class="field"><span>Yard Size</span>
+        <select id="yardSize" onchange="calcMowing()">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+          <option value="xl">Acreage / Complex</option>
+        </select>
+      </label>
+      <label class="field"><span>Visit Type</span>
+        <select id="visitType" onchange="calcMowing()">
+          <option value="weekly">Weekly</option>
+          <option value="biweekly">Bi-Weekly</option>
+          <option value="onetime">One-Time</option>
+        </select>
+      </label>
     </div>
-  </section>
+    <div class="field" style="margin-top:12px">
+      <button class="cta" onclick="calcMowing()">Show Price</button>
+    </div>
+    <div id="mowingResult" class="mono"></div>
+    <p class="disclaimer">Weekly: $30/$35/$40 • Bi-Weekly: $65/$75/$85 • One-Time: $70/$80/$90 • Acreage quoted on-site</p>
+
+    <!-- Dynamic booking link -->
+    <a id="bookLink" class="cta" style="background:var(--gold)" href="schedule.html" target="_blank" rel="noopener">Book This</a>
+  </div>
+</div>
+
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Mowing Estimator (price display)
+  const priceMap = {
+    weekly:   { small:[30,30], medium:[35,35], large:[40,40], xl:[null,null] },
+    biweekly: { small:[65,65], medium:[75,75], large:[85,85], xl:[null,null] },
+    onetime:  { small:[70,70], medium:[80,80], large:[90,90], xl:[null,null] }
+  };
+
+  // Cal.com deep links for every combo
+  const calLinks = {
+    small: {
+      weekly:   'https://cal.com/herbalawn/herbalawn-greenstart-weekly-30-week',
+      biweekly: 'https://cal.com/herbalawn/herbalawn-greenstart-bi-weekly-65-every-two-weeks',
+      onetime:  'https://cal.com/herbalawn/herbalawn-greenstart-one-time-70-single-cut'
+    },
+    medium: {
+      weekly:   'https://cal.com/herbalawn/herbalawn-lawnpro-weekly-35-week',
+      biweekly: 'https://cal.com/herbalawn/herbalawn-lawnpro-bi-weekly-75-every-two-weeks',
+      onetime:  'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut'
+    },
+    large: {
+      weekly:   'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week',
+      biweekly: 'https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks',
+      onetime:  'https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut'
+    }
+    // xl (acreage) intentionally has no direct Cal link
+  };
+
+  // Shared Cal.com query params (you can tweak later)
+  const calParams = '?duration=30&recurringEventCount=24&overlayCalendar=true';
+
+  function calcMowing(){
+    const s = document.getElementById('yardSize').value;
+    const v = document.getElementById('visitType').value;
+    const res = document.getElementById('mowingResult');
+    const book = document.getElementById('bookLink');
+
+    // Update displayed price
+    const vPair = priceMap[v][s];
+    if(!vPair || vPair[0]===null){
+      res.innerHTML = 'Acreage / complex lots are priced on-site. <span style="color:var(--gold)">Schedule a walkthrough.</span>';
+    } else {
+      const [lo,hi]=vPair;
+      const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
+      res.textContent = `${label} • ${s.toUpperCase()} • $${lo}${hi!==lo?('–$'+hi):''}`;
+    }
+
+    // Update the booking link
+    if (s === 'xl') {
+      // No direct link for acreage/complex: send to schedule
+      book.href = 'schedule.html';
+      book.target = '_self';
+      book.textContent = 'Book This';
+      return;
+    }
+    const link = calLinks[s]?.[v];
+    if (link){
+      book.href = link + calParams;
+      book.target = '_blank'; // open Cal in new tab
+      book.textContent = 'Book This';
+    } else {
+      // Fallback
+      book.href = 'schedule.html';
+      book.target = '_self';
+      book.textContent = 'Book This';
+    }
+  }
+
+  // Initialize on load so the button points to the right link immediately
+  calcMowing();
+
+  // Mulch calculator (unchanged)
+  function calcMulch(){
+    const sqft = parseFloat(document.getElementById('sqft').value||'0');
+    const depthIn = parseFloat(document.getElementById('depth').value||'0');
+    const rate = parseFloat(document.getElementById('rate').value||'3');
+    const out = document.getElementById('mulchResult');
+    if(sqft<=0 || depthIn<=0){ out.textContent='Enter area and depth.'; return; }
+    const cubicFeet = sqft * (depthIn/12);
+    const cost = cubicFeet * rate;
+    out.textContent = `Volume: ${cubicFeet.toFixed(1)} cu ft • Mulch ≈ $${cost.toFixed(2)} (materials only)`;
+  }
+</script>
 
   <!-- MULCH -->
   <section id="mulch">
@@ -325,5 +413,6 @@
 </script>
 </body>
 </html>
+
 
 
