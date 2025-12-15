@@ -50,7 +50,8 @@
   .cards-4{grid-template-columns:repeat(1,minmax(0,1fr))}
   @media(min-width:900px){.cards-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .price-card{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;min-height:340px}
-  .price-img{height:150px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;position:relative;background-size:cover;background-position:center}
+  /* allow anchors to be used as price-img */
+  .price-img{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;position:relative;background-size:cover;background-position:center;height:150px;text-decoration:none;border-bottom-left-radius:0;border-bottom-right-radius:0}
   .price-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35))}
   .price-img > span{position:relative;z-index:1}
   .price-body{padding:14px 16px}
@@ -67,7 +68,7 @@
   .disclaimer{font-size:.92rem;color:var(--muted)}
   .small{font-size:.92rem;color:var(--muted)}
 
-  /* Mobile header layout: name centered, buttons below */
+  /* Mobile header layout */
   @media (max-width:700px){
     .container{padding:16px}
     h1{font-size:28px;line-height:1.2}
@@ -125,37 +126,38 @@
   <!-- MOWING PRICING -->
   <section id="mowing-pricing">
     <h2 class="section-title">Mowing — Simple Pricing</h2>
+    <p class="sub"><b>Click your type of lawn/yard</b> to go to our best plan page.</p>
     <p class="sub">Trimming & blow-off included. Final quote may vary by terrain and obstacles.</p>
 
     <div class="pricing cards-4" style="margin-top:14px">
-      <!-- Small -->
+      <!-- Small (clickable) -->
       <div class="price-card card">
-        <div class="price-img" style="background-image:url('assets/images/SmallYard.jpg')"><span>Small Yard</span></div>
+        <a class="price-img" href="https://herbalawn.com/greenstart.html" style="background-image:url('assets/images/SmallYard.jpg')"><span>Small Yard</span></a>
         <div class="price-body">
           <div class="pill">Up to ~4,000 sq ft</div>
           <p class="small">Choose Small at checkout.</p>
         </div>
       </div>
 
-      <!-- Medium -->
+      <!-- Medium (clickable) -->
       <div class="price-card card">
-        <div class="price-img" style="background-image:url('assets/images/MediumYard.jpg')"><span>Medium Yard</span></div>
+        <a class="price-img" href="https://herbalawn.com/lawnpro.html" style="background-image:url('assets/images/MediumYard.jpg')"><span>Medium Yard</span></a>
         <div class="price-body">
           <div class="pill">~4,001–8,000 sq ft</div>
           <p class="small">Choose Medium.</p>
         </div>
       </div>
 
-      <!-- Large -->
+      <!-- Large (clickable) -->
       <div class="price-card card">
-        <div class="price-img" style="background-image:url('assets/images/LargeYard.jpg')"><span>Large Yard</span></div>
+        <a class="price-img" href="https://herbalawn.com/elitecut.html" style="background-image:url('assets/images/LargeYard.jpg')"><span>Large Yard</span></a>
         <div class="price-body">
           <div class="pill">~8,001–12,000 sq ft</div>
           <p class="small">Choose Large.</p>
         </div>
       </div>
 
-      <!-- Acreage / Complex (fixed to match others) -->
+      <!-- Acreage / Complex (not clickable) -->
       <div class="price-card card">
         <div class="price-img" style="background-image:url('assets/images/ACYard.jpg')"><span>Acreage / Complex</span></div>
         <div class="price-body">
@@ -165,7 +167,7 @@
       </div>
     </div>
 
-    <!-- Quick Estimator (mobile-friendly) -->
+    <!-- Quick Estimator -->
     <div class="card" style="margin-top:16px">
       <div class="pad">
         <h3>Quick Estimator</h3>
@@ -196,7 +198,7 @@
     </div>
   </section>
 
-  <!-- MULCH CALCULATOR (mobile fixed: fields stack and no clipping) -->
+  <!-- MULCH -->
   <section id="mulch">
     <h2 class="section-title">Mulch Calculator (Materials Only)</h2>
     <p class="sub">Price uses <b>$3.00 per cubic foot</b> for mulch. Labor added after a quick quote. Depth default is 2", choose up to 4".</p>
@@ -232,7 +234,7 @@
     </div>
   </section>
 
-  <!-- Tree Contact block -->
+  <!-- Tree Contact -->
   <section id="tree">
     <h2 class="section-title">Professional Tree Services</h2>
     <p class="sub">For tree trimming, removals, and haul-off, call or email for a fast quote.</p>
