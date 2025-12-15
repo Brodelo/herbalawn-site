@@ -50,7 +50,6 @@
   .cards-4{grid-template-columns:repeat(1,minmax(0,1fr))}
   @media(min-width:900px){.cards-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .price-card{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;min-height:340px}
-  /* allow anchors to be used as price-img */
   .price-img{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;position:relative;background-size:cover;background-position:center;height:150px;text-decoration:none;border-bottom-left-radius:0;border-bottom-right-radius:0}
   .price-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35))}
   .price-img > span{position:relative;z-index:1}
@@ -130,7 +129,7 @@
     <p class="sub">Trimming & blow-off included. Final quote may vary by terrain and obstacles.</p>
 
     <div class="pricing cards-4" style="margin-top:14px">
-      <!-- Small (clickable) -->
+      <!-- Small -->
       <div class="price-card card">
         <a class="price-img" href="https://herbalawn.com/greenstart.html" style="background-image:url('assets/images/SmallYard.jpg')"><span>Small Yard</span></a>
         <div class="price-body">
@@ -139,7 +138,7 @@
         </div>
       </div>
 
-      <!-- Medium (clickable) -->
+      <!-- Medium -->
       <div class="price-card card">
         <a class="price-img" href="https://herbalawn.com/lawnpro.html" style="background-image:url('assets/images/MediumYard.jpg')"><span>Medium Yard</span></a>
         <div class="price-body">
@@ -148,7 +147,7 @@
         </div>
       </div>
 
-      <!-- Large (clickable) -->
+      <!-- Large -->
       <div class="price-card card">
         <a class="price-img" href="https://herbalawn.com/elitecut.html" style="background-image:url('assets/images/LargeYard.jpg')"><span>Large Yard</span></a>
         <div class="price-body">
@@ -157,7 +156,7 @@
         </div>
       </div>
 
-      <!-- Acreage / Complex (not clickable) -->
+      <!-- Acreage / Complex -->
       <div class="price-card card">
         <div class="price-img" style="background-image:url('assets/images/ACYard.jpg')"><span>Acreage / Complex</span></div>
         <div class="price-body">
@@ -167,7 +166,7 @@
       </div>
     </div>
 
-    <!-- Quick Estimator -->
+    <!-- Quick Estimator (modified) -->
     <div class="card" style="margin-top:16px">
       <div class="pad">
         <h3>Quick Estimator</h3>
@@ -193,7 +192,8 @@
         </div>
         <div id="mowingResult" class="mono"></div>
         <p class="disclaimer">Weekly: $30/$35/$40 • Bi-Weekly: $65/$75/$85 • One-Time: $70/$80/$90 • Acreage quoted on-site</p>
-        <a class="cta" style="background:var(--gold)" href="schedule.html">Book This</a>
+        <!-- This link updates dynamically based on selections -->
+        <a class="cta" id="bookLink" style="background:var(--gold)" href="schedule.html">Book This</a>
       </div>
     </div>
   </section>
@@ -291,24 +291,53 @@
   // Year
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Mowing Estimator
+  // Booking links map (by size -> visit)
+  const bookingLinks = {
+    small: {
+      weekly:  'https://cal.com/herbalawn/herbalawn-greenstart-weekly-30-week?duration=30&recurringEventCount=24&overlayCalendar=true',
+      biweekly:'https://cal.com/herbalawn/herbalawn-greenstart-bi-weekly-65-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
+      onetime: 'https://cal.com/herbalawn/herbalawn-greenstart-one-time-70-single-cut?duration=30&overlayCalendar=true'
+    },
+    medium: {
+      weekly:  'https://cal.com/herbalawn/herbalawn-lawnpro-weekly-35-week?duration=30&recurringEventCount=24&overlayCalendar=true',
+      biweekly:'https://cal.com/herbalawn/herbalawn-lawnpro-bi-weekly-75-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
+      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&overlayCalendar=true'
+    },
+    large: {
+      weekly:  'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week?duration=30&recurringEventCount=24&overlayCalendar=true',
+      biweekly:'https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
+      onetime: 'https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut?duration=30&overlayCalendar=true'
+    }
+  };
+
+  // Price map (unchanged)
   const priceMap = {
     weekly:   { small:[30,30], medium:[35,35], large:[40,40], xl:[null,null] },
     biweekly: { small:[65,65], medium:[75,75], large:[85,85], xl:[null,null] },
     onetime:  { small:[70,70], medium:[80,80], large:[90,90], xl:[null,null] }
   };
+
+  // Show price + set booking link
   function calcMowing(){
     const s = document.getElementById('yardSize').value;
     const v = document.getElementById('visitType').value;
     const res = document.getElementById('mowingResult');
+    const book = document.getElementById('bookLink');
+
     const vPair = priceMap[v][s];
     if(!vPair || vPair[0]===null){
       res.innerHTML = 'Acreage / complex lots are priced on-site. <span style="color:var(--gold)">Schedule a walkthrough.</span>';
+      book.href = 'schedule.html';
       return;
     }
+
     const [lo,hi]=vPair;
     const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
     res.textContent = `${label} • ${s.toUpperCase()} • $${lo}${hi!==lo?('–$'+hi):''}`;
+
+    // set booking link if available, else fallback
+    const link = (bookingLinks[s] && bookingLinks[s][v]) ? bookingLinks[s][v] : 'schedule.html';
+    book.href = link;
   }
 
   // Mulch calculator
@@ -325,9 +354,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
