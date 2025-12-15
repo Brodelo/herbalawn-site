@@ -1,78 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>EliteCut — HerbaLawn Plans</title>
-  <style>
-    :root{--bg:#0f201b;--bg2:#152a24;--text:#f2f6f4;--accent:#b7ff4a;--gold:#f2d072;--muted:#9fb3ab;--radius:18px;--glow:0 14px 40px rgba(183,255,74,.24),0 0 0 1px rgba(183,255,74,.28)}
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    a{color:var(--accent);text-decoration:none}
-    .wrap{max-width:900px;margin:auto;padding:20px}
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.9));backdrop-filter:saturate(130%) blur(4px)}
-    .top{max-width:900px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:12px}
-    .brand{font-weight:800}
-    .muted{color:var(--muted)}
-    h1{margin:10px 0 6px}
-    .card{background:linear-gradient(180deg,var(--bg2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,.35);padding:18px}
-    .grid{display:grid;gap:12px}
-    .grid3{grid-template-columns:repeat(12,1fr)}
-    .plan{grid-column:span 12;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;box-shadow:var(--glow)}
-    @media(min-width:780px){.plan{grid-column:span 4}}
-    .go{display:block;text-align:center;margin-top:10px;background:var(--accent);color:#0b140f;font-weight:800;border-radius:999px;padding:12px 16px}
-    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--gold);color:#0b140f;font-weight:700}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EliteCut Plans — HerbaLawn</title>
+<style>
+  :root{
+    --bg:#0f201b; --bg-2:#152a24; --text:#f2f6f4; --muted:#9fb3ab;
+    --accent:#b7ff4a; --gold:#f2d072;
+    --shadow-soft: 0 10px 28px rgba(183,255,74,.16),0 0 0 1px rgba(183,255,74,.18);
+    --shadow-strong:0 14px 40px rgba(183,255,74,.24),0 0 0 1px rgba(183,255,74,.28);
+    --radius:18px;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+  a{color:var(--accent);text-decoration:none}
+  .container{max-width:1100px;margin:auto;padding:20px}
+  header{position:sticky;top:0;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.92));backdrop-filter:saturate(130%) blur(4px)}
+  .top{display:flex;gap:14px;align-items:center;justify-content:space-between}
+  .brand{font-weight:800;letter-spacing:.3px}
+  .cta{background:var(--accent);color:#0b140f;font-weight:800;border:none;border-radius:999px;padding:10px 14px;display:inline-block}
+  h1{font-size:34px;margin:16px 0 6px}
+  p.sub{color:var(--muted);margin:0 0 18px}
+  .plans{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+  .plan{grid-column:span 12}
+  @media(min-width:800px){.plan{grid-column:span 4}}
+  .plan-card{position:relative;background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:18px;min-height:240px;display:flex;flex-direction:column;gap:8px}
+  .plan-card:hover{box-shadow:var(--shadow-strong)}
+  .price{font-size:28px;font-weight:800}
+  .muted{color:var(--muted)}
+  .btn{margin-top:auto}
+  .badge-pop{position:absolute;right:12px;top:12px;background:linear-gradient(135deg,#f9f871,#b7ff4a);color:#07120e;font-weight:900;font-size:.78rem;padding:6px 10px;border-radius:999px;box-shadow:0 6px 18px rgba(183,255,74,.35)}
+  .crumbs{margin:10px 0 22px}
+</style>
 </head>
 <body>
-  <header>
-    <div class="top">
-      <div class="brand">
-        <div class="muted" style="font-size:12px;">HERBALAWN — Plan Details</div>
-        <div>EliteCut</div>
-      </div>
-      <div style="margin-left:auto"><a href="schedule.html">← Back</a></div>
-    </div>
-  </header>
+<header>
+  <div class="container top">
+    <div class="brand">HERBALAWN LLC</div>
+    <nav><a class="cta" href="index.html">← Home</a></nav>
+  </div>
+</header>
 
-  <main class="wrap">
-    <div class="card">
-      <h1>EliteCut</h1>
-      <p class="muted">For large yards or higher coverage needs.</p>
-    </div>
+<main class="container">
+  <h1>EliteCut — Large Yard Plans</h1>
+  <p class="sub">Checkout securely on <b>Cal.com</b>. Pick the frequency that fits your yard.</p>
+  <div class="crumbs"><a href="schedule.html">← Back to Schedule</a></div>
 
-    <div class="grid grid3" style="margin-top:14px" id="plans">
-      <div class="plan">
-        <span class="pill">Weekly</span>
-        <h3>Weekly Large Yard Mow</h3>
-        <p class="muted">Consistent, premium cut for larger spaces.</p>
-        <a class="go" id="link-weekly" target="_blank" href="https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week">Book Weekly →</a>
-      </div>
-      <div class="plan">
-        <span class="pill">Bi-Weekly</span>
-        <h3>Bi-Weekly Large Yard Mow</h3>
-        <p class="muted">Great look with fewer visits.</p>
-        <a class="go" id="link-biweekly" target="_blank" href="https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks">Book Bi-Weekly →</a>
-      </div>
-      <div class="plan">
-        <span class="pill">One-Time</span>
-        <h3>One-Time Large Yard Mow</h3>
-        <p class="muted">One-time pro cut for big yards.</p>
-        <a class="go" id="link-onetime" target="_blank" href="https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut">Book One-Time →</a>
+  <div class="plans">
+    <!-- WEEKLY (Most Popular) -->
+    <div class="plan">
+      <div class="plan-card">
+        <span class="badge-pop">Most Popular</span>
+        <h3>Weekly</h3>
+        <div class="price">$40<span class="muted"> / week</span></div>
+        <p class="muted">Premium cut & finish for larger lawns.</p>
+        <a class="cta btn" href="https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week">Continue on Cal.com</a>
       </div>
     </div>
-  </main>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const f = params.get('freq');
-    const map = {weekly: 'link-weekly', biweekly:'link-biweekly', onetime:'link-onetime'};
-    if(map[f]){
-      const el = document.getElementById(map[f]);
-      el.scrollIntoView({behavior:'smooth', block:'center'});
-      el.style.outline = '2px solid #b7ff4a';
-      el.style.boxShadow = '0 0 0 4px rgba(183,255,74,.25)';
-    }
-  </script>
+    <!-- Bi-Weekly -->
+    <div class="plan">
+      <div class="plan-card">
+        <h3>Bi-Weekly</h3>
+        <div class="price">$85<span class="muted"> / every 2 weeks</span></div>
+        <p class="muted">Steady upkeep for bigger properties.</p>
+        <a class="cta btn" href="https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks">Continue on Cal.com</a>
+      </div>
+    </div>
+
+    <!-- One-Time -->
+    <div class="plan">
+      <div class="plan-card">
+        <h3>One-Time</h3>
+        <div class="price">$90<span class="muted"> / single cut</span></div>
+        <p class="muted">One visit to get everything sharp.</p>
+        <a class="cta btn" href="https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut">Continue on Cal.com</a>
+      </div>
+    </div>
+  </div>
+</main>
 </body>
 </html>
