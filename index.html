@@ -288,6 +288,7 @@
 </footer>
 
 <script>
+  <script>
   // Year
   document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -307,6 +308,11 @@
       weekly:  'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week?duration=30&recurringEventCount=24&overlayCalendar=true',
       biweekly:'https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
       onetime: 'https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut?duration=30&overlayCalendar=true'
+    },
+    xl: {
+      weekly:  'https://cal.com/herbalawn/acreage-or-complex-property-meet-up',
+      biweekly:'https://cal.com/herbalawn/acreage-or-complex-property-meet-up',
+      onetime: 'https://cal.com/herbalawn/acreage-or-complex-property-meet-up'
     }
   };
 
@@ -327,7 +333,7 @@
     const vPair = priceMap[v][s];
     if(!vPair || vPair[0]===null){
       res.innerHTML = 'Acreage / complex lots are priced on-site. <span style="color:var(--gold)">Schedule a walkthrough.</span>';
-      book.href = 'schedule.html';
+      book.href = bookingLinks.xl.weekly; // updated meet-up link
       return;
     }
 
@@ -336,7 +342,7 @@
     res.textContent = `${label} • ${s.toUpperCase()} • $${lo}${hi!==lo?('–$'+hi):''}`;
 
     // set booking link if available, else fallback
-    const link = (bookingLinks[s] && bookingLinks[s][v]) ? bookingLinks[s][v] : 'schedule.html';
+    const link = (bookingLinks[s] && bookingLinks[s][v]) ? bookingLinks[s][v] : bookingLinks.xl.weekly;
     book.href = link;
   }
 
@@ -354,3 +360,4 @@
 </script>
 </body>
 </html>
+
