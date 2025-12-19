@@ -1,37 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Policies — HerbaLawn</title>
-<style>
-  :root{
-    --bg:#0f201b; --bg-2:#152a24; --text:#f2f6f4; --muted:#9fb3ab;
-    --accent:#b7ff4a; --shadow:0 10px 30px rgba(0,0,0,.35); --radius:18px;
-  }
-  html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-  .container{max-width:900px;margin:auto;padding:20px}
-  header{position:sticky;top:0;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.9));backdrop-filter:saturate(130%) blur(4px)}
-  .top{display:flex;gap:12px;align-items:center;justify-content:space-between}
-  .cta{background:var(--accent);color:#0b140f;font-weight:800;border:none;border-radius:999px;padding:10px 14px;text-decoration:none}
-  .card{background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
-  .muted{color:var(--muted)}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HerbaLawn LLC — Service Policies</title>
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+
+  <style>
+    :root{
+      --bg:#0f201b; --bg2:#152a24; --text:#f2f6f4; --muted:#9fb3ab;
+      --accent:#b7ff4a; --gold:#f2d072;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --border:1px solid rgba(255,255,255,.10);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.92));backdrop-filter:saturate(130%) blur(4px);border-bottom:1px solid rgba(255,255,255,.07)}
+    .container{max-width:1100px;margin:auto;padding:18px}
+    .nav{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .brand small{display:block;color:var(--accent);font-weight:800;letter-spacing:.6px}
+    .menu{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+    .cta{background:var(--accent);color:#0b140f;font-weight:800;border:none;border-radius:999px;padding:10px 14px;display:inline-block}
+    .cta.secondary{background:rgba(183,255,74,.12);color:var(--accent);border:1px solid rgba(183,255,74,.35)}
+    .cta.gold{background:var(--gold);color:#0b140f}
+    .card{background:linear-gradient(180deg,var(--bg2),rgba(21,42,36,.6));border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:18px}
+    h1{font-size:34px;margin:6px 0 6px;line-height:1.15}
+    h2{font-size:22px;margin:24px 0 10px;color:var(--accent)}
+    h3{font-size:18px;margin:18px 0 8px}
+    p{margin:10px 0;color:var(--text)}
+    .muted{color:var(--muted)}
+    .toc{display:grid;grid-template-columns:1fr;gap:10px}
+    .toc a{display:block;padding:10px 12px;border:var(--border);border-radius:14px;background:rgba(255,255,255,.04)}
+    .toc a:hover{background:rgba(183,255,74,.08)}
+    .policy-block{margin-top:16px}
+    .subpoint{margin-left:14px}
+    .subpoint p{margin:8px 0}
+    .letterline{padding-left:18px;text-indent:-18px}
+    .footer{margin-top:26px;padding:22px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:14px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+    @media (max-width:700px){
+      h1{font-size:26px}
+      .menu{margin-left:0}
+      .container{padding:14px}
+    }
+  </style>
 </head>
+
 <body>
 <header>
-  <div class="container top">
-    <div style="font-weight:800;letter-spacing:.3px">HERBALAWN LLC — Policies</div>
-    <a class="cta" href="index.html">← Home</a>
+  <div class="container nav">
+    <div class="brand">
+      <small>LANDSCAPING / TREE SERVICE</small>
+      HERBALAWN LLC
+    </div>
+    <nav class="menu">
+      <a class="cta secondary" href="index.html">Home</a>
+      <a class="cta" href="schedule.html">Schedule</a>
+    </nav>
   </div>
 </header>
 
 <main class="container">
-  <h1>Policies</h1>
-  <div class="card">
-    <p class="muted">Working on it…</p>
-    <p class="muted">We’re preparing simple, clear policies for service areas, scheduling, rescheduling, satisfaction, and payments. Check back soon. If you have any questions right now, call or text <b>254-301-4883</b> or email <b>HerbaLawn@outlook.com</b>.</p>
+  <div class="card pad">
+    <h1>HerbaLawn LLC – Service Policies</h1>
+    <p class="muted">This page contains the full legal version of our policies, organized for easy reference.</p>
+
+    <h3>Quick Links</h3>
+    <div class="toc">
+      <a href="#sec1">1. PRICING, FIRST-CUT ADJUSTMENTS & ONGOING SERVICE TERMS</a>
+      <a href="#sec2">2. PAYMENTS, CARD ON FILE AUTHORIZATION & RECEIPTS</a>
+      <a href="#sec3">3. TREE SERVICES, CONTRACTS & INVOICING REQUIREMENTS</a>
+      <a href="#sec4">4. TREE SERVICE PAYMENT STRUCTURE & AUTHORITY</a>
+      <a href="#sec5">5. PROPERTY ACCESS, GATES, WAIT TIMES & MISSED ENTRY</a>
+      <a href="#sec6">6. PETS & SAFETY POLICIES</a>
+      <a href="#sec7">7. PROPERTY CONDITIONS, TALL GRASS & HIDDEN HAZARDS</a>
+      <a href="#sec8">8. DEBRIS REMOVAL & ADDITIONAL FEES</a>
+      <a href="#sec9">9. MULCH CALCULATOR DISCLAIMER</a>
+      <a href="#sec10">10. REFUNDS & SERVICE QUALITY</a>
+      <a href="#sec11">11. RIGHT TO REFUSE OR TERMINATE SERVICE</a>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec1">
+    <h2>1. PRICING, FIRST-CUT ADJUSTMENTS & ONGOING SERVICE TERMS</h2>
+
+    <h3>1.1 Initial Lawn Service Pricing Authority</h3>
+    <div class="subpoint">
+      <p class="letterline">a. HerbaLawn LLC reserves the full right to adjust pricing on the <b>initial lawn service</b> if the condition of the property requires additional labor, time, fuel usage, equipment wear, or staffing beyond what is considered a standard maintenance cut.</p>
+      <p class="letterline">b. This includes, but is not limited to, excessively tall grass, severe overgrowth, heavy weeds, missed prior services, compacted grass, debris, unsafe mowing conditions, or any circumstance that increases labor, fuel consumption, or risk to equipment or personnel.</p>
+      <p class="letterline">c. Customers acknowledge that the first lawn service functions as an <b>evaluation and recovery cut</b>, and that all pricing shown online reflects typical, regularly maintained lawn conditions only.</p>
+      <p class="letterline">d. Any pricing adjustment on the first cut is determined solely at the discretion of HerbaLawn LLC based on real-time property conditions observed on arrival or during service.</p>
+    </div>
+
+    <h3>1.2 Fixed Pricing After First Lawn Cut</h3>
+    <div class="subpoint">
+      <p class="letterline">a. After completion of the initial lawn service, pricing for future services may be locked at the advertised online rate <b>only if</b> the customer continues service without missing scheduled appointments.</p>
+      <p class="letterline">b. Weather-related delays initiated by HerbaLawn LLC, including rain, storms, or unsafe ground conditions, <b>do not</b> count as missed appointments and <b>do not</b> affect locked-in pricing.</p>
+      <p class="letterline">c. Fixed pricing is conditional upon consistent service continuity and property maintenance.</p>
+    </div>
+
+    <h3>1.3 Customer-Requested Rescheduling</h3>
+    <div class="subpoint">
+      <p class="letterline">a. If a customer requests to move, skip, delay, or reschedule a service for reasons unrelated to weather, a minimum of <b>three (3) days’ notice</b> is required.</p>
+      <p class="letterline">b. Failure to provide proper notice may result in pricing adjustments on the next visit due to increased growth, labor time, fuel usage, and equipment strain.</p>
+      <p class="letterline">c. Pricing adjustments under this section are determined solely by HerbaLawn LLC.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec2">
+    <h2>2. PAYMENTS, CARD ON FILE AUTHORIZATION & RECEIPTS</h2>
+
+    <h3>2.1 Payment Timing</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Payment for lawn services is due <b>immediately upon completion</b> of each service visit.</p>
+      <p class="letterline">b. Customers enrolled in recurring services authorize HerbaLawn LLC to automatically charge the payment method on file following each completed service.</p>
+    </div>
+
+    <h3>2.2 Payment Method Changes & Re-Authorization</h3>
+    <div class="subpoint">
+      <p class="letterline">a. If pricing changes due to missed appointments, one-time services, overgrown conditions, or service scope changes, the previously stored payment method may no longer be valid.</p>
+      <p class="letterline">b. In such cases, payment must be re-authorized by the customer or completed using HerbaLawn LLC’s <b>tap-to-pay system powered by Stripe</b>, which is built into company mobile devices.</p>
+      <p class="letterline">c. A valid email address is required for all transactions in order to provide electronic receipts and payment confirmations.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec3">
+    <h2>3. TREE SERVICES, CONTRACTS & INVOICING REQUIREMENTS</h2>
+
+    <h3>3.1 Contract Requirement</h3>
+    <div class="subpoint">
+      <p class="letterline">a. All tree services, including but not limited to trimming, removals, haul-off, and specialty work, require a <b>written contract and invoice</b> prior to service commencement.</p>
+      <p class="letterline">b. Tree service pricing is determined solely by HerbaLawn LLC after inspection and is based on labor requirements, equipment needs, access conditions, safety risks, and disposal considerations.</p>
+      <p class="letterline">c. Receipts will be delivered electronically via email or text message upon payment.</p>
+    </div>
+
+    <h3>3.2 Acreage & Complex Properties</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Acreage properties, complex properties, and large-scale recurring services (weekly, bi-weekly, or monthly) may require <b>custom contracts</b>, regardless of any online pricing references.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec4">
+    <h2>4. TREE SERVICE PAYMENT STRUCTURE & AUTHORITY</h2>
+
+    <h3>4.1 Standard Payment Schedule</h3>
+    <p>Unless otherwise agreed in writing, the following payment structure applies:</p>
+    <div class="subpoint">
+      <p class="letterline">a. <b>15% deposit</b> required to initiate work</p>
+      <p class="letterline">b. <b>15% payment</b> due once HerbaLawn LLC determines approximately 10% of the contracted work has been completed</p>
+      <p class="letterline">c. <b>30% payment</b> due once HerbaLawn LLC determines the project has reached the halfway point</p>
+      <p class="letterline">d. <b>Remaining 40%</b> due immediately upon completion of the contracted scope of work</p>
+    </div>
+
+    <h3>4.2 Alternative Payment Arrangement</h3>
+    <div class="subpoint">
+      <p class="letterline">a. At HerbaLawn LLC’s discretion, a 50% payment prior to starting and 50% upon completion may be approved.</p>
+    </div>
+
+    <h3>4.3 Authority Over Progress & Completion</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Progress milestones and job completion status are determined <b>solely by HerbaLawn LLC</b> based on the written contract scope.</p>
+      <p class="letterline">b. Customer opinions, observations, or personal assessments do not override contractual definitions of progress or completion.</p>
+    </div>
+
+    <h3>4.4 Add-Ons, Changes & Inability to Perform</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Any additional work requested after a project has begun requires a <b>separate quote and a new or revised contract</b>.</p>
+      <p class="letterline">b. If HerbaLawn LLC is unable to complete a portion of the contracted work due to safety concerns, access limitations, or unforeseen conditions, the company may cancel that portion or deduct the applicable cost.</p>
+      <p class="letterline">c. Any such change will be documented through a revised agreement.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec5">
+    <h2>5. PROPERTY ACCESS, GATES, WAIT TIMES & MISSED ENTRY</h2>
+
+    <h3>5.1 Customer Responsibilities</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Customers are responsible for ensuring clear and safe access to all service areas on the scheduled service date.</p>
+      <p class="letterline">b. Gates must be unlocked and accessible prior to arrival.</p>
+    </div>
+
+    <h3>5.2 Waiting Period</h3>
+    <div class="subpoint">
+      <p class="letterline">a. HerbaLawn LLC will wait <b>up to fifteen (15) minutes</b> for access to be provided.</p>
+    </div>
+
+    <h3>5.3 Access Limitations</h3>
+    <div class="subpoint">
+      <p class="letterline">a. HerbaLawn LLC will not jump fences, climb gates, or cross obstacles exceeding two (2) feet in height.</p>
+      <p class="letterline">b. If the front yard is accessible but the backyard is not, service will stop at the accessible area only.</p>
+    </div>
+
+    <h3>5.4 Charges for No Access</h3>
+    <div class="subpoint">
+      <p class="letterline">a. If access is not provided, the <b>full service amount may still be charged</b> to cover reserved service time, labor scheduling, and operational costs.</p>
+      <p class="letterline">b. For small and medium yards, pricing for the next scheduled visit will generally remain unchanged.</p>
+      <p class="letterline">c. For large yards, acreage, or complex properties, pricing for subsequent visits may vary at HerbaLawn LLC’s discretion.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec6">
+    <h2>6. PETS & SAFETY POLICIES</h2>
+
+    <h3>6.1 Customer Responsibility for Pets</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Customers are solely responsible for securing pets prior to service.</p>
+      <p class="letterline">b. HerbaLawn LLC is not responsible for restraining, relocating, or managing pets.</p>
+    </div>
+
+    <h3>6.2 Service Interruption Due to Pets</h3>
+    <div class="subpoint">
+      <p class="letterline">a. If a pet prevents service, the visit will be canceled and treated as a customer-initiated reschedule.</p>
+      <p class="letterline">b. Resulting overgrowth may cause pricing adjustments on the next visit, which may increase <b>up to twice the normal rate</b>, depending on conditions.</p>
+    </div>
+
+    <h3>6.3 Aggressive Animals</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Any aggressive pet that bites personnel or damages equipment will result in <b>immediate termination of services</b>.</p>
+      <p class="letterline">b. HerbaLawn LLC reserves the right to file insurance claims for equipment damage, repairs, or medical treatment.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec7">
+    <h2>7. PROPERTY CONDITIONS, TALL GRASS & HIDDEN HAZARDS</h2>
+
+    <h3>7.1 Yard Preparation</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Customers are responsible for clearing yards of visible hazards, including but not limited to rocks, toys, trash, debris, wires, hoses, pipes, and similar objects.</p>
+    </div>
+
+    <h3>7.2 Tall Grass & Limited Visibility</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Excessively tall or overgrown grass limits visibility and increases risk.</p>
+      <p class="letterline">b. HerbaLawn LLC is not responsible for damage to hidden, unmarked, or pre-existing items, including underground or obscured utilities or personal property.</p>
+    </div>
+
+    <h3>7.3 One-Time & High-Risk Services</h3>
+    <div class="subpoint">
+      <p class="letterline">a. One-time mows or severely overgrown properties may require a <b>limited liability acknowledgment or short-form contract</b> prior to service.</p>
+      <p class="letterline">b. This policy applies to all services offered by HerbaLawn LLC.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec8">
+    <h2>8. DEBRIS REMOVAL & ADDITIONAL FEES</h2>
+
+    <h3>8.1 Optional Debris Removal</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Removal of sticks, trash, toys, rocks, or hazardous items may incur additional fees.</p>
+      <p class="letterline">b. Repeated occurrences (more than three times) may result in repricing or service modification.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec9">
+    <h2>9. MULCH CALCULATOR DISCLAIMER</h2>
+
+    <h3>9.1 Estimation Purpose</h3>
+    <div class="subpoint">
+      <p class="letterline">a. The mulch calculator on herbalawn.com is a customer-use estimation tool only and reflects approximate material costs based on store pricing.</p>
+      <p class="letterline">b. Taxes are not included.</p>
+    </div>
+
+    <h3>9.2 Final Pricing</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Labor, weed barrier installation, haul-off, and additional services are quoted separately and documented in writing.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec10">
+    <h2>10. REFUNDS & SERVICE QUALITY</h2>
+
+    <h3>10.1 Refund Eligibility</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Refunds are considered only for <b>material service errors</b>, including more than ten (10) clear failures such as uncut areas, missed edging, or debris left in walkways, driveways, or service areas.</p>
+    </div>
+
+    <h3>10.2 Exclusions</h3>
+    <div class="subpoint">
+      <p class="letterline">a. Minor imperfections, natural regrowth, and subjective preferences do not qualify.</p>
+      <p class="letterline">b. HerbaLawn LLC is not responsible for debris landing on vehicles left within service areas.</p>
+    </div>
+  </div>
+
+  <div class="card pad policy-block" id="sec11">
+    <h2>11. RIGHT TO REFUSE OR TERMINATE SERVICE</h2>
+
+    <h3>11.1 Service Refusal</h3>
+    <div class="subpoint">
+      <p class="letterline">a. HerbaLawn LLC reserves the right to refuse, suspend, or terminate service due to unsafe conditions, non-payment, repeated access issues, aggressive behavior, or circumstances beyond reasonable control.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="muted">© <span id="yr"></span> HerbaLawn LLC — Waco, TX</div>
+    <div class="muted">Questions? Email <b>Schedule@HerbaLawn.com</b> or call <b>254-301-4883</b>.</div>
   </div>
 </main>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
