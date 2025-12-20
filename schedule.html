@@ -4,6 +4,10 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Schedule — HerbaLawn</title>
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+
   <style>
     :root{
       --bg:#0f201b; --bg2:#152a24; --text:#f2f6f4;
@@ -13,76 +17,150 @@
       --radius:18px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    html,body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      overflow-x:hidden;
+    }
     a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-    .wrap{max-width:1100px;margin:auto;padding:20px}
-    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg, rgba(15,32,27,.98), rgba(15,32,27,.9));backdrop-filter:saturate(130%) blur(4px)}
-    .top{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:12px}
+    header{
+      position:sticky;top:0;z-index:10;
+      background:linear-gradient(180deg, rgba(15,32,27,.98), rgba(15,32,27,.9));
+      backdrop-filter:saturate(130%) blur(4px);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .top{
+      max-width:1100px;margin:auto;padding:14px 18px;
+      display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    }
     .brand{font-weight:800;letter-spacing:.3px}
     .muted{color:var(--muted)}
 
-    h1{margin:10px 0 6px}
+    .wrap{max-width:1100px;margin:auto;padding:18px}
+    h1{margin:10px 0 6px;font-size:28px;line-height:1.2}
     p{margin:8px 0}
 
     .card{
       background:linear-gradient(180deg,var(--bg2),rgba(21,42,36,.6));
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
       border-radius:var(--radius);
       box-shadow:var(--glow-soft);
       padding:18px;
     }
 
-    .step{margin:16px 0}
-    .step h2{margin:0 0 8px;font-size:20px}
-
-    /* NEW: yard-size tiles (not clickable) */
-    .yards{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .yard{
-      grid-column:span 12; border-radius:16px; overflow:hidden;
-      background:linear-gradient(180deg,var(--bg2),rgba(21,42,36,.5));
-      border:1px solid rgba(255,255,255,.12); box-shadow:var(--glow-soft);
+    /* 3 buttons/cards */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin-top:14px;
     }
-    .yard-img{height:120px;background-size:cover;background-position:center;position:relative}
-    .yard-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35))}
-    .yard-cap{padding:14px}
-    .yard-cap h3{margin:0 0 6px}
-    .pill{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;color:var(--muted);font-size:.9rem}
+    @media(min-width:860px){
+      .grid{grid-template-columns:repeat(3,1fr)}
+    }
 
-    @media(min-width:780px){ .yard{grid-column:span 3} }
-
-    /* Plan buttons */
-    .plans{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
     .plan{
-      grid-column:span 12;
-      background:linear-gradient(180deg, rgba(242,208,114,.18), rgba(183,255,74,.12));
-      border:1px solid rgba(255,255,255,.12);
+      display:block;
       border-radius:16px;
-      position:relative;
       overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(242,208,114,.16), rgba(183,255,74,.10));
       box-shadow:var(--glow-soft);
-      transition:box-shadow .2s ease, transform .2s ease, filter .2s ease;
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
     }
-    .plan:hover{box-shadow:var(--glow);transform:translateY(-2px);filter:saturate(110%)}
-    .plan .inner{padding:18px}
-    .plan h3{margin:2px 0 6px}
-    .label{display:inline-block;font-size:.85rem;border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;color:#0b140f;background:var(--gold);font-weight:700}
-    .go{
-      display:inline-block;margin-top:10px;
-      background:var(--accent);color:#0b140f;font-weight:800;
-      border:none;border-radius:999px;padding:12px 16px;cursor:pointer
-    }
-    .go:hover{filter:brightness(1.04)}
-    @media(min-width:780px){ .plan{grid-column:span 4} }
+    .plan:hover{transform:translateY(-2px);box-shadow:var(--glow);filter:saturate(112%)}
 
-    /* Complex card */
-    .complex{display:flex;flex-direction:column;gap:8px}
-    .ctaRow{display:flex;gap:10px;flex-wrap:wrap}
-    .ctaGhost{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:10px 14px;border-radius:999px;color:var(--text)}
+    .img{
+      height:140px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+    .img::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.38));
+    }
+
+    .inner{padding:14px 14px 16px}
+    .label{
+      display:inline-block;
+      font-size:.82rem;
+      border:1px solid rgba(255,255,255,.18);
+      padding:4px 10px;
+      border-radius:999px;
+      color:#0b140f;
+      background:var(--gold);
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .inner h2{
+      margin:10px 0 6px;
+      font-size:18px;
+      color:var(--text);
+    }
+    .inner .desc{color:var(--muted);margin:0}
+
+    .go{
+      display:inline-block;
+      margin-top:12px;
+      background:var(--accent);
+      color:#0b140f;
+      font-weight:900;
+      border-radius:999px;
+      padding:11px 14px;
+    }
+
+    /* Acreage block under the 3 */
+    .acre{
+      margin-top:14px;
+      overflow:hidden;
+      border-radius:16px;
+    }
+    .acreTop{
+      height:160px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      border-radius:16px 16px 0 0;
+    }
+    .acreTop::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.40));
+    }
+    .acreBody{padding:16px}
+
+    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .ctaBtn{
+      display:inline-block;
+      background:var(--accent);
+      color:#0b140f;
+      font-weight:900;
+      border-radius:999px;
+      padding:12px 14px;
+    }
+    .ctaGhost{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,.18);
+      color:var(--text);
+      border-radius:999px;
+      padding:12px 14px;
+    }
 
     .note{font-size:.92rem;color:var(--muted);margin-top:12px}
+
+    /* Mobile: bigger tap targets */
+    @media(max-width:480px){
+      .img{height:155px}
+      .acreTop{height:175px}
+      .go,.ctaBtn,.ctaGhost{width:100%;text-align:center}
+    }
   </style>
 </head>
+
 <body>
   <header>
     <div class="top">
@@ -96,108 +174,64 @@
 
   <main class="wrap">
     <div class="card">
-      <h1>Book Online (Secure Payments via Cal.com)</h1>
-      <p class="muted">
-        Choose your yard size below (for reference), then pick a plan. You’ll pay and confirm on
-        <b>Cal.com</b>—a trusted, secure checkout.
-      </p>
+      <h1>Book a Lawn Cut</h1>
+      <p class="muted">Tap your yard size to choose a plan. Scheduling and payments are handled securely through Cal.com.</p>
     </div>
 
-    <!-- STEP 1 -->
-    <div class="step">
-      <h2>Step 1 — Yard Size (for reference)</h2>
-      <div class="yards">
-        <article class="yard">
-          <div class="yard-img" style="background-image:url('assets/images/SmallYard.jpg')"></div>
-          <div class="yard-cap">
-            <span class="pill">Up to ~4,000 sq ft</span>
-            <h3>Small Yard</h3>
-            <p class="muted">Typical starter size.</p>
-          </div>
-        </article>
+    <!-- 3 simple buttons/cards -->
+    <div class="grid">
+      <!-- Small -->
+      <a class="plan" href="greenstart.html" aria-label="Small yard scheduling">
+        <div class="img" style="background-image:url('assets/images/SmallYard.jpg')"></div>
+        <div class="inner">
+          <span class="label">Small Yard</span>
+          <h2>GreenStart</h2>
+          <p class="desc">Best for small / typical yards.</p>
+          <span class="go">Choose Small →</span>
+        </div>
+      </a>
 
-        <article class="yard">
-          <div class="yard-img" style="background-image:url('assets/images/MediumYard.jpg')"></div>
-          <div class="yard-cap">
-            <span class="pill">~4,001–8,000 sq ft</span>
-            <h3>Medium Yard</h3>
-            <p class="muted">More area or edging time.</p>
-          </div>
-        </article>
+      <!-- Medium -->
+      <a class="plan" href="lawnpro.html" aria-label="Medium yard scheduling">
+        <div class="img" style="background-image:url('assets/images/MediumYard.jpg')"></div>
+        <div class="inner">
+          <span class="label">Medium Yard</span>
+          <h2>LawnPro</h2>
+          <p class="desc">Best for medium yards.</p>
+          <span class="go">Choose Medium →</span>
+        </div>
+      </a>
 
-        <article class="yard">
-          <div class="yard-img" style="background-image:url('assets/images/LargeYard.jpg')"></div>
-          <div class="yard-cap">
-            <span class="pill">~8,001–12,000 sq ft</span>
-            <h3>Large Yard</h3>
-            <p class="muted">Bigger footprint/coverage.</p>
-          </div>
-        </article>
-
-        <article class="yard" id="complex">
-          <div class="yard-img" style="background-image:url('assets/images/ACYard.jpg')"></div>
-          <div class="yard-cap">
-            <span class="pill">&gt;12,000 sq ft or complex</span>
-            <h3>Acreage / Complex</h3>
-            <p class="muted">We’ll walk it with you.</p>
-          </div>
-        </article>
-      </div>
-      <p class="note">These tiles are just to help you pick the right plan in Step 2.</p>
+      <!-- Large -->
+      <a class="plan" href="elitecut.html" aria-label="Large yard scheduling">
+        <div class="img" style="background-image:url('assets/images/LargeYard.jpg')"></div>
+        <div class="inner">
+          <span class="label">Large Yard</span>
+          <h2>EliteCut</h2>
+          <p class="desc">Best for large yards.</p>
+          <span class="go">Choose Large →</span>
+        </div>
+      </a>
     </div>
 
-    <!-- STEP 2 -->
-    <div class="step">
-      <h2>Step 2 — Pick a Plan</h2>
-      <div class="plans">
-        <article class="plan">
-          <div class="inner">
-            <span class="label">GreenStart</span>
-            <h3>Small/Typical Size Yard</h3>
-            <p class="muted">Best for Small yards.</p>
-            <a class="go" href="greenstart.html">See GreenStart options →</a>
-          </div>
-        </article>
+    <!-- Acreage / Complex under the 3 -->
+    <div class="card acre">
+      <div class="acreTop" style="background-image:url('acre.png')"></div>
+      <div class="acreBody">
+        <span class="label">Acreage / Complex</span>
+        <h2 style="margin:10px 0 6px;">&gt; 12,000 sq ft or Complex Property</h2>
+        <p class="muted" style="margin:0;">Call or email us to schedule a walkthrough and get a custom quote.</p>
 
-        <article class="plan">
-          <div class="inner">
-            <span class="label">LawnPro</span>
-            <h3>Medium Size Yard</h3>
-            <p class="muted">Best for Medium yards.</p>
-            <a class="go" href="lawnpro.html">See LawnPro options →</a>
-          </div>
-        </article>
-
-        <article class="plan">
-          <div class="inner">
-            <span class="label">EliteCut</span>
-            <h3>Large Size Yard</h3>
-            <p class="muted">Best for Large yards.</p>
-            <a class="go" href="elitecut.html">See EliteCut options →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- Complex / Acreage -->
-    <div class="step">
-      <div class="card complex">
-        <h2>> 12,000 sq ft or Complex Property</h2>
-        <p class="muted">We’ll walk it with you and create a fair quote.</p>
         <div class="ctaRow">
-          <a class="go" href="tel:2543014883">Call/Text: 254-301-4883</a>
+          <a class="ctaBtn" href="tel:2543014883">Call/Text: 254-301-4883</a>
           <a class="ctaGhost" href="mailto:contact@herbalawn.com">Email: contact@herbalawn.com</a>
         </div>
+
+        <p class="note">If you need help choosing a plan, call/text and we’ll help you pick the right option.</p>
       </div>
     </div>
 
-    <p class="note">Questions? Call/text anytime. You can cancel a subscription anytime right in Cal.com.</p>
+    <p class="note">Questions? Call/text anytime.</p>
   </main>
 </body>
 </html>
-
-
-
-
-
-
