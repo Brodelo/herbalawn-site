@@ -40,6 +40,7 @@
 
     .wrap{max-width:1100px;margin:auto;padding:18px}
     h1{margin:10px 0 6px;font-size:28px;line-height:1.2}
+    h2{margin:10px 0 6px;font-size:20px;line-height:1.2}
     p{margin:8px 0}
 
     .card{
@@ -50,7 +51,54 @@
       padding:18px;
     }
 
-    /* 3 buttons/cards */
+    /* buttons row */
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:#0b140f;
+      font-weight:900;
+      border-radius:999px;
+      padding:12px 14px;
+      text-decoration:none;
+    }
+    .btn:hover{filter:brightness(1.03)}
+    .btnGhost{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,.18);
+      color:var(--text);
+      border-radius:999px;
+      padding:12px 14px;
+      text-decoration:none;
+    }
+
+    /* Section title */
+    .sectionTitle{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      margin-top:14px;
+    }
+    .sectionTitle h2{margin:0}
+    .sectionTitle .pillLink{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      padding:10px 12px;
+      color:var(--text);
+      background:rgba(255,255,255,.04);
+      white-space:nowrap;
+    }
+    .sectionTitle .pillLink:hover{background:rgba(183,255,74,.08);text-decoration:none}
+    .spark{
+      width:22px;height:22px;border-radius:8px;
+      display:inline-grid;place-items:center;
+      background:rgba(242,208,114,.20);
+      border:1px solid rgba(242,208,114,.40);
+      color:var(--gold);
+      font-weight:900;
+      line-height:1;
+    }
+
+    /* 3 mowing cards */
     .grid{
       display:grid;
       grid-template-columns:1fr;
@@ -96,7 +144,7 @@
       font-weight:800;
       letter-spacing:.2px;
     }
-    .inner h2{
+    .inner h3{
       margin:10px 0 6px;
       font-size:18px;
       color:var(--text);
@@ -111,9 +159,10 @@
       font-weight:900;
       border-radius:999px;
       padding:11px 14px;
+      text-decoration:none;
     }
 
-    /* Acreage block under the 3 */
+    /* Acreage card under mowing */
     .acre{
       margin-top:14px;
       overflow:hidden;
@@ -133,30 +182,20 @@
     }
     .acreBody{padding:16px}
 
-    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .ctaBtn{
-      display:inline-block;
-      background:var(--accent);
-      color:#0b140f;
-      font-weight:900;
-      border-radius:999px;
-      padding:12px 14px;
-    }
-    .ctaGhost{
-      display:inline-block;
-      border:1px solid rgba(255,255,255,.18);
-      color:var(--text);
-      border-radius:999px;
-      padding:12px 14px;
+    /* Mulch card */
+    .miniCard{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:16px;
     }
 
     .note{font-size:.92rem;color:var(--muted);margin-top:12px}
 
-    /* Mobile: bigger tap targets */
     @media(max-width:480px){
       .img{height:155px}
       .acreTop{height:175px}
-      .go,.ctaBtn,.ctaGhost{width:100%;text-align:center}
+      .go,.btn,.btnGhost{width:100%;text-align:center}
+      .sectionTitle{flex-direction:column;align-items:flex-start}
+      .miniCard{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
@@ -168,24 +207,50 @@
         <div class="muted" style="font-size:12px;">LANDSCAPING / TREE SERVICE</div>
         <div style="font-size:18px;">HERBALAWN LLC — Schedule</div>
       </div>
-      <div style="margin-left:auto"><a href="index.html">← Back to Home</a></div>
+      <div style="margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="policies.html" class="btnGhost">Policies</a>
+        <a href="index.html">← Back to Home</a>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
+
+    <!-- TREE SERVICES TOP -->
+    <div class="sectionTitle">
+      <h2>Tree Services</h2>
+      <!-- FREE QUOTE pill (icon + link) -->
+      <a class="pillLink" href="tree.html" aria-label="Free tree service quote">
+        <span class="spark">★</span>
+        <span><b>FREE QUOTE</b></span>
+      </a>
+    </div>
+
     <div class="card">
+      <p class="muted" style="margin:0;">
+        Need trimming or removal? We’re <b>insured</b>, we do it the proper way, and we put <b>safety first</b>.
+        Get a free quote online or call/text us if it’s multiple trees so we can give you the best quote possible.
+      </p>
+      <div class="row">
+        <a class="btn" href="tree.html">Get Tree Quote →</a>
+        <a class="btnGhost" href="tel:2543014883">Call/Text: 254-301-4883</a>
+      </div>
+      <p class="note">Tree work requires a contract to start the job, but quotes are free.</p>
+    </div>
+
+    <!-- MOWING -->
+    <div class="card" style="margin-top:14px;">
       <h1>Book a Lawn Cut</h1>
       <p class="muted">Tap your yard size to choose a plan. Scheduling and payments are handled securely through Cal.com.</p>
     </div>
 
-    <!-- 3 simple buttons/cards -->
     <div class="grid">
       <!-- Small -->
       <a class="plan" href="greenstart.html" aria-label="Small yard scheduling">
         <div class="img" style="background-image:url('assets/images/SmallYard.jpg')"></div>
         <div class="inner">
           <span class="label">Small Yard</span>
-          <h2>GreenStart</h2>
+          <h3>GreenStart</h3>
           <p class="desc">Best for small / typical yards.</p>
           <span class="go">Choose Small →</span>
         </div>
@@ -196,7 +261,7 @@
         <div class="img" style="background-image:url('assets/images/MediumYard.jpg')"></div>
         <div class="inner">
           <span class="label">Medium Yard</span>
-          <h2>LawnPro</h2>
+          <h3>LawnPro</h3>
           <p class="desc">Best for medium yards.</p>
           <span class="go">Choose Medium →</span>
         </div>
@@ -207,14 +272,14 @@
         <div class="img" style="background-image:url('assets/images/LargeYard.jpg')"></div>
         <div class="inner">
           <span class="label">Large Yard</span>
-          <h2>EliteCut</h2>
+          <h3>EliteCut</h3>
           <p class="desc">Best for large yards.</p>
           <span class="go">Choose Large →</span>
         </div>
       </a>
     </div>
 
-    <!-- Acreage / Complex under the 3 -->
+    <!-- Acreage / Complex under the mowing ones -->
     <div class="card acre">
       <div class="acreTop" style="background-image:url('acre.png')"></div>
       <div class="acreBody">
@@ -222,13 +287,22 @@
         <h2 style="margin:10px 0 6px;">&gt; 12,000 sq ft or Complex Property</h2>
         <p class="muted" style="margin:0;">Call or email us to schedule a walkthrough and get a custom quote.</p>
 
-        <div class="ctaRow">
-          <a class="ctaBtn" href="tel:2543014883">Call/Text: 254-301-4883</a>
-          <a class="ctaGhost" href="mailto:contact@herbalawn.com">Email: contact@herbalawn.com</a>
+        <div class="row">
+          <a class="btn" href="tel:2543014883">Call/Text: 254-301-4883</a>
+          <a class="btnGhost" href="mailto:contact@herbalawn.com">Email: contact@herbalawn.com</a>
         </div>
 
-        <p class="note">If you need help choosing a plan, call/text and we’ll help you pick the right option.</p>
+        <p class="note">If it’s a very large property, call/text so we can ask a few quick questions and quote it correctly.</p>
       </div>
+    </div>
+
+    <!-- MULCH BUTTON/CARD AT THE BOTTOM -->
+    <div class="card miniCard" style="margin-top:14px;">
+      <div>
+        <h2 style="margin:0 0 6px;">Mulch</h2>
+        <p class="muted" style="margin:0;">Use our mulch calculator and schedule a visit.</p>
+      </div>
+      <a class="btn" href="mulch.html">Mulch Page →</a>
     </div>
 
     <p class="note">Questions? Call/text anytime.</p>
