@@ -83,6 +83,104 @@
   }
 
   .footer{margin-top:30px;padding:28px;background:#0b1613;border-top:1px solid rgba(255,255,255,.07)}
+
+  /* =========================
+     OUR PROJECTS SLIDESHOW
+     ========================= */
+  .projects-slideshow{
+    position:relative;
+    overflow:hidden;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.10);
+    background:linear-gradient(135deg,rgba(183,255,74,.08),rgba(242,208,114,.06));
+    height:320px; /* desktop height */
+  }
+  @media (max-width:700px){
+    .projects-slideshow{ height:260px; }
+  }
+  @media (min-width:1100px){
+    .projects-slideshow{ height:360px; }
+  }
+
+  .ps-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transform:translateX(22px);
+    transition:opacity .55s ease, transform .55s ease;
+    pointer-events:none;
+  }
+  .ps-slide.ps-active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+  }
+
+  .ps-pair{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    height:100%;
+    width:100%;
+    gap:0;
+  }
+  .ps-imgwrap{
+    position:relative;
+    height:100%;
+    width:100%;
+  }
+  .ps-imgwrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .ps-imgwrap::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.12));
+    pointer-events:none;
+  }
+
+  .ps-label{
+    position:absolute;
+    top:14px;          /* not too low */
+    left:14px;
+    z-index:3;
+    padding:8px 12px;
+    border-radius:999px;
+    font-weight:900;
+    letter-spacing:.3px;
+    color:#f6fff0;
+    background:rgba(10,18,14,.38);
+    border:1px solid rgba(183,255,74,.28);
+    text-shadow:0 0 8px rgba(183,255,74,.35); /* subtle green glow */
+    backdrop-filter: blur(3px);
+  }
+
+  .ps-divider{
+    position:absolute;
+    top:0; bottom:0;
+    left:50%;
+    width:2px;
+    transform:translateX(-1px);
+    background:rgba(255,255,255,.18);
+    z-index:2;
+  }
+
+  .ps-caption{
+    position:absolute;
+    bottom:10px;
+    left:14px;
+    z-index:3;
+    font-size:.88rem;
+    color:rgba(242,246,244,.9);
+    background:rgba(10,18,14,.32);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:999px;
+    padding:6px 10px;
+    backdrop-filter: blur(3px);
+  }
 </style>
 </head>
 <body>
@@ -113,14 +211,59 @@
         </div>
       </div>
 
+      <!-- UPDATED: Our Projects Slideshow -->
       <div class="card pad">
         <h3 style="margin-top:0">Our Projects</h3>
-        <p class="sub">Recent tree service jobs.</p>
-        <div class="gallery">
-          <div class="shot"><img loading="lazy" src="assets/images/TreeService1.jpg" alt="Tree Service 1"></div>
-          <div class="shot"><img loading="lazy" src="assets/images/TreeService2.jpg" alt="Tree Service 2"></div>
+        <p class="sub">Before & after — updated every 3 seconds.</p>
+
+        <div class="projects-slideshow" id="projectsSlideshow" aria-label="Before and after project slideshow">
+          <!-- Slide 1: Tree Service -->
+          <div class="ps-slide ps-active">
+            <div class="ps-label">Tree Service</div>
+            <div class="ps-divider"></div>
+            <div class="ps-pair">
+              <div class="ps-imgwrap">
+                <img loading="lazy" src="assets/images/TreeService1.jpg" alt="Tree Service Before">
+              </div>
+              <div class="ps-imgwrap">
+                <img loading="lazy" src="assets/images/TreeService2.jpg" alt="Tree Service After">
+              </div>
+            </div>
+            <div class="ps-caption">Before • After</div>
+          </div>
+
+          <!-- Slide 2: Mowing -->
+          <div class="ps-slide">
+            <div class="ps-label">Mowing Service</div>
+            <div class="ps-divider"></div>
+            <div class="ps-pair">
+              <div class="ps-imgwrap">
+                <img loading="lazy" src="assets/images/MowingBefore.jpg" alt="Mowing Before">
+              </div>
+              <div class="ps-imgwrap">
+                <img loading="lazy" src="assets/images/MowingAfter.jpg" alt="Mowing After">
+              </div>
+            </div>
+            <div class="ps-caption">Before • After</div>
+          </div>
+
+          <!-- Slide 3: Flowerbed -->
+          <div class="ps-slide">
+            <div class="ps-label">Flowerbed Foundation</div>
+            <div class="ps-divider"></div>
+            <div class="ps-pair">
+              <div class="ps-imgwrap">
+                <img loading="lazy" src="assets/images/FlowerBedBefore.jpg" alt="Flowerbed Before">
+              </div>
+              <div class="ps-imgwrap">
+                <img loading="lazy" src="assets/images/FlowerBedAfter.jpg" alt="Flowerbed After">
+              </div>
+            </div>
+            <div class="ps-caption">Before • After</div>
+          </div>
         </div>
       </div>
+      <!-- /UPDATED -->
     </div>
   </section>
 
@@ -298,17 +441,17 @@
     small: {
       weekly:  'https://cal.com/herbalawn/herbalawn-greenstart-weekly-30-week?duration=30&recurringEventCount=24&overlayCalendar=true',
       biweekly:'https://cal.com/herbalawn/herbalawn-greenstart-bi-weekly-65-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-greenstart-one-time-70-single-cut?duration=30&overlayCalendar=true'
+      onetime: 'https://cal.com/herbalawn/herbalawn-greenstart-one-time-70-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
     },
     medium: {
       weekly:  'https://cal.com/herbalawn/herbalawn-lawnpro-weekly-35-week?duration=30&recurringEventCount=24&overlayCalendar=true',
       biweekly:'https://cal.com/herbalawn/herbalawn-lawnpro-bi-weekly-75-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&overlayCalendar=true'
+      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
     },
     large: {
       weekly:  'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week?duration=30&recurringEventCount=24&overlayCalendar=true',
       biweekly:'https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut?duration=30&overlayCalendar=true'
+      onetime: 'https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
     }
   };
 
@@ -353,9 +496,26 @@
     const cost = cubicFeet * rate;
     out.textContent = `Volume: ${cubicFeet.toFixed(1)} cu ft • Mulch ≈ $${cost.toFixed(2)} (materials only)`;
   }
+
+  // =========================
+  // Our Projects Slideshow
+  // =========================
+  (function(){
+    const slides = Array.from(document.querySelectorAll('#projectsSlideshow .ps-slide'));
+    if (!slides.length) return;
+
+    let i = 0;
+    setInterval(() => {
+      slides[i].classList.remove('ps-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('ps-active');
+    }, 3000);
+  })();
 </script>
 </body>
 </html>
+
+
 
 
 
