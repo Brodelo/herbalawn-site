@@ -6,6 +6,7 @@
 <title>HerbaLawn LLC — Landscaping • Tree Service</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon.ico">
+
 <style>
   :root{
     --bg:#0f201b; --bg-2:#152a24; --text:#f2f6f4; --muted:#9fb3ab;
@@ -25,14 +26,38 @@
   .nav{display:flex;align-items:center;gap:16px}
   .brand{font-weight:800;letter-spacing:.3px}
   .menu{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
-  .cta{background:var(--accent);color:#0b140f;font-weight:800;border:none;border-radius:999px;padding:10px 14px;display:inline-block}
+
+  .cta{
+    background:var(--accent);
+    color:#0b140f;
+    font-weight:800;
+    border:none;
+    border-radius:999px;
+    padding:10px 14px;
+    display:inline-block;
+    cursor:pointer;
+  }
   .cta.secondary{background:rgba(183,255,74,.12);color:var(--accent);border:1px solid rgba(183,255,74,.35)}
   .cta:hover{filter:brightness(1.05)}
+  .cta.big{
+    padding:14px 18px;
+    font-size:1.05rem;
+  }
 
   /* Cards / sections */
   section{padding:32px 0}
   .hero{padding:46px 0 12px}
-  .hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+  .hero-wrap{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:28px;
+    align-items:center;
+  }
+  /* Keep desktop layout, but allow equal-height cards without “moving things around” */
+  @media (min-width: 701px){
+    .hero-wrap{ align-items:stretch; }
+  }
+
   .card{background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.6));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow-green-soft)}
   .card:hover{box-shadow:var(--shadow-green-strong)}
   .pad{padding:20px}
@@ -41,11 +66,52 @@
   .sub{color:var(--muted)}
   .section-title{font-size:28px;margin:0 0 12px}
 
+  /* HERO actions */
+  .hero-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  @media(max-width:700px){
+    .hero-actions{flex-direction:column;align-items:stretch}
+    .hero-actions a, .hero-actions button{width:100%;text-align:center}
+    .cta.big{font-size:1.06rem}
+  }
+
   /* Gallery thumbs */
   .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-  .shot{grid-column:span 12;aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,rgba(183,255,74,.12),rgba(242,208,114,.12));border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+  .shot{
+    grid-column:span 12;
+    aspect-ratio:16/9;
+    border-radius:14px;
+    background:linear-gradient(135deg,rgba(183,255,74,.12),rgba(242,208,114,.12));
+    border:1px dashed rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-weight:600;
+    overflow:hidden;
+    position:relative;
+  }
   .shot img{width:100%;height:100%;object-fit:cover;border-radius:14px}
   @media(min-width:800px){.shot{grid-column:span 4}}
+
+  /* Labeled “Recent Work” images */
+  .shot-label{
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index:2;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(10,18,14,.42);
+    border:1px solid rgba(255,255,255,.14);
+    color:rgba(242,246,244,.95);
+    font-size:.9rem;
+    font-weight:800;
+    backdrop-filter: blur(3px);
+  }
+  .shot::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.08));
+    pointer-events:none;
+  }
 
   /* Mowing pricing cards — 4 equal columns on desktop */
   .pricing{display:grid;gap:16px}
@@ -86,6 +152,8 @@
 
   /* =========================
      OUR PROJECTS SLIDESHOW
+     - Not too tall
+     - Mobile friendly
      ========================= */
   .projects-slideshow{
     position:relative;
@@ -93,20 +161,20 @@
     border-radius:14px;
     border:1px solid rgba(255,255,255,.10);
     background:linear-gradient(135deg,rgba(183,255,74,.08),rgba(242,208,114,.06));
-    height:320px; /* desktop height */
+    width:100%;
+    aspect-ratio: 16 / 10; /* keeps it from getting too tall */
   }
   @media (max-width:700px){
-    .projects-slideshow{ height:260px; }
-  }
-  @media (min-width:1100px){
-    .projects-slideshow{ height:360px; }
+    .projects-slideshow{
+      aspect-ratio: 16 / 11;
+    }
   }
 
   .ps-slide{
     position:absolute;
     inset:0;
     opacity:0;
-    transform:translateX(22px);
+    transform:translateX(18px);
     transition:opacity .55s ease, transform .55s ease;
     pointer-events:none;
   }
@@ -121,8 +189,12 @@
     grid-template-columns:1fr 1fr;
     height:100%;
     width:100%;
-    gap:0;
   }
+  /* On smaller phones, stack before/after so images are still big */
+  @media (max-width:420px){
+    .ps-pair{ grid-template-columns:1fr; grid-template-rows:1fr 1fr; }
+  }
+
   .ps-imgwrap{
     position:relative;
     height:100%;
@@ -138,23 +210,23 @@
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.12));
+    background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.10));
     pointer-events:none;
   }
 
   .ps-label{
     position:absolute;
-    top:14px;          /* not too low */
-    left:14px;
+    top:12px;         /* high enough to not cover pictures much */
+    left:12px;
     z-index:3;
     padding:8px 12px;
     border-radius:999px;
     font-weight:900;
     letter-spacing:.3px;
     color:#f6fff0;
-    background:rgba(10,18,14,.38);
-    border:1px solid rgba(183,255,74,.28);
-    text-shadow:0 0 8px rgba(183,255,74,.35); /* subtle green glow */
+    background:rgba(10,18,14,.34);
+    border:1px solid rgba(183,255,74,.26);
+    text-shadow:0 0 8px rgba(183,255,74,.30); /* subtle green glow */
     backdrop-filter: blur(3px);
   }
 
@@ -167,22 +239,105 @@
     background:rgba(255,255,255,.18);
     z-index:2;
   }
+  @media (max-width:420px){
+    .ps-divider{ display:none; }
+  }
 
   .ps-caption{
     position:absolute;
     bottom:10px;
-    left:14px;
+    left:12px;
     z-index:3;
     font-size:.88rem;
     color:rgba(242,246,244,.9);
-    background:rgba(10,18,14,.32);
+    background:rgba(10,18,14,.28);
     border:1px solid rgba(255,255,255,.14);
     border-radius:999px;
     padding:6px 10px;
     backdrop-filter: blur(3px);
   }
+
+  /* =========================
+     TREE CONTACT BUTTONS
+     ========================= */
+  .contact-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:10px;
+  }
+  @media (max-width:700px){
+    .contact-actions{flex-direction:column}
+    .contact-actions a{width:100%;text-align:center}
+  }
+
+  /* =========================
+     QUICK ESTIMATOR MODAL
+     ========================= */
+  .modal-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+    z-index:9999;
+  }
+  .modal-backdrop.open{display:flex}
+  .modal{
+    width:min(520px, 100%);
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.10);
+    background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.95));
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .modal-header{
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .modal-title{font-weight:900}
+  .modal-close{
+    border:none;
+    background:rgba(255,255,255,.08);
+    color:var(--text);
+    border-radius:999px;
+    padding:8px 12px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .modal-body{padding:16px}
+  .modal-price{
+    font-size:1.15rem;
+    font-weight:900;
+    color:var(--accent-2);
+    margin:8px 0 10px;
+  }
+  .modal-contact{
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px;
+    padding:12px;
+    background:rgba(255,255,255,.04);
+    color:var(--muted);
+    font-size:.95rem;
+  }
+  .modal-footer{
+    padding:14px 16px;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .modal-footer a{
+    width:100%;
+    display:block;
+    text-align:center;
+  }
 </style>
 </head>
+
 <body>
 <header>
   <div class="container nav">
@@ -198,23 +353,26 @@
 </header>
 
 <main class="container">
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-wrap">
+
       <div class="card pad">
         <span class="badge">Residential & Commercial • Insured • Waco, TX</span>
         <h1>Spring Clean-Ups, Mowing, Mulch & Professional Tree Care</h1>
         <p class="sub">Book online with clear pricing. Weekly, bi-weekly, one-time.</p>
-        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
-          <a class="cta" href="#mowing-pricing">See Mowing Prices</a>
-          <a class="cta" style="background:var(--gold)" href="schedule.html">Book Now</a>
+
+        <!-- FIXED BUTTONS: removed "See Mowing Prices", made Book Now bigger -->
+        <div class="hero-actions">
+          <a class="cta big" style="background:var(--gold)" href="schedule.html">Book Now</a>
         </div>
       </div>
 
-      <!-- UPDATED: Our Projects Slideshow -->
+      <!-- UPDATED Our Projects: slideshow + not too tall -->
       <div class="card pad">
         <h3 style="margin-top:0">Our Projects</h3>
-        <p class="sub">Before & after — updated every 3 seconds.</p>
+        <p class="sub">Before & after — updates every 3 seconds.</p>
 
         <div class="projects-slideshow" id="projectsSlideshow" aria-label="Before and after project slideshow">
           <!-- Slide 1: Tree Service -->
@@ -263,7 +421,7 @@
           </div>
         </div>
       </div>
-      <!-- /UPDATED -->
+
     </div>
   </section>
 
@@ -311,7 +469,7 @@
       </div>
     </div>
 
-    <!-- Quick Estimator (modified) -->
+    <!-- Quick Estimator -->
     <div class="card" style="margin-top:16px">
       <div class="pad">
         <h3>Quick Estimator</h3>
@@ -332,13 +490,13 @@
             </select>
           </label>
         </div>
+
+        <!-- Opens popup modal -->
         <div class="field" style="margin-top:12px">
-          <button class="cta" onclick="calcMowing()">Show Price</button>
+          <button class="cta" type="button" onclick="openEstimatorModal()">Show Price</button>
         </div>
-        <div id="mowingResult" class="mono"></div>
+
         <p class="disclaimer">Weekly: $30/$35/$40 • Bi-Weekly: $65/$75/$85 • One-Time: $70/$80/$90 • Acreage quoted on-site</p>
-        <!-- This link updates dynamically based on selections -->
-        <a class="cta" id="bookLink" style="background:var(--gold)" href="schedule.html">Book This</a>
       </div>
     </div>
   </section>
@@ -383,8 +541,14 @@
   <section id="tree">
     <h2 class="section-title">Professional Tree Services</h2>
     <p class="sub">For tree trimming, removals, and haul-off, call or email for a fast quote.</p>
+
+    <!-- FIXED: call/email buttons -->
     <div class="card pad">
-      <p class="small">Phone: <b>254-301-4883</b> • <b>254-716-0351</b><br/>Email: <b>Schedule@HerbaLawn.com</b></p>
+      <div class="contact-actions">
+        <a class="cta" href="tel:+12543014883">Call 254-301-4883</a>
+        <a class="cta" href="tel:+12547160351">Call 254-716-0351</a>
+        <a class="cta secondary" href="mailto:Schedule@HerbaLawn.com">Email Schedule@HerbaLawn.com</a>
+      </div>
     </div>
   </section>
 
@@ -392,9 +556,18 @@
   <section id="gallery">
     <h2 class="section-title">Recent Work</h2>
     <div class="gallery">
-      <div class="shot"><img loading="lazy" src="assets/images/work1.jpg" alt="Work 1"></div>
-      <div class="shot"><img loading="lazy" src="assets/images/work2.jpg" alt="Work 2"></div>
-      <div class="shot"><img loading="lazy" src="assets/images/work3.jpg" alt="Work 3"></div>
+      <div class="shot">
+        <span class="shot-label">Before Bush Trim</span>
+        <img loading="lazy" src="assets/images/work1.jpg" alt="Before Bush Trim">
+      </div>
+      <div class="shot">
+        <span class="shot-label">After Bush Trim</span>
+        <img loading="lazy" src="assets/images/work2.jpg" alt="After Bush Trim">
+      </div>
+      <div class="shot">
+        <span class="shot-label">Mowing</span>
+        <img loading="lazy" src="assets/images/work3.jpg" alt="Mowing">
+      </div>
     </div>
   </section>
 
@@ -408,6 +581,7 @@
       <div class="card pad" style="grid-column:span 6"><h3>Insured?</h3><p>Yes. Professional equipment, safe practices.</p></div>
     </div>
   </section>
+
 </main>
 
 <footer class="footer">
@@ -424,7 +598,10 @@
       </div>
       <div class="card pad" style="grid-column:span 6">
         <h3>Contact</h3>
-        <p class="small">Call/Text: <b>254-301-4883</b> • <b>254-716-0351</b><br/>Email: <b>Schedule@HerbaLawn.com</b></p>
+        <p class="small">
+          Call/Text: <b>254-301-4883</b> • <b>254-716-0351</b><br/>
+          Email: <b>Schedule@HerbaLawn.com</b>
+        </p>
         <p class="small">Serving Waco, TX and surrounding areas.</p>
       </div>
     </div>
@@ -432,70 +609,32 @@
   </div>
 </footer>
 
+<!-- QUICK ESTIMATOR MODAL -->
+<div class="modal-backdrop" id="estimatorModal" role="dialog" aria-modal="true" aria-labelledby="estimatorTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="estimatorTitle">Your Estimate</div>
+      <button class="modal-close" type="button" onclick="closeEstimatorModal()">Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-price" id="modalPriceText">$—</div>
+      <div class="modal-contact">
+        <div><b>Call/Text:</b> 254-716-0351</div>
+        <div style="margin-top:6px;"><b>Email:</b> Herbalawn.LawnCare@herbalawn.com</div>
+      </div>
+      <div class="small" style="margin-top:10px;color:var(--muted)">
+        Prices shown are based on your selections. Acreage/complex lots are quoted on-site.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="cta big" id="modalBookBtn" style="background:var(--gold)" href="schedule.html">Book Now</a>
+    </div>
+  </div>
+</div>
+
 <script>
   // Year
   document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Booking links map (by size -> visit)
-  const bookingLinks = {
-    small: {
-      weekly:  'https://cal.com/herbalawn/herbalawn-greenstart-weekly-30-week?duration=30&recurringEventCount=24&overlayCalendar=true',
-      biweekly:'https://cal.com/herbalawn/herbalawn-greenstart-bi-weekly-65-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-greenstart-one-time-70-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
-    },
-    medium: {
-      weekly:  'https://cal.com/herbalawn/herbalawn-lawnpro-weekly-35-week?duration=30&recurringEventCount=24&overlayCalendar=true',
-      biweekly:'https://cal.com/herbalawn/herbalawn-lawnpro-bi-weekly-75-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
-    },
-    large: {
-      weekly:  'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week?duration=30&recurringEventCount=24&overlayCalendar=true',
-      biweekly:'https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
-    }
-  };
-
-  // Price map (unchanged)
-  const priceMap = {
-    weekly:   { small:[30,30], medium:[35,35], large:[40,40], xl:[null,null] },
-    biweekly: { small:[65,65], medium:[75,75], large:[85,85], xl:[null,null] },
-    onetime:  { small:[70,70], medium:[80,80], large:[90,90], xl:[null,null] }
-  };
-
-  // Show price + set booking link
-  function calcMowing(){
-    const s = document.getElementById('yardSize').value;
-    const v = document.getElementById('visitType').value;
-    const res = document.getElementById('mowingResult');
-    const book = document.getElementById('bookLink');
-
-    const vPair = priceMap[v][s];
-    if(!vPair || vPair[0]===null){
-      res.innerHTML = 'Acreage / complex lots are priced on-site. <span style="color:var(--gold)">Schedule a walkthrough.</span>';
-      book.href = 'schedule.html';
-      return;
-    }
-
-    const [lo,hi]=vPair;
-    const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
-    res.textContent = `${label} • ${s.toUpperCase()} • $${lo}${hi!==lo?('–$'+hi):''}`;
-
-    // set booking link if available, else fallback
-    const link = (bookingLinks[s] && bookingLinks[s][v]) ? bookingLinks[s][v] : 'schedule.html';
-    book.href = link;
-  }
-
-  // Mulch calculator
-  function calcMulch(){
-    const sqft = parseFloat(document.getElementById('sqft').value||'0');
-    const depthIn = parseFloat(document.getElementById('depth').value||'0');
-    const rate = parseFloat(document.getElementById('rate').value||'3');
-    const out = document.getElementById('mulchResult');
-    if(sqft<=0 || depthIn<=0){ out.textContent='Enter area and depth.'; return; }
-    const cubicFeet = sqft * (depthIn/12);
-    const cost = cubicFeet * rate;
-    out.textContent = `Volume: ${cubicFeet.toFixed(1)} cu ft • Mulch ≈ $${cost.toFixed(2)} (materials only)`;
-  }
 
   // =========================
   // Our Projects Slideshow
@@ -511,9 +650,95 @@
       slides[i].classList.add('ps-active');
     }, 3000);
   })();
+
+  // =========================
+  // Quick Estimator (modal)
+  // =========================
+  const bookingLinks = {
+    small: {
+      weekly:  'https://cal.com/herbalawn/herbalawn-greenstart-weekly-30-week?duration=30&recurringEventCount=24&overlayCalendar=true',
+      biweekly:'https://cal.com/herbalawn/herbalawn-greenstart-bi-weekly-65-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
+      onetime: 'https://cal.com/herbalawn/herbalawn-greenstart-one-time-70-single-cut?duration=30&overlayCalendar=true'
+    },
+    medium: {
+      weekly:  'https://cal.com/herbalawn/herbalawn-lawnpro-weekly-35-week?duration=30&recurringEventCount=24&overlayCalendar=true',
+      biweekly:'https://cal.com/herbalawn/herbalawn-lawnpro-bi-weekly-75-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
+      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&overlayCalendar=true'
+    },
+    large: {
+      weekly:  'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week?duration=30&recurringEventCount=24&overlayCalendar=true',
+      biweekly:'https://cal.com/herbalawn/herbalawn-elitecut-bi-weekly-85-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
+      onetime: 'https://cal.com/herbalawn/herbalawn-elitecut-one-time-90-single-cut?duration=30&overlayCalendar=true'
+    }
+  };
+
+  const priceMap = {
+    weekly:   { small:[30,30], medium:[35,35], large:[40,40], xl:[null,null] },
+    biweekly: { small:[65,65], medium:[75,75], large:[85,85], xl:[null,null] },
+    onetime:  { small:[70,70], medium:[80,80], large:[90,90], xl:[null,null] }
+  };
+
+  function openEstimatorModal(){
+    const s = document.getElementById('yardSize').value;
+    const v = document.getElementById('visitType').value;
+
+    const modal = document.getElementById('estimatorModal');
+    const priceEl = document.getElementById('modalPriceText');
+    const bookBtn = document.getElementById('modalBookBtn');
+
+    const vPair = priceMap[v][s];
+    if(!vPair || vPair[0] === null){
+      priceEl.textContent = 'Acreage / Complex — priced on-site';
+      bookBtn.href = 'schedule.html';
+    } else {
+      const [lo, hi] = vPair;
+      const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
+      const sizeLabel = (s==='small'?'Small':s==='medium'?'Medium':s==='large'?'Large':'Acreage');
+      priceEl.textContent = `${label} • ${sizeLabel} • $${lo}${hi!==lo?('–$'+hi):''}`;
+
+      const link = (bookingLinks[s] && bookingLinks[s][v]) ? bookingLinks[s][v] : 'schedule.html';
+      bookBtn.href = link;
+    }
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEstimatorModal(){
+    const modal = document.getElementById('estimatorModal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal by clicking outside the card
+  document.getElementById('estimatorModal').addEventListener('click', (e) => {
+    if (e.target.id === 'estimatorModal') closeEstimatorModal();
+  });
+
+  // Close modal with ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeEstimatorModal();
+  });
+
+  // =========================
+  // Mulch calculator
+  // =========================
+  function calcMulch(){
+    const sqft = parseFloat(document.getElementById('sqft').value||'0');
+    const depthIn = parseFloat(document.getElementById('depth').value||'0');
+    const rate = parseFloat(document.getElementById('rate').value||'3');
+    const out = document.getElementById('mulchResult');
+    if(sqft<=0 || depthIn<=0){ out.textContent='Enter area and depth.'; return; }
+    const cubicFeet = sqft * (depthIn/12);
+    const cost = cubicFeet * rate;
+    out.textContent = `Volume: ${cubicFeet.toFixed(1)} cu ft • Mulch ≈ $${cost.toFixed(2)} (materials only)`;
+  }
 </script>
+
 </body>
 </html>
+
+
 
 
 
