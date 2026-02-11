@@ -152,8 +152,6 @@
 
   /* =========================
      OUR PROJECTS SLIDESHOW
-     - Not too tall
-     - Mobile friendly
      ========================= */
   .projects-slideshow{
     position:relative;
@@ -162,11 +160,19 @@
     border:1px solid rgba(255,255,255,.10);
     background:linear-gradient(135deg,rgba(183,255,74,.08),rgba(242,208,114,.06));
     width:100%;
-    aspect-ratio: 16 / 10; /* keeps it from getting too tall */
+    aspect-ratio: 16 / 10; /* desktop unchanged */
   }
+
+  /* ✅ MOBILE ONLY FIX for 1:1 images */
   @media (max-width:700px){
     .projects-slideshow{
-      aspect-ratio: 16 / 11;
+      aspect-ratio: 1 / 1; /* square container fits your 1:1 photos better */
+    }
+    .ps-imgwrap{
+      background:rgba(0,0,0,.18); /* gives a clean letterbox background */
+    }
+    .ps-imgwrap img{
+      object-fit:contain; /* show full square image (no crop) */
     }
   }
 
@@ -186,13 +192,9 @@
 
   .ps-pair{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr 1fr; /* keep side-by-side on mobile too */
     height:100%;
     width:100%;
-  }
-  /* On smaller phones, stack before/after so images are still big */
-  @media (max-width:420px){
-    .ps-pair{ grid-template-columns:1fr; grid-template-rows:1fr 1fr; }
   }
 
   .ps-imgwrap{
@@ -203,7 +205,7 @@
   .ps-imgwrap img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:cover; /* desktop stays cover */
     display:block;
   }
   .ps-imgwrap::after{
@@ -216,7 +218,7 @@
 
   .ps-label{
     position:absolute;
-    top:12px;         /* high enough to not cover pictures much */
+    top:12px;
     left:12px;
     z-index:3;
     padding:8px 12px;
@@ -226,7 +228,7 @@
     color:#f6fff0;
     background:rgba(10,18,14,.34);
     border:1px solid rgba(183,255,74,.26);
-    text-shadow:0 0 8px rgba(183,255,74,.30); /* subtle green glow */
+    text-shadow:0 0 8px rgba(183,255,74,.30);
     backdrop-filter: blur(3px);
   }
 
@@ -238,9 +240,6 @@
     transform:translateX(-1px);
     background:rgba(255,255,255,.18);
     z-index:2;
-  }
-  @media (max-width:420px){
-    .ps-divider{ display:none; }
   }
 
   .ps-caption{
@@ -363,13 +362,12 @@
         <h1>Spring Clean-Ups, Mowing, Mulch & Professional Tree Care</h1>
         <p class="sub">Book online with clear pricing. Weekly, bi-weekly, one-time.</p>
 
-        <!-- FIXED BUTTONS: removed "See Mowing Prices", made Book Now bigger -->
         <div class="hero-actions">
           <a class="cta big" style="background:var(--gold)" href="schedule.html">Book Now</a>
         </div>
       </div>
 
-      <!-- UPDATED Our Projects: slideshow + not too tall -->
+      <!-- Our Projects -->
       <div class="card pad">
         <h3 style="margin-top:0">Our Projects</h3>
         <p class="sub">Before & after — updates every 3 seconds.</p>
@@ -491,7 +489,6 @@
           </label>
         </div>
 
-        <!-- Opens popup modal -->
         <div class="field" style="margin-top:12px">
           <button class="cta" type="button" onclick="openEstimatorModal()">Show Price</button>
         </div>
@@ -542,7 +539,6 @@
     <h2 class="section-title">Professional Tree Services</h2>
     <p class="sub">For tree trimming, removals, and haul-off, call or email for a fast quote.</p>
 
-    <!-- FIXED: call/email buttons -->
     <div class="card pad">
       <div class="contact-actions">
         <a class="cta" href="tel:+12543014883">Call 254-301-4883</a>
@@ -636,13 +632,10 @@
   // Year
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // =========================
-  // Our Projects Slideshow
-  // =========================
+  // Slideshow
   (function(){
     const slides = Array.from(document.querySelectorAll('#projectsSlideshow .ps-slide'));
     if (!slides.length) return;
-
     let i = 0;
     setInterval(() => {
       slides[i].classList.remove('ps-active');
@@ -651,9 +644,7 @@
     }, 3000);
   })();
 
-  // =========================
   // Quick Estimator (modal)
-  // =========================
   const bookingLinks = {
     small: {
       weekly:  'https://cal.com/herbalawn/herbalawn-greenstart-weekly-30-week?duration=30&recurringEventCount=24&overlayCalendar=true',
@@ -695,7 +686,6 @@
       const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
       const sizeLabel = (s==='small'?'Small':s==='medium'?'Medium':s==='large'?'Large':'Acreage');
       priceEl.textContent = `${label} • ${sizeLabel} • $${lo}${hi!==lo?('–$'+hi):''}`;
-
       const link = (bookingLinks[s] && bookingLinks[s][v]) ? bookingLinks[s][v] : 'schedule.html';
       bookBtn.href = link;
     }
@@ -710,19 +700,14 @@
     document.body.style.overflow = '';
   }
 
-  // Close modal by clicking outside the card
   document.getElementById('estimatorModal').addEventListener('click', (e) => {
     if (e.target.id === 'estimatorModal') closeEstimatorModal();
   });
 
-  // Close modal with ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeEstimatorModal();
   });
 
-  // =========================
-  // Mulch calculator
-  // =========================
   function calcMulch(){
     const sqft = parseFloat(document.getElementById('sqft').value||'0');
     const depthIn = parseFloat(document.getElementById('depth').value||'0');
@@ -737,6 +722,8 @@
 
 </body>
 </html>
+
+
 
 
 
