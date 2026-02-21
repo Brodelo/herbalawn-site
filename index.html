@@ -24,7 +24,53 @@
   /* Header */
   header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.92));backdrop-filter:saturate(130%) blur(4px)}
   .nav{display:flex;align-items:center;gap:16px}
-  .brand{font-weight:800;letter-spacing:.3px}
+
+  /* ✅ NEW: Brand with logo + divider */
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:800;
+    letter-spacing:.3px;
+    min-width:0;
+  }
+  .brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    flex:0 0 auto;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,.35));
+  }
+  .brand-divider{
+    width:1px;
+    height:46px;
+    background:rgba(255,255,255,.18);
+    flex:0 0 auto;
+  }
+  .brand-text{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    min-width:0;
+  }
+  .brand-kicker{
+    font-size:14px;
+    color:var(--accent);
+    font-weight:900;
+    line-height:1.1;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .brand-name{
+    font-size:18px;
+    font-weight:900;
+    line-height:1.1;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
   .menu{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
 
   .cta{
@@ -141,6 +187,14 @@
     h1{font-size:28px;line-height:1.2}
     .nav{flex-direction:column;align-items:center;gap:10px;padding:10px 0}
     .menu{margin-left:0;justify-content:center}
+
+    /* ✅ Mobile-friendly brand sizing */
+    .brand{justify-content:center}
+    .brand-logo{width:40px;height:40px}
+    .brand-divider{height:40px}
+    .brand-kicker{font-size:13px}
+    .brand-name{font-size:17px}
+
     .hero-wrap{grid-template-columns:1fr;gap:16px}
     .cards-4{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
@@ -340,10 +394,18 @@
 <body>
 <header>
   <div class="container nav">
+
+    <!-- ✅ UPDATED HEADER BRAND (logo + divider + text) -->
     <div class="brand">
-      <div style="font-size:14px;color:var(--accent)">LANDSCAPING / TREE SERVICE</div>
-      <div style="font-size:18px">HERBALAWN LLC</div>
+      <!-- PNG filename you told me -->
+      <img class="brand-logo" src="assets/images/Herbalawn Front Logo A5.png" alt="HerbaLawn logo">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <div class="brand-text">
+        <div class="brand-kicker">LANDSCAPING / TREE SERVICE</div>
+        <div class="brand-name">HERBALAWN LLC</div>
+      </div>
     </div>
+
     <nav class="menu">
       <a class="cta secondary" href="policies.html">Policies</a>
       <a class="cta" href="schedule.html">Schedule</a>
@@ -654,7 +716,7 @@
     medium: {
       weekly:  'https://cal.com/herbalawn/herbalawn-lawnpro-weekly-35-week?duration=30&recurringEventCount=24&overlayCalendar=true',
       biweekly:'https://cal.com/herbalawn/herbalawn-lawnpro-bi-weekly-75-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&overlayCalendar=true'
+      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
     },
     large: {
       weekly:  'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week?duration=30&recurringEventCount=24&overlayCalendar=true',
@@ -722,6 +784,7 @@
 
 </body>
 </html>
+
 
 
 
