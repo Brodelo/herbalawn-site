@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Free Quote Form — HerbaLawn</title>
+  <title>Free Quote — HerbaLawn</title>
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/favicon.ico">
@@ -18,38 +18,52 @@
       --gold:#f2d072;
       --radius:18px;
       --shadow: 0 12px 34px rgba(0,0,0,.35);
-      --glow: 0 14px 40px rgba(183,255,74,.22), 0 0 0 1px rgba(183,255,74,.22);
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
 
-    .wrap{max-width:1100px;margin:0 auto;padding:16px}
     header{
       position:sticky; top:0; z-index:50;
-      background: linear-gradient(180deg, rgba(15,32,27,.98), rgba(15,32,27,.90));
+      background: linear-gradient(180deg, rgba(15,32,27,.98), rgba(15,32,27,.92));
       backdrop-filter: blur(6px);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .topbar{
-      display:flex; align-items:center; justify-content:space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap:12px;
-      padding:12px 16px;
-      max-width:1100px; margin:0 auto;
+      flex-wrap:wrap;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:900; letter-spacing:.2px;
-      min-width:0;
+      font-weight: 950;
+      letter-spacing: .2px;
+      line-height: 1.15;
+      min-width: 0;
     }
     .brand small{
-      display:block; font-weight:800; color:var(--accent); letter-spacing:.4px;
-      font-size:12px; line-height:1.1;
+      display:block;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .4px;
+      font-size: 12px;
+      margin-bottom: 2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     .brand span{
-      display:block; font-size:16px; line-height:1.1;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      display:block;
+      font-size: 16px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:10px 14px;
@@ -65,32 +79,25 @@
       border-color: rgba(242,208,114,.35);
       color: var(--gold);
     }
-    .btn:hover{filter:brightness(1.07)}
 
-    .hero{
-      padding:18px 0 10px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:16px;
-      align-items:start;
-    }
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr}
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding: 14px 16px 92px; /* bottom padding for mobile sticky bar */
     }
 
     .card{
       background: linear-gradient(180deg, var(--bg2), rgba(21,42,36,.55));
-      border:1px solid rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .pad{padding:16px}
+    .pad{padding:14px}
+
     h1{
-      margin:0 0 8px 0;
-      font-size: clamp(22px, 3vw, 34px);
+      margin:0 0 6px 0;
+      font-size: clamp(20px, 3vw, 30px);
       line-height:1.15;
     }
     .sub{
@@ -110,162 +117,111 @@
       background: rgba(183,255,74,.10);
     }
 
-    .callout{
-      margin-top:12px;
-      border-radius: 16px;
-      border: 1px solid rgba(183,255,74,.22);
-      background: rgba(183,255,74,.08);
-      padding: 12px;
-    }
-    .callout b{color: var(--accent)}
-    .list{
-      margin:10px 0 0;
-      padding-left:18px;
-      color: var(--muted);
-      line-height:1.45;
-    }
-    .actions{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:12px;
-    }
-    @media (max-width: 700px){
-      .actions{flex-direction:column}
-      .actions a{width:100%}
-      .btn{width:100%}
-    }
-
-    /* Form frame */
+    /* Form area */
     .frame{
-      border-top:1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.12);
+      margin-top: 12px;
+      background: rgba(0,0,0,.10);
+      border-top: 1px solid rgba(255,255,255,.08);
     }
     iframe{
       width:100%;
       border:0;
       display:block;
-      height: 1100px; /* good mobile default */
+      min-height: 82vh;     /* key: makes it feel “full screen” on mobile */
+      height: 1000px;       /* desktop fallback */
     }
     @media (min-width: 900px){
-      iframe{height: 980px;}
+      iframe{ min-height: 860px; height: 980px; }
+      .wrap{ padding-bottom: 28px; } /* no sticky bar needed on desktop */
     }
 
-    .note{
-      margin-top:12px;
-      font-size:.95rem;
+    /* Mobile sticky bar */
+    .stickybar{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 60;
+      padding: 10px 12px;
+      background: rgba(10,18,14,.92);
+      border-top: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      display:flex;
+      gap:10px;
+    }
+    .stickybar a{
+      flex: 1;
+      text-align:center;
+    }
+    @media (min-width: 900px){
+      .stickybar{ display:none; }
+    }
+
+    .smalllink{
+      display:inline-block;
+      margin-top:10px;
       color: var(--muted);
-      line-height:1.45;
+      font-size: .95rem;
     }
-    .note strong{color:var(--text)}
-    .glow{
-      box-shadow: var(--glow);
-    }
+    .smalllink b{color: var(--text)}
   </style>
 </head>
 
 <body>
-
 <header>
   <div class="topbar">
     <div class="brand">
-      <div>
-        <small>LANDSCAPING / TREE SERVICE</small>
-        <span>HERBALAWN LLC — Free Quote</span>
-      </div>
+      <small>LANDSCAPING / TREE SERVICE</small>
+      <span>HERBALAWN LLC — Free Quote Form</span>
     </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
-      <a class="btn" href="index.html">← Back to Home</a>
-      <a class="btn gold" href="tel:+12543014883">Call 254-301-4883</a>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="index.html">← Back</a>
+      <a class="btn gold" href="tel:+12543014883">Call</a>
+      <a class="btn" href="sms:+12543014883">Text</a>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="hero">
-    <div class="grid">
 
-      <!-- Left: Trust + instructions -->
-      <div class="card pad glow">
-        <span class="badge">Always Free • Promos Applied</span>
-        <h1>Fill this out to get your free quote</h1>
-        <p class="sub">
-          This form is for <strong>all of our services</strong> (mowing, tree work, sod, haul-offs, cleanups, and more).
-          The more accurate the details, the faster and more accurate your quote will be.
-        </p>
+  <!-- SHORT + FIRM, not rude -->
+  <section class="card">
+    <div class="pad">
+      <span class="badge">Always Free • Promos Applied</span>
+      <h1>Submit this form to request service</h1>
+      <p class="sub">
+        For mowing and all other services, we require this form so we can verify the property and provide accurate pricing before scheduling.
+        If your request isn’t listed, choose <b>Other</b> in the Services section and explain it.
+      </p>
 
-        <div class="callout">
-          <div style="font-weight:900;margin-bottom:6px;">Why we ask for this</div>
-          <div class="sub" style="margin:0">
-            We use your info to verify the correct property and prepare the right tools and equipment.
-            In many cases we will come out to confirm the yard size and conditions so pricing is fair and accurate.
-          </div>
+      <a class="smalllink"
+         href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?usp=publish-editor"
+         target="_blank" rel="noopener noreferrer">
+        Having trouble loading the form? <b>Open it in a new tab.</b>
+      </a>
+    </div>
 
-          <ul class="list">
-            <li><b>Promos:</b> If you have a mowing promo code, enter it at the top of the form.</li>
-            <li><b>Other requests:</b> If your service isn’t listed, choose <b>“Other”</b> in the Services section and describe it.</li>
-            <li><b>Serious requests only:</b> Submitting this lets us know you’re ready for real pricing and scheduling.</li>
-          </ul>
-        </div>
-
-        <div class="actions">
-          <a class="btn gold" href="#the-form">Jump to the Form</a>
-          <a class="btn" href="sms:+12543014883">Text Us a Question</a>
-          <a class="btn" href="mailto:HerbaLawn.LawnCare@HerbaLawn.com">Email Us</a>
-        </div>
-
-        <p class="note">
-          <strong>Quick tip:</strong> Double-check your address and phone number before submitting.
-          That’s the #1 reason quotes get delayed.
-        </p>
-      </div>
-
-      <!-- Right: What happens next -->
-      <div class="card pad">
-        <h2 style="margin:0 0 8px 0;font-size:22px;">What happens after you submit</h2>
-        <ul class="list" style="margin-top:0">
-          <li>We review your request and promo code (if any).</li>
-          <li>We contact you to confirm details.</li>
-          <li>If needed, we stop by to verify the property and measurements.</li>
-          <li>You receive a clear quote and next steps.</li>
-        </ul>
-
-        <div class="callout" style="margin-top:12px">
-          <div style="font-weight:900;margin-bottom:6px;">Need a mowing promo code?</div>
-          <div class="sub" style="margin:0">
-            Call or text us while you fill out the form and we’ll provide a code if one is available.
-          </div>
-          <div class="actions" style="margin-top:10px">
-            <a class="btn gold" href="tel:+12547160351">Call 254-716-0351</a>
-            <a class="btn" href="sms:+12547160351">Text 254-716-0351</a>
-          </div>
-        </div>
-
-        <p class="note" style="margin-top:12px">
-          <strong>Note:</strong> This form covers all services. For anything special, select <strong>Other</strong> under Services and explain it in the notes.
-        </p>
-      </div>
-
+    <div class="frame" id="the-form">
+      <iframe
+        title="HerbaLawn Free Quote Form"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?embedded=true">
+        Loading…
+      </iframe>
     </div>
   </section>
 
-  <!-- Embedded Form -->
-  <section id="the-form" class="card frame">
-    <!-- Use embedded=true for best iframe behavior -->
-    <iframe
-      title="HerbaLawn Free Quote Form"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?embedded=true">
-      Loading…
-    </iframe>
-  </section>
-
-  <p class="note" style="margin:14px 4px 26px">
-    If the form doesn’t load, you can open it directly in a new tab:
-    <a style="color:var(--accent);font-weight:900"
-       href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?usp=publish-editor"
-       target="_blank" rel="noopener noreferrer">Open the form</a>.
-  </p>
 </main>
+
+<!-- Sticky mobile actions -->
+<nav class="stickybar" aria-label="Quick actions">
+  <a class="btn gold" href="tel:+12543014883">Call</a>
+  <a class="btn" href="sms:+12543014883">Text</a>
+  <a class="btn" target="_blank" rel="noopener noreferrer"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?usp=publish-editor">
+    Open Form
+  </a>
+</nav>
 
 </body>
 </html>
