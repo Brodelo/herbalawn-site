@@ -25,7 +25,7 @@
   header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(15,32,27,.98),rgba(15,32,27,.92));backdrop-filter:saturate(130%) blur(4px)}
   .nav{display:flex;align-items:center;gap:16px}
 
-  /* ✅ NEW: Brand with logo + divider */
+  /* Brand with logo + divider */
   .brand{
     display:flex;
     align-items:center;
@@ -99,7 +99,6 @@
     gap:28px;
     align-items:center;
   }
-  /* Keep desktop layout, but allow equal-height cards without “moving things around” */
   @media (min-width: 701px){
     .hero-wrap{ align-items:stretch; }
   }
@@ -118,6 +117,28 @@
     .hero-actions{flex-direction:column;align-items:stretch}
     .hero-actions a, .hero-actions button{width:100%;text-align:center}
     .cta.big{font-size:1.06rem}
+  }
+
+  /* NEW: Free quote callout */
+  .quote-callout{
+    padding:14px 0 0;
+  }
+  .quote-callout .callout-wrap{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .quote-callout h2{
+    margin:0 0 6px 0;
+    font-size:22px;
+  }
+  .quote-callout p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.45;
+    max-width:70ch;
   }
 
   /* Gallery thumbs */
@@ -188,7 +209,6 @@
     .nav{flex-direction:column;align-items:center;gap:10px;padding:10px 0}
     .menu{margin-left:0;justify-content:center}
 
-    /* ✅ Mobile-friendly brand sizing */
     .brand{justify-content:center}
     .brand-logo{width:40px;height:40px}
     .brand-divider{height:40px}
@@ -214,19 +234,18 @@
     border:1px solid rgba(255,255,255,.10);
     background:linear-gradient(135deg,rgba(183,255,74,.08),rgba(242,208,114,.06));
     width:100%;
-    aspect-ratio: 16 / 10; /* desktop unchanged */
+    aspect-ratio: 16 / 10;
   }
 
-  /* ✅ MOBILE ONLY FIX for 1:1 images */
   @media (max-width:700px){
     .projects-slideshow{
-      aspect-ratio: 1 / 1; /* square container fits your 1:1 photos better */
+      aspect-ratio: 1 / 1;
     }
     .ps-imgwrap{
-      background:rgba(0,0,0,.18); /* gives a clean letterbox background */
+      background:rgba(0,0,0,.18);
     }
     .ps-imgwrap img{
-      object-fit:contain; /* show full square image (no crop) */
+      object-fit:contain;
     }
   }
 
@@ -246,7 +265,7 @@
 
   .ps-pair{
     display:grid;
-    grid-template-columns:1fr 1fr; /* keep side-by-side on mobile too */
+    grid-template-columns:1fr 1fr;
     height:100%;
     width:100%;
   }
@@ -259,7 +278,7 @@
   .ps-imgwrap img{
     width:100%;
     height:100%;
-    object-fit:cover; /* desktop stays cover */
+    object-fit:cover;
     display:block;
   }
   .ps-imgwrap::after{
@@ -395,9 +414,7 @@
 <header>
   <div class="container nav">
 
-    <!-- ✅ UPDATED HEADER BRAND (logo + divider + text) -->
     <div class="brand">
-      <!-- PNG filename you told me -->
       <img class="brand-logo" src="assets/images/Herbalawn Front Logo A5.png" alt="HerbaLawn logo">
       <span class="brand-divider" aria-hidden="true"></span>
       <div class="brand-text">
@@ -408,7 +425,8 @@
 
     <nav class="menu">
       <a class="cta secondary" href="policies.html">Policies</a>
-      <a class="cta" href="schedule.html">Schedule</a>
+      <!-- Changed: Schedule button now goes to the new quote page -->
+      <a class="cta" href="quote.html">Free Quote</a>
     </nav>
   </div>
 </header>
@@ -425,7 +443,10 @@
         <p class="sub">Book online with clear pricing. Weekly, bi-weekly, one-time.</p>
 
         <div class="hero-actions">
-          <a class="cta big" style="background:var(--gold)" href="schedule.html">Book Now</a>
+          <!-- Changed: Book button now goes to quote page -->
+          <a class="cta big" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
+          <!-- Added: prices button -->
+          <a class="cta big secondary" href="#mowing-pricing">See Lawn Prices</a>
         </div>
       </div>
 
@@ -435,7 +456,6 @@
         <p class="sub">Before & after — updates every 3 seconds.</p>
 
         <div class="projects-slideshow" id="projectsSlideshow" aria-label="Before and after project slideshow">
-          <!-- Slide 1: Tree Service -->
           <div class="ps-slide ps-active">
             <div class="ps-label">Tree Service</div>
             <div class="ps-divider"></div>
@@ -450,7 +470,6 @@
             <div class="ps-caption">Before • After</div>
           </div>
 
-          <!-- Slide 2: Mowing -->
           <div class="ps-slide">
             <div class="ps-label">Mowing Service</div>
             <div class="ps-divider"></div>
@@ -465,7 +484,6 @@
             <div class="ps-caption">Before • After</div>
           </div>
 
-          <!-- Slide 3: Flowerbed -->
           <div class="ps-slide">
             <div class="ps-label">Flowerbed Foundation</div>
             <div class="ps-divider"></div>
@@ -485,6 +503,25 @@
     </div>
   </section>
 
+  <!-- NEW: Free Quote Callout Section -->
+  <section class="quote-callout">
+    <div class="card pad">
+      <div class="callout-wrap">
+        <div>
+          <h2>Get a Free Quote (Promos Applied)</h2>
+          <p>
+            Please fill out our quick form so we can double-check the address and property details.
+            We may come out to verify the yard size, confirm it’s the correct property in the neighborhood, and make sure we’re meeting the right owner.
+            This helps us give accurate pricing and show you how we do things.
+          </p>
+        </div>
+        <div>
+          <a class="cta big" href="quote.html">Fill Out the Free Quote Form</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- MOWING PRICING -->
   <section id="mowing-pricing">
     <h2 class="section-title">Mowing — Simple Pricing</h2>
@@ -492,7 +529,6 @@
     <p class="sub">Trimming & blow-off included. Final quote may vary by terrain and obstacles.</p>
 
     <div class="pricing cards-4" style="margin-top:14px">
-      <!-- Small -->
       <div class="price-card card">
         <a class="price-img" href="https://herbalawn.com/greenstart.html" style="background-image:url('assets/images/SmallYard.jpg')"><span>Small Yard</span></a>
         <div class="price-body">
@@ -501,7 +537,6 @@
         </div>
       </div>
 
-      <!-- Medium -->
       <div class="price-card card">
         <a class="price-img" href="https://herbalawn.com/lawnpro.html" style="background-image:url('assets/images/MediumYard.jpg')"><span>Medium Yard</span></a>
         <div class="price-body">
@@ -510,7 +545,6 @@
         </div>
       </div>
 
-      <!-- Large -->
       <div class="price-card card">
         <a class="price-img" href="https://herbalawn.com/elitecut.html" style="background-image:url('assets/images/LargeYard.jpg')"><span>Large Yard</span></a>
         <div class="price-body">
@@ -519,7 +553,6 @@
         </div>
       </div>
 
-      <!-- Acreage / Complex -->
       <div class="price-card card">
         <div class="price-img" style="background-image:url('assets/images/ACYard.jpg')"><span>Acreage / Complex</span></div>
         <div class="price-body">
@@ -587,7 +620,8 @@
 
         <div style="display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap">
           <button class="cta" onclick="calcMulch()">Calculate</button>
-          <a class="cta" style="background:var(--gold)" href="mulch.html">Schedule with us</a>
+          <!-- Changed: Schedule with us now goes to quote page -->
+          <a class="cta" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
         </div>
 
         <div id="mulchResult" class="mono" style="margin-top:10px"></div>
@@ -603,6 +637,9 @@
 
     <div class="card pad">
       <div class="contact-actions">
+        <!-- Added: Free quote button before phone/email -->
+        <a class="cta" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
+
         <a class="cta" href="tel:+12543014883">Call 254-301-4883</a>
         <a class="cta" href="tel:+12547160351">Call 254-716-0351</a>
         <a class="cta secondary" href="mailto:HerbaLawn.LawnCare@HerbaLawn.com">Email HerbaLawn.LawnCare@HerbaLawn.com</a>
@@ -685,7 +722,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="cta big" id="modalBookBtn" style="background:var(--gold)" href="schedule.html">Book Now</a>
+      <!-- Changed: modal CTA goes to quote page -->
+      <a class="cta big" id="modalBookBtn" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
     </div>
   </div>
 </div>
@@ -716,7 +754,7 @@
     medium: {
       weekly:  'https://cal.com/herbalawn/herbalawn-lawnpro-weekly-35-week?duration=30&recurringEventCount=24&overlayCalendar=true',
       biweekly:'https://cal.com/herbalawn/herbalawn-lawnpro-bi-weekly-75-every-two-weeks?duration=30&recurringEventCount=24&overlayCalendar=true',
-      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&recurringEventCount=24&overlayCalendar=true'
+      onetime: 'https://cal.com/herbalawn/herbalawn-lawnpro-one-time-80-single-cut?duration=30&overlayCalendar=true'
     },
     large: {
       weekly:  'https://cal.com/herbalawn/herbalawn-elitecut-weekly-40-week?duration=30&recurringEventCount=24&overlayCalendar=true',
@@ -742,14 +780,13 @@
     const vPair = priceMap[v][s];
     if(!vPair || vPair[0] === null){
       priceEl.textContent = 'Acreage / Complex — priced on-site';
-      bookBtn.href = 'schedule.html';
+      bookBtn.href = 'quote.html';
     } else {
       const [lo, hi] = vPair;
       const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
       const sizeLabel = (s==='small'?'Small':s==='medium'?'Medium':s==='large'?'Large':'Acreage');
       priceEl.textContent = `${label} • ${sizeLabel} • $${lo}${hi!==lo?('–$'+hi):''}`;
-      const link = (bookingLinks[s] && bookingLinks[s][v]) ? bookingLinks[s][v] : 'schedule.html';
-      bookBtn.href = link;
+      bookBtn.href = 'quote.html';
     }
 
     modal.classList.add('open');
@@ -784,6 +821,7 @@
 
 </body>
 </html>
+
 
 
 
