@@ -119,7 +119,7 @@
     .cta.big{font-size:1.06rem}
   }
 
-  /* NEW: Free quote callout */
+  /* NEW: Schedule callout */
   .quote-callout{
     padding:14px 0 0;
   }
@@ -190,6 +190,8 @@
   .price-img > span{position:relative;z-index:1}
   .price-body{padding:14px 16px}
   .pill{display:inline-block;border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;font-size:.82rem;color:var(--muted)}
+  .price-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .price-actions a{flex:1 1 auto;text-align:center}
 
   /* Estimator & Mulch grids (mobile-first) */
   .est-grid, .mulch-grid{display:grid;grid-template-columns:1fr;gap:12px}
@@ -425,8 +427,8 @@
 
     <nav class="menu">
       <a class="cta secondary" href="policies.html">Policies</a>
-      <!-- Changed: Schedule button now goes to the new quote page -->
-      <a class="cta" href="quote.html">Free Quote</a>
+      <!-- Changed: main CTA to scheduling page -->
+      <a class="cta" href="schedule.html">Get Scheduled</a>
     </nav>
   </div>
 </header>
@@ -443,10 +445,10 @@
         <p class="sub">Book online with clear pricing. Weekly, bi-weekly, one-time.</p>
 
         <div class="hero-actions">
-          <!-- Changed: Book button now goes to quote page -->
-          <a class="cta big" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
-          <!-- Added: prices button -->
-          <a class="cta big secondary" href="#mowing-pricing">See Lawn Prices</a>
+          <!-- Changed: door-hanger friendly CTA -->
+          <a class="cta big" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
+          <!-- Changed: no scroll, goes to scheduling page -->
+          <a class="cta big secondary" href="schedule.html">See Lawn Prices</a>
         </div>
       </div>
 
@@ -503,19 +505,20 @@
     </div>
   </section>
 
-  <!-- NEW: Free Quote Callout Section -->
+  <!-- Schedule Callout Section -->
   <section class="quote-callout">
     <div class="card pad">
       <div class="callout-wrap">
         <div>
-          <h2>Get a Free Quote (Promos Applied)</h2>
+          <h2>Get Scheduled in 1 Minute</h2>
           <p>
-            Please complete the form to request service.
-            We review every property to verify details and provide accurate pricing before scheduling.
+            Just fill out the form and we handle the rest.
+            We’ll confirm your property info, show up ready to mow, and have your invoice ready.
+            You can choose one-time, weekly, or bi-weekly after you submit.
           </p>
         </div>
         <div>
-          <a class="cta big" href="quote.html">Fill Out the Free Quote Form</a>
+          <a class="cta big" href="schedule.html">Fill Out the Schedule Form</a>
         </div>
       </div>
     </div>
@@ -524,31 +527,40 @@
   <!-- MOWING PRICING -->
   <section id="mowing-pricing">
     <h2 class="section-title">Mowing — Simple Pricing</h2>
-    <p class="sub"><b>Click your type of lawn/yard</b> to go to our best plan page.</p>
-    <p class="sub">Trimming & blow-off included. Final quote may vary by terrain and obstacles.</p>
+    <p class="sub"><b>Pick your yard size</b> and tap the button to go to the right page.</p>
+    <p class="sub">Trimming & blow-off included. Final price may vary by terrain and obstacles.</p>
 
     <div class="pricing cards-4" style="margin-top:14px">
       <div class="price-card card">
-        <a class="price-img" href="https://herbalawn.com/greenstart.html" style="background-image:url('assets/images/SmallYard.jpg')"><span>Small Yard</span></a>
+        <a class="price-img" href="greenstart.html" style="background-image:url('assets/images/SmallYard.jpg')"><span>Small Yard</span></a>
         <div class="price-body">
           <div class="pill">Up to ~4,000 sq ft</div>
           <p class="small">Choose Small at checkout.</p>
+          <div class="price-actions">
+            <a class="cta secondary" href="greenstart.html">View Small</a>
+          </div>
         </div>
       </div>
 
       <div class="price-card card">
-        <a class="price-img" href="https://herbalawn.com/lawnpro.html" style="background-image:url('assets/images/MediumYard.jpg')"><span>Medium Yard</span></a>
+        <a class="price-img" href="lawnpro.html" style="background-image:url('assets/images/MediumYard.jpg')"><span>Medium Yard</span></a>
         <div class="price-body">
           <div class="pill">~4,001–8,000 sq ft</div>
           <p class="small">Choose Medium.</p>
+          <div class="price-actions">
+            <a class="cta secondary" href="lawnpro.html">View Medium</a>
+          </div>
         </div>
       </div>
 
       <div class="price-card card">
-        <a class="price-img" href="https://herbalawn.com/elitecut.html" style="background-image:url('assets/images/LargeYard.jpg')"><span>Large Yard</span></a>
+        <a class="price-img" href="elitecut.html" style="background-image:url('assets/images/LargeYard.jpg')"><span>Large Yard</span></a>
         <div class="price-body">
           <div class="pill">~8,001–12,000 sq ft</div>
           <p class="small">Choose Large.</p>
+          <div class="price-actions">
+            <a class="cta secondary" href="elitecut.html">View Large</a>
+          </div>
         </div>
       </div>
 
@@ -556,7 +568,11 @@
         <div class="price-img" style="background-image:url('assets/images/ACYard.jpg')"><span>Acreage / Complex</span></div>
         <div class="price-body">
           <div class="pill">&gt;12,000 sq ft or complex</div>
-          <p class="small">Call 254-301-4883 or email HerbaLawn.LawnCare@HerbaLawn.com. We’ll walk it with you.</p>
+          <p class="small">For acreage or complex lots, we’ll quote it fast.</p>
+          <div class="price-actions">
+            <a class="cta" href="tel:+12543014883">Call us</a>
+            <a class="cta secondary" href="mailto:HerbaLawn.LawnCare@HerbaLawn.com">Email us</a>
+          </div>
         </div>
       </div>
     </div>
@@ -619,8 +635,8 @@
 
         <div style="display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap">
           <button class="cta" onclick="calcMulch()">Calculate</button>
-          <!-- Changed: Schedule with us now goes to quote page -->
-          <a class="cta" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
+          <!-- Changed: CTA goes to scheduling -->
+          <a class="cta" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
         </div>
 
         <div id="mulchResult" class="mono" style="margin-top:10px"></div>
@@ -636,12 +652,12 @@
 
     <div class="card pad">
       <div class="contact-actions">
-        <!-- Added: Free quote button before phone/email -->
-        <a class="cta" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
+        <!-- Changed: scheduling CTA -->
+        <a class="cta" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
 
         <a class="cta" href="tel:+12543014883">Call 254-301-4883</a>
         <a class="cta" href="tel:+12547160351">Call 254-716-0351</a>
-        <a class="cta secondary" href="mailto:HerbaLawn.LawnCare@HerbaLawn.com">Email HerbaLawn.LawnCare@HerbaLawn.com</a>
+        <a class="cta secondary" href="mailto:HerbaLawn.LawnCare@HerbaLawn.com">Email us</a>
       </div>
     </div>
   </section>
@@ -721,8 +737,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <!-- Changed: modal CTA goes to quote page -->
-      <a class="cta big" id="modalBookBtn" style="background:var(--gold)" href="quote.html">Get a Free Quote</a>
+      <!-- Changed: modal CTA goes to schedule page -->
+      <a class="cta big" id="modalBookBtn" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
     </div>
   </div>
 </div>
@@ -779,13 +795,13 @@
     const vPair = priceMap[v][s];
     if(!vPair || vPair[0] === null){
       priceEl.textContent = 'Acreage / Complex — priced on-site';
-      bookBtn.href = 'quote.html';
+      bookBtn.href = 'schedule.html';
     } else {
       const [lo, hi] = vPair;
       const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
       const sizeLabel = (s==='small'?'Small':s==='medium'?'Medium':s==='large'?'Large':'Acreage');
       priceEl.textContent = `${label} • ${sizeLabel} • $${lo}${hi!==lo?('–$'+hi):''}`;
-      bookBtn.href = 'quote.html';
+      bookBtn.href = 'schedule.html';
     }
 
     modal.classList.add('open');
@@ -820,6 +836,7 @@
 
 </body>
 </html>
+
 
 
 
