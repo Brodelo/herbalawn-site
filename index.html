@@ -427,8 +427,8 @@
 
     <nav class="menu">
       <a class="cta secondary" href="policies.html">Policies</a>
-      <!-- Changed: main CTA to scheduling page -->
-      <a class="cta" href="schedule.html">Get Scheduled</a>
+      <!-- CHANGED: Get Scheduled now goes to quote.html -->
+      <a class="cta" href="quote.html">Get Scheduled</a>
     </nav>
   </div>
 </header>
@@ -445,9 +445,9 @@
         <p class="sub">Book online with clear pricing. Weekly, bi-weekly, one-time.</p>
 
         <div class="hero-actions">
-          <!-- Changed: door-hanger friendly CTA -->
-          <a class="cta big" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
-          <!-- Changed: no scroll, goes to scheduling page -->
+          <!-- CHANGED: Get Scheduled now goes to quote.html -->
+          <a class="cta big" style="background:var(--gold)" href="quote.html">Get Scheduled</a>
+          <!-- LEFT ALONE: See Lawn Prices still goes to schedule.html -->
           <a class="cta big secondary" href="schedule.html">See Lawn Prices</a>
         </div>
       </div>
@@ -518,7 +518,8 @@
           </p>
         </div>
         <div>
-          <a class="cta big" href="schedule.html">Fill Out the Schedule Form</a>
+          <!-- CHANGED: Fill Out the Schedule Form now goes to quote.html -->
+          <a class="cta big" href="quote.html">Fill Out the Schedule Form</a>
         </div>
       </div>
     </div>
@@ -635,8 +636,8 @@
 
         <div style="display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap">
           <button class="cta" onclick="calcMulch()">Calculate</button>
-          <!-- Changed: CTA goes to scheduling -->
-          <a class="cta" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
+          <!-- CHANGED: Get Scheduled now goes to quote.html -->
+          <a class="cta" style="background:var(--gold)" href="quote.html">Get Scheduled</a>
         </div>
 
         <div id="mulchResult" class="mono" style="margin-top:10px"></div>
@@ -652,8 +653,8 @@
 
     <div class="card pad">
       <div class="contact-actions">
-        <!-- Changed: scheduling CTA -->
-        <a class="cta" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
+        <!-- CHANGED: Get Scheduled now goes to quote.html -->
+        <a class="cta" style="background:var(--gold)" href="quote.html">Get Scheduled</a>
 
         <a class="cta" href="tel:+12543014883">Call 254-301-4883</a>
         <a class="cta" href="tel:+12547160351">Call 254-716-0351</a>
@@ -737,8 +738,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <!-- Changed: modal CTA goes to schedule page -->
-      <a class="cta big" id="modalBookBtn" style="background:var(--gold)" href="schedule.html">Get Scheduled</a>
+      <!-- CHANGED: modal Get Scheduled now goes to quote.html -->
+      <a class="cta big" id="modalBookBtn" style="background:var(--gold)" href="quote.html">Get Scheduled</a>
     </div>
   </div>
 </div>
@@ -795,13 +796,13 @@
     const vPair = priceMap[v][s];
     if(!vPair || vPair[0] === null){
       priceEl.textContent = 'Acreage / Complex — priced on-site';
-      bookBtn.href = 'schedule.html';
+      bookBtn.href = 'quote.html';
     } else {
       const [lo, hi] = vPair;
       const label = (v==='weekly'?'Weekly':v==='biweekly'?'Bi-Weekly':'One-Time');
       const sizeLabel = (s==='small'?'Small':s==='medium'?'Medium':s==='large'?'Large':'Acreage');
       priceEl.textContent = `${label} • ${sizeLabel} • $${lo}${hi!==lo?('–$'+hi):''}`;
-      bookBtn.href = 'schedule.html';
+      bookBtn.href = 'quote.html';
     }
 
     modal.classList.add('open');
@@ -836,6 +837,7 @@
 
 </body>
 </html>
+
 
 
 
