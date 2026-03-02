@@ -1,227 +1,271 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Free Quote — HerbaLawn</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HerbaLawn LLC — Free Quote</title>
 
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/favicon.ico">
+<style>
+:root{
+--bg:#0f201b;
+--card:#152a24;
+--accent:#b7ff4a;
+--text:#f2f6f4;
+--muted:#9fb3ab;
+}
 
-  <style>
-    :root{
-      --bg:#0f201b;
-      --bg2:#152a24;
-      --text:#f2f6f4;
-      --muted:#9fb3ab;
-      --accent:#b7ff4a;
-      --gold:#f2d072;
-      --radius:18px;
-      --shadow: 0 12px 34px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+}
 
-    header{
-      position:sticky; top:0; z-index:50;
-      background: linear-gradient(180deg, rgba(15,32,27,.98), rgba(15,32,27,.92));
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .topbar{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 12px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .brand{
-      font-weight: 950;
-      letter-spacing: .2px;
-      line-height: 1.15;
-      min-width: 0;
-    }
-    .brand small{
-      display:block;
-      color: var(--accent);
-      font-weight: 900;
-      letter-spacing: .4px;
-      font-size: 12px;
-      margin-bottom: 2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .brand span{
-      display:block;
-      font-size: 16px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
 
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:999px;
-      font-weight:900;
-      border:1px solid rgba(183,255,74,.35);
-      background: rgba(183,255,74,.12);
-      color: var(--accent);
-      white-space:nowrap;
-    }
-    .btn.gold{
-      background: rgba(242,208,114,.16);
-      border-color: rgba(242,208,114,.35);
-      color: var(--gold);
-    }
+.card{
+background:var(--card);
+border-radius:14px;
+padding:20px;
+}
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding: 14px 16px 92px; /* bottom padding for mobile sticky bar */
-    }
+h1{
+margin:0 0 10px;
+}
 
-    .card{
-      background: linear-gradient(180deg, var(--bg2), rgba(21,42,36,.55));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .pad{padding:14px}
+label{
+display:block;
+margin-top:15px;
+font-weight:600;
+}
 
-    h1{
-      margin:0 0 6px 0;
-      font-size: clamp(20px, 3vw, 30px);
-      line-height:1.15;
-    }
-    .sub{
-      margin:0;
-      color: var(--muted);
-      line-height:1.45;
-    }
-    .badge{
-      display:inline-block;
-      margin-bottom:10px;
-      padding:6px 10px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:.85rem;
-      color: var(--accent);
-      border:1px solid rgba(183,255,74,.35);
-      background: rgba(183,255,74,.10);
-    }
+input, textarea, select{
+width:100%;
+padding:10px;
+margin-top:6px;
+border-radius:8px;
+border:1px solid #1f3b34;
+background:#0d1a16;
+color:white;
+}
 
-    /* Form area */
-    .frame{
-      margin-top: 12px;
-      background: rgba(0,0,0,.10);
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    iframe{
-      width:100%;
-      border:0;
-      display:block;
-      min-height: 82vh;     /* key: makes it feel “full screen” on mobile */
-      height: 1000px;       /* desktop fallback */
-    }
-    @media (min-width: 900px){
-      iframe{ min-height: 860px; height: 980px; }
-      .wrap{ padding-bottom: 28px; } /* no sticky bar needed on desktop */
-    }
+textarea{
+min-height:90px;
+resize:vertical;
+}
 
-    /* Mobile sticky bar */
-    .stickybar{
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 60;
-      padding: 10px 12px;
-      background: rgba(10,18,14,.92);
-      border-top: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-      display:flex;
-      gap:10px;
-    }
-    .stickybar a{
-      flex: 1;
-      text-align:center;
-    }
-    @media (min-width: 900px){
-      .stickybar{ display:none; }
-    }
+.checkbox-group, .radio-group{
+margin-top:10px;
+}
 
-    .smalllink{
-      display:inline-block;
-      margin-top:10px;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-    .smalllink b{color: var(--text)}
-  </style>
+.checkbox-group label,
+.radio-group label{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:400;
+margin-top:8px;
+}
+
+button{
+margin-top:20px;
+background:var(--accent);
+color:black;
+font-weight:700;
+border:none;
+padding:12px 18px;
+border-radius:999px;
+cursor:pointer;
+}
+
+button:disabled{
+opacity:.6;
+cursor:not-allowed;
+}
+
+.msg{
+margin-top:15px;
+padding:10px;
+border-radius:8px;
+display:none;
+}
+
+.success{
+background:#1e3b2f;
+}
+
+.error{
+background:#3b1e1e;
+}
+</style>
 </head>
 
 <body>
-<header>
-  <div class="topbar">
-    <div class="brand">
-      <small>LANDSCAPING / TREE SERVICE</small>
-      <span>HERBALAWN LLC — Free Quote Form</span>
-    </div>
+<div class="container">
+<div class="card">
 
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn" href="index.html">← Back</a>
-      <a class="btn gold" href="tel:+12543014883">Call</a>
-      <a class="btn" href="sms:+12543014883">Text</a>
-    </div>
-  </div>
-</header>
+<h1>Free Quote Form</h1>
+<p>Please provide accurate info so we can show up ready.</p>
 
-<main class="wrap">
+<form id="quoteForm">
 
-  <!-- SHORT + FIRM, not rude -->
-  <section class="card">
-    <div class="pad">
-      <span class="badge">Always Free • Promos Applied</span>
-      <h1>Submit this form to request service</h1>
-      <p class="sub">
-        For mowing and all other services, we require this form so we can verify the property and provide accurate pricing before scheduling.
-        If your request isn’t listed, choose <b>Other</b> in the Services section and explain it.
-      </p>
+<label>Don’t have a lawn maintenance promo code?</label>
+<div class="radio-group">
+<label><input type="radio" name="promoChoice" value="Text/Call Me A Code"> Text/Call Me A Code</label>
+<label><input type="radio" name="promoChoice" value="No code — just want a quote"> No code — just want a quote</label>
+<label><input type="radio" name="promoChoice" value="I already entered one"> I already entered one</label>
+</div>
 
-      <a class="smalllink"
-         href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?usp=publish-editor"
-         target="_blank" rel="noopener noreferrer">
-        Having trouble loading the form? <b>Open it in a new tab.</b>
-      </a>
-    </div>
+<label>Promo Code</label>
+<input type="text" id="promoCode">
 
-    <div class="frame" id="the-form">
-      <iframe
-        title="HerbaLawn Free Quote Form"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?embedded=true">
-        Loading…
-      </iframe>
-    </div>
-  </section>
+<label>Full Name *</label>
+<input type="text" id="fullName" required>
 
-</main>
+<label>Phone Number *</label>
+<input type="text" id="phone" required>
 
-<!-- Sticky mobile actions -->
-<nav class="stickybar" aria-label="Quick actions">
-  <a class="btn gold" href="tel:+12543014883">Call</a>
-  <a class="btn" href="sms:+12543014883">Text</a>
-  <a class="btn" target="_blank" rel="noopener noreferrer"
-     href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform?usp=publish-editor">
-    Open Form
-  </a>
-</nav>
+<label>Service Address *</label>
+<input type="text" id="address" required>
+
+<label>Services</label>
+<div class="checkbox-group">
+<label><input type="checkbox" value="Standard Lawn Maintenance"> Standard Lawn Maintenance</label>
+<label><input type="checkbox" value="Bush Trimming"> Bush Trimming</label>
+<label><input type="checkbox" value="Tree Trimming"> Tree Trimming</label>
+<label><input type="checkbox" value="Tree Removal"> Tree Removal</label>
+<label><input type="checkbox" value="Sod Removal & Installation"> Sod Removal & Installation</label>
+<label><input type="checkbox" value="Haul-Off Services"> Haul-Off Services</label>
+<label><input type="checkbox" value="Leaf Cleanup"> Leaf Cleanup</label>
+<label><input type="checkbox" id="serviceOtherChk" value="Other"> Other:
+<input type="text" id="serviceOtherText" placeholder="Describe other service">
+</label>
+</div>
+
+<label>If selecting lawn maintenance, how often?</label>
+<div class="radio-group">
+<label><input type="radio" name="frequency" value="Weekly"> Weekly</label>
+<label><input type="radio" name="frequency" value="Bi-Weekly"> Bi-Weekly</label>
+<label><input type="radio" name="frequency" value="One-Time Cleanup"> One-Time Cleanup</label>
+</div>
+
+<label>Preferred Day *</label>
+<input type="date" id="preferredDay" required>
+
+<label>Preferred Time *</label>
+<input type="time" id="preferredTime" required>
+
+<label>Anything else we should know?</label>
+<textarea id="notes"></textarea>
+
+<label>How did you hear about us?</label>
+<div class="radio-group">
+<label><input type="radio" name="howHear" value="Door Hanger"> Door Hanger</label>
+<label><input type="radio" name="howHear" value="Yard Sign"> Yard Sign</label>
+<label><input type="radio" name="howHear" value="Sidewalk Sign"> Sidewalk Sign</label>
+<label><input type="radio" name="howHear" value="Social Media"> Social Media</label>
+<label><input type="radio" name="howHear" value="Referral"> Referral</label>
+<label><input type="radio" name="howHear" value="Google Search"> Google Search</label>
+<label><input type="radio" id="hearOtherChk" name="howHear" value="Other"> Other:
+<input type="text" id="hearOtherText" placeholder="Other source">
+</label>
+</div>
+
+<button type="submit" id="submitBtn">Submit</button>
+
+<div id="msg" class="msg"></div>
+
+</form>
+</div>
+</div>
+
+<script>
+const BRIDGE_URL = "https://script.google.com/macros/s/AKfycbwx9lW31gNhwFEeuGiwpyAOtyvW02CPetHJTwvqJCtpnPCzV7MmdFkfZh39D5DDKpYb/exec";
+
+const form = document.getElementById("quoteForm");
+const msg = document.getElementById("msg");
+const submitBtn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async function(e){
+e.preventDefault();
+submitBtn.disabled = true;
+
+let services = [];
+document.querySelectorAll(".checkbox-group input[type='checkbox']").forEach(chk=>{
+if(chk.checked){
+if(chk.id === "serviceOtherChk"){
+let extra = document.getElementById("serviceOtherText").value.trim();
+if(extra) services.push("Other: " + extra);
+} else {
+services.push(chk.value);
+}
+}
+});
+
+let howHear = "";
+document.querySelectorAll("input[name='howHear']").forEach(r=>{
+if(r.checked){
+if(r.id === "hearOtherChk"){
+let extra = document.getElementById("hearOtherText").value.trim();
+howHear = extra ? "Other: " + extra : "Other";
+} else {
+howHear = r.value;
+}
+}
+});
+
+let frequency = "";
+document.querySelectorAll("input[name='frequency']").forEach(r=>{
+if(r.checked) frequency = r.value;
+});
+
+let promoChoice = "";
+document.querySelectorAll("input[name='promoChoice']").forEach(r=>{
+if(r.checked) promoChoice = r.value;
+});
+
+const payload = {
+promoChoice,
+promoCode: document.getElementById("promoCode").value,
+fullName: document.getElementById("fullName").value,
+phone: document.getElementById("phone").value,
+address: document.getElementById("address").value,
+services,
+frequency,
+preferredDay: document.getElementById("preferredDay").value,
+preferredTime: document.getElementById("preferredTime").value,
+notes: document.getElementById("notes").value,
+howHear
+};
+
+try{
+const res = await fetch(BRIDGE_URL,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(payload)
+});
+const data = await res.json();
+if(data.ok){
+msg.className="msg success";
+msg.style.display="block";
+msg.innerText="Submitted successfully. We will contact you shortly.";
+form.reset();
+}else{
+throw new Error();
+}
+}catch(err){
+msg.className="msg error";
+msg.style.display="block";
+msg.innerText="Submission failed. Please call or text us directly.";
+}
+submitBtn.disabled=false;
+});
+</script>
 
 </body>
 </html>
