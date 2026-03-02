@@ -83,7 +83,7 @@
     .wrap{
       max-width:1100px;
       margin:0 auto;
-      padding: 14px 16px 92px; /* bottom padding for mobile sticky bar */
+      padding: 14px 16px 24px;
     }
 
     .card{
@@ -117,36 +117,18 @@
       background: rgba(183,255,74,.10);
     }
 
-    /* Form area */
+    /* Desktop embed */
     .frame{
       margin-top: 12px;
       background: rgba(0,0,0,.10);
       border-top: 1px solid rgba(255,255,255,.08);
     }
-
-    /*
-      Key fix:
-      Make the iframe VERY tall so the PAGE scrolls,
-      instead of having to scroll inside the iframe on mobile.
-      (Google Forms can't auto-resize cross-domain.)
-    */
     iframe{
       width:100%;
       border:0;
       display:block;
-
-      /* Mobile: tall enough for most forms */
-      height: 2600px;
-      min-height: 2600px;
-    }
-
-    /* Desktop: a bit shorter usually */
-    @media (min-width: 900px){
-      iframe{
-        height: 2100px;
-        min-height: 2100px;
-      }
-      .wrap{ padding-bottom: 28px; } /* no sticky bar needed on desktop */
+      height: 2200px; /* desktop height */
+      min-height: 2200px;
     }
 
     .smalllink{
@@ -157,24 +139,23 @@
     }
     .smalllink b{color: var(--text)}
 
-    /* Mobile sticky bar */
-    .stickybar{
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 60;
-      padding: 10px 12px;
-      background: rgba(10,18,14,.92);
-      border-top: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-      display:flex;
-      gap:10px;
+    /* Mobile notice (only shows if JS is blocked) */
+    .mobileNotice{
+      display:none;
+      padding:14px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: var(--muted);
     }
-    .stickybar a{
-      flex: 1;
-      text-align:center;
+    .mobileNotice .btn{
+      margin-top:10px;
+      width:100%;
     }
-    @media (min-width: 900px){
-      .stickybar{ display:none; }
+
+    /* If somehow mobile loads without redirect, hide iframe and show notice */
+    @media (max-width: 899px){
+      iframe{ display:none; }
+      .frame{ display:none; }
+      .mobileNotice{ display:block; }
     }
   </style>
 </head>
@@ -196,24 +177,23 @@
 </header>
 
 <main class="wrap">
-
   <section class="card">
     <div class="pad">
       <span class="badge">Always Free • Promos Applied</span>
       <h1>Submit this form to request service</h1>
       <p class="sub">
-        For mowing and all other services, we require this form so we can verify the property and provide accurate pricing before scheduling.
-        If your request isn’t listed, choose <b>Other</b> in the Services section and explain it.
+        Please fill this out so we can verify the property and contact you to confirm scheduling.
       </p>
 
       <a class="smalllink"
          href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform"
          target="_blank" rel="noopener noreferrer">
-        Having trouble loading the form? <b>Open it in a new tab.</b>
+        Want full screen? <b>Open the form here.</b>
       </a>
     </div>
 
-    <div class="frame" id="the-form">
+    <!-- Desktop embed only -->
+    <div class="frame">
       <iframe
         title="HerbaLawn Free Quote Form"
         loading="lazy"
@@ -222,18 +202,26 @@
         Loading…
       </iframe>
     </div>
-  </section>
 
+    <!-- Mobile fallback if JS blocked -->
+    <div class="mobileNotice">
+      If you’re on mobile, we open the form full-screen so it doesn’t glitch.
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform" target="_blank" rel="noopener noreferrer">
+        Open Form
+      </a>
+    </div>
+  </section>
 </main>
 
-<nav class="stickybar" aria-label="Quick actions">
-  <a class="btn gold" href="tel:+12543014883">Call</a>
-  <a class="btn" href="sms:+12543014883">Text</a>
-  <a class="btn" target="_blank" rel="noopener noreferrer"
-     href="https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform">
-    Open Form
-  </a>
-</nav>
+<script>
+  // Mobile redirect to full-screen Google Form (no iframe scroll box)
+  (function () {
+    var isMobile = window.matchMedia && window.matchMedia("(max-width: 899px)").matches;
+    if (isMobile) {
+      window.location.replace("https://docs.google.com/forms/d/e/1FAIpQLSfK790C07eH0fy8roTOZvcStFIsQ0tXrZPez6qlOYVovo2_0Q/viewform");
+    }
+  })();
+</script>
 
 </body>
 </html>
