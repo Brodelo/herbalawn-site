@@ -409,6 +409,142 @@
     display:block;
     text-align:center;
   }
+
+  /* =========================
+     MOBILE-ONLY REDESIGN
+     Keeps desktop exactly as-is
+     ========================= */
+  .mobile-site,.mobile-footer,.mobile-sticky-cta{display:none}
+  .mobile-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;
+    text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;
+    color:var(--accent);font-weight:900;margin-bottom:10px
+  }
+  .mobile-eyebrow::before{
+    content:"";width:28px;height:2px;background:var(--gold);border-radius:999px;
+  }
+  .mobile-hero-card{
+    padding:22px 18px;
+    border-radius:22px;
+    background:
+      linear-gradient(180deg,rgba(21,42,36,.92),rgba(21,42,36,.84)),
+      radial-gradient(circle at top right, rgba(183,255,74,.18), transparent 38%);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:var(--shadow-green-soft);
+  }
+  .mobile-hero-title{
+    font-size:2.15rem;line-height:1.02;margin:0 0 10px;font-weight:900;
+    letter-spacing:-.03em;
+  }
+  .mobile-hero-sub{
+    color:#dbe6e1;opacity:.92;line-height:1.5;margin:0;
+  }
+  .mobile-hero-image{
+    margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);
+    box-shadow:var(--shadow);
+  }
+  .mobile-hero-image img{display:block;width:100%;height:240px;object-fit:cover}
+  .mobile-btn-row{display:grid;gap:10px;margin-top:16px}
+  .mobile-btn-row .cta{
+    width:100%;text-align:center;border-radius:14px;padding:14px 16px;font-size:1rem
+  }
+  .mobile-section{padding:18px 0}
+  .mobile-section-head{margin-bottom:14px}
+  .mobile-section-kicker{
+    display:inline-block;color:var(--gold);font-weight:900;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px
+  }
+  .mobile-section-title{
+    font-size:1.55rem;line-height:1.1;margin:0 0 8px;font-weight:900
+  }
+  .mobile-section-copy{margin:0;color:var(--muted);line-height:1.5}
+  .mobile-service-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .mobile-service-card{
+    overflow:hidden;border-radius:18px;background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.72));
+    border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow-green-soft)
+  }
+  .mobile-service-card img{display:block;width:100%;height:122px;object-fit:cover}
+  .mobile-service-card .body{padding:12px}
+  .mobile-service-card h3{margin:0 0 6px;font-size:1rem}
+  .mobile-service-card p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.35}
+  .mobile-service-card .cta{margin-top:10px;width:100%;text-align:center;border-radius:12px;padding:11px 12px}
+  .mobile-trust-grid{display:grid;gap:10px}
+  .mobile-trust-item{
+    display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:16px;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)
+  }
+  .mobile-check{
+    width:30px;height:30px;border-radius:999px;display:grid;place-items:center;
+    background:rgba(183,255,74,.14);color:var(--accent);font-weight:900;flex:0 0 auto
+  }
+  .mobile-trust-item h4{margin:0 0 4px;font-size:1rem}
+  .mobile-trust-item p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.4}
+  .mobile-work-grid{display:grid;gap:12px}
+  .mobile-work-card{
+    position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);min-height:210px
+  }
+  .mobile-work-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .mobile-work-card::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.4))
+  }
+  .mobile-work-label{
+    position:absolute;left:12px;top:12px;z-index:2;background:rgba(10,18,14,.42);border:1px solid rgba(255,255,255,.14);
+    padding:7px 11px;border-radius:999px;font-size:.86rem;font-weight:800
+  }
+  .mobile-work-caption{
+    position:absolute;left:12px;right:12px;bottom:12px;z-index:2;
+    font-size:.95rem;font-weight:700
+  }
+  .mobile-quote-box,.mobile-testimonial,.mobile-contact-card,.mobile-faq-card{
+    padding:16px;border-radius:18px;background:linear-gradient(180deg,var(--bg-2),rgba(21,42,36,.72));
+    border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow-green-soft)
+  }
+  .mobile-quote-box h3,.mobile-contact-card h3,.mobile-faq-card h3{margin:0 0 8px}
+  .mobile-quote-box p,.mobile-contact-card p,.mobile-faq-card p,.mobile-testimonial p{margin:0;color:var(--muted);line-height:1.5}
+  .mobile-price-list{display:grid;gap:10px;margin-top:12px}
+  .mobile-price-row{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 15px;border-radius:15px;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)
+  }
+  .mobile-price-row strong{display:block}
+  .mobile-price-row span{display:block;color:var(--muted);font-size:.9rem;margin-top:3px}
+  .mobile-price-row b{color:var(--accent-2);font-size:1rem}
+  .mobile-testimonial-wrap{display:grid;gap:12px}
+  .mobile-stars{color:var(--gold);font-size:1rem;letter-spacing:.08em;margin-bottom:8px}
+  .mobile-contact-actions{display:grid;gap:10px;margin-top:14px}
+  .mobile-contact-actions .cta{width:100%;text-align:center;border-radius:14px;padding:13px 14px}
+  .mobile-faq-grid{display:grid;gap:12px}
+  .mobile-faq-card h3{font-size:1rem}
+  @media (max-width:700px){
+    header{position:sticky}
+    .desktop-site,.footer{display:none}
+    .mobile-site,.mobile-footer,.mobile-sticky-cta{display:block}
+    .container{padding:16px}
+    .nav{flex-direction:row;justify-content:space-between;align-items:center;gap:10px;padding:10px 0}
+    .menu{display:none}
+    .brand{gap:10px;min-width:0}
+    .brand-logo{width:42px;height:42px}
+    .brand-divider{height:40px}
+    .brand-kicker{font-size:11px}
+    .brand-name{font-size:16px}
+    main.container{padding-top:14px;padding-bottom:92px}
+  }
+  @media (max-width:420px){
+    .mobile-hero-title{font-size:1.9rem}
+    .mobile-service-grid{grid-template-columns:1fr}
+  }
+  .mobile-sticky-cta{
+    position:fixed;left:12px;right:12px;bottom:12px;z-index:1000;
+  }
+  .mobile-sticky-cta-inner{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    background:rgba(11,22,19,.86);backdrop-filter:blur(7px);
+    border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:10px;
+    box-shadow:0 18px 40px rgba(0,0,0,.35)
+  }
+  .mobile-sticky-cta .cta{
+    width:100%;text-align:center;border-radius:13px;padding:13px 14px;font-size:.98rem
+  }
+
 </style>
 </head>
 
@@ -433,7 +569,244 @@
   </div>
 </header>
 
-<main class="container">
+<main class="container mobile-site">
+
+  <section class="mobile-section" style="padding-top:4px">
+    <div class="mobile-hero-card">
+      <div class="mobile-eyebrow">Landscaping / Tree Service</div>
+      <h1 class="mobile-hero-title">Lawn Care, Tree Service & Landscaping in Waco, TX</h1>
+      <p class="mobile-hero-sub">Fast quotes. Clear pricing. Weekly, bi-weekly, and one-time service for homes and businesses.</p>
+
+      <div class="mobile-btn-row">
+        <a class="cta" style="background:var(--gold)" href="quote.html">Get Scheduled</a>
+        <a class="cta secondary" href="schedule.html">See Lawn Prices</a>
+      </div>
+
+      <div class="mobile-hero-image">
+        <img loading="lazy" src="assets/images/MowingAfter.jpg" alt="HerbaLawn mowing service">
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-section">
+    <div class="mobile-section-head">
+      <div class="mobile-section-kicker">Our Services</div>
+      <h2 class="mobile-section-title">Simple service cards that are easy to tap</h2>
+      <p class="mobile-section-copy">Built for mobile first so visitors land, see what you do, and get to the quote faster.</p>
+    </div>
+
+    <div class="mobile-service-grid">
+      <div class="mobile-service-card">
+        <img loading="lazy" src="assets/images/MediumYard.jpg" alt="Lawn mowing">
+        <div class="body">
+          <h3>Lawn Mowing</h3>
+          <p>Weekly, bi-weekly, and one-time mowing with trimming and blow-off included.</p>
+          <a class="cta secondary" href="schedule.html">View Pricing</a>
+        </div>
+      </div>
+
+      <div class="mobile-service-card">
+        <img loading="lazy" src="assets/images/FlowerBedAfter.jpg" alt="Landscaping">
+        <div class="body">
+          <h3>Landscaping</h3>
+          <p>Flowerbed work, cleanups, edging, and simple upgrades that make the yard stand out.</p>
+          <a class="cta secondary" href="quote.html">Get Quote</a>
+        </div>
+      </div>
+
+      <div class="mobile-service-card">
+        <img loading="lazy" src="assets/images/work1.jpg" alt="Mulch service">
+        <div class="body">
+          <h3>Mulch & Beds</h3>
+          <p>Fresh mulch, weed barrier, bed cleanouts, and finish work to sharpen up the property.</p>
+          <a class="cta secondary" href="quote.html">Get Quote</a>
+        </div>
+      </div>
+
+      <div class="mobile-service-card">
+        <img loading="lazy" src="assets/images/TreeService2.jpg" alt="Tree service">
+        <div class="body">
+          <h3>Tree Service</h3>
+          <p>Trimming, removals, haul-off, and fast estimates for bigger jobs.</p>
+          <a class="cta secondary" href="quote.html">Book Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-section">
+    <div class="mobile-section-head">
+      <div class="mobile-section-kicker">Why HerbaLawn</div>
+      <h2 class="mobile-section-title">What makes people trust you fast</h2>
+      <p class="mobile-section-copy">This section gives the same kind of quick confidence boost that the reference site uses on mobile.</p>
+    </div>
+
+    <div class="mobile-trust-grid">
+      <div class="mobile-trust-item">
+        <div class="mobile-check">✓</div>
+        <div>
+          <h4>Local to Waco</h4>
+          <p>We serve Waco and nearby areas with fast response times and local service.</p>
+        </div>
+      </div>
+      <div class="mobile-trust-item">
+        <div class="mobile-check">✓</div>
+        <div>
+          <h4>Residential & Commercial</h4>
+          <p>From regular mowing to cleanup and landscaping jobs, we handle both.</p>
+        </div>
+      </div>
+      <div class="mobile-trust-item">
+        <div class="mobile-check">✓</div>
+        <div>
+          <h4>Insured & Professional</h4>
+          <p>Clear communication, safe work, and simple scheduling from quote to job day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-section">
+    <div class="mobile-section-head">
+      <div class="mobile-section-kicker">Recent Work</div>
+      <h2 class="mobile-section-title">Real photos sell better on mobile</h2>
+      <p class="mobile-section-copy">Big stacked images keep the page closer to the mobile feel you wanted.</p>
+    </div>
+
+    <div class="mobile-work-grid">
+      <div class="mobile-work-card">
+        <span class="mobile-work-label">Before Bush Trim</span>
+        <img loading="lazy" src="assets/images/work1.jpg" alt="Before bush trim">
+        <div class="mobile-work-caption">Before cleanup and shaping</div>
+      </div>
+      <div class="mobile-work-card">
+        <span class="mobile-work-label">After Bush Trim</span>
+        <img loading="lazy" src="assets/images/work2.jpg" alt="After bush trim">
+        <div class="mobile-work-caption">Cleaner finish and sharper curb appeal</div>
+      </div>
+      <div class="mobile-work-card">
+        <span class="mobile-work-label">Mowing Service</span>
+        <img loading="lazy" src="assets/images/work3.jpg" alt="Mowing service">
+        <div class="mobile-work-caption">Fresh mow with a clean final look</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-section">
+    <div class="mobile-quote-box">
+      <div class="mobile-section-kicker">Get Scheduled Today</div>
+      <h3>Easy mobile call to action</h3>
+      <p>Fill out the form and we will confirm your property details, service type, and next open spot.</p>
+
+      <div class="mobile-btn-row" style="margin-top:14px">
+        <a class="cta" style="background:var(--gold)" href="quote.html">Fill Out the Form</a>
+      </div>
+
+      <div class="mobile-price-list">
+        <div class="mobile-price-row">
+          <div>
+            <strong>Small Yard</strong>
+            <span>Up to about 4,000 sq ft</span>
+          </div>
+          <b>From $30</b>
+        </div>
+        <div class="mobile-price-row">
+          <div>
+            <strong>Medium Yard</strong>
+            <span>About 4,001–8,000 sq ft</span>
+          </div>
+          <b>From $35</b>
+        </div>
+        <div class="mobile-price-row">
+          <div>
+            <strong>Large Yard</strong>
+            <span>About 8,001–12,000 sq ft</span>
+          </div>
+          <b>From $40</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-section">
+    <div class="mobile-section-head">
+      <div class="mobile-section-kicker">Testimonials</div>
+      <h2 class="mobile-section-title">A small review section fits the style better</h2>
+    </div>
+
+    <div class="mobile-testimonial-wrap">
+      <div class="mobile-testimonial">
+        <div class="mobile-stars">★★★★★</div>
+        <p>"Showed up ready to work and left everything looking way better than before."</p>
+      </div>
+      <div class="mobile-testimonial">
+        <div class="mobile-stars">★★★★★</div>
+        <p>"Fast response, fair pricing, and the yard looked clean when they were done."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-section">
+    <div class="mobile-contact-card">
+      <div class="mobile-section-kicker">Contact Us</div>
+      <h3>Talk to HerbaLawn</h3>
+      <p>Call, text, or email us for mowing, landscaping, mulch, cleanups, and tree work.</p>
+
+      <div class="mobile-contact-actions">
+        <a class="cta" style="background:var(--gold)" href="quote.html">Get Scheduled</a>
+        <a class="cta" href="tel:+12543014883">Call 254-301-4883</a>
+        <a class="cta" href="tel:+12547160351">Call 254-716-0351</a>
+        <a class="cta secondary" href="mailto:HerbaLawn.LawnCare@HerbaLawn.com">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-section" style="padding-bottom:0">
+    <div class="mobile-section-head">
+      <div class="mobile-section-kicker">Quick Answers</div>
+      <h2 class="mobile-section-title">A cleaner FAQ block for phones</h2>
+    </div>
+    <div class="mobile-faq-grid">
+      <div class="mobile-faq-card">
+        <h3>Do prices vary?</h3>
+        <p>Yes, final pricing can change based on terrain, overgrowth, trimming detail, and access.</p>
+      </div>
+      <div class="mobile-faq-card">
+        <h3>What areas do you serve?</h3>
+        <p>Waco and nearby communities.</p>
+      </div>
+      <div class="mobile-faq-card">
+        <h3>Do you do one-time and recurring work?</h3>
+        <p>Yes. We offer one-time, weekly, and bi-weekly service options.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="mobile-sticky-cta" aria-hidden="false">
+  <div class="mobile-sticky-cta-inner">
+    <a class="cta" style="background:var(--gold)" href="quote.html">Get Quote</a>
+    <a class="cta secondary" href="tel:+12543014883">Call Now</a>
+  </div>
+</div>
+<footer class="footer mobile-footer">
+  <div class="container">
+    <div class="mobile-contact-card">
+      <h3>HerbaLawn LLC</h3>
+      <p>Serving Waco, TX and surrounding areas.</p>
+      <p style="margin-top:10px;color:var(--muted)">
+        Call/Text: <b style="color:var(--text)">254-301-4883</b> • <b style="color:var(--text)">254-716-0351</b><br>
+        Email: <b style="color:var(--text)">HerbaLawn.LawnCare@HerbaLawn.com</b>
+      </p>
+      <p class="small" style="margin-top:12px">© <span id="yr-mobile"></span> HerbaLawn LLC</p>
+    </div>
+  </div>
+</footer>
+
+
+
+<main class="container desktop-site">
 
   <!-- HERO -->
   <section class="hero">
@@ -747,6 +1120,8 @@
 <script>
   // Year
   document.getElementById('yr').textContent = new Date().getFullYear();
+  const yrMobile = document.getElementById('yr-mobile');
+  if(yrMobile) yrMobile.textContent = new Date().getFullYear();
 
   // Slideshow
   (function(){
@@ -837,6 +1212,27 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
