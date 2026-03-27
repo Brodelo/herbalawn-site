@@ -35,19 +35,6 @@
       max-width:1100px;margin:auto;padding:14px 18px;
       display:flex;align-items:center;gap:12px;flex-wrap:wrap;
     }
-    .brandWrap{
-      display:flex;align-items:center;gap:12px;min-width:0;
-    }
-    .brandLogo{
-      width:46px;height:46px;object-fit:contain;flex:0 0 auto;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,.35));
-    }
-    .brandDivider{
-      width:1px;height:44px;background:rgba(255,255,255,.18);flex:0 0 auto;
-    }
-    .brandText{
-      display:flex;flex-direction:column;gap:2px;min-width:0;
-    }
     .brand{font-weight:800;letter-spacing:.3px}
     .muted{color:var(--muted)}
 
@@ -64,6 +51,7 @@
       padding:18px;
     }
 
+    /* buttons row */
     .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     .btn{
       display:inline-block;
@@ -84,6 +72,7 @@
       text-decoration:none;
     }
 
+    /* Section title */
     .sectionTitle{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
       margin-top:14px;
@@ -109,6 +98,7 @@
       line-height:1;
     }
 
+    /* 3 mowing cards */
     .grid{
       display:grid;
       grid-template-columns:1fr;
@@ -172,6 +162,7 @@
       text-decoration:none;
     }
 
+    /* Acreage card under mowing */
     .acre{
       margin-top:14px;
       overflow:hidden;
@@ -191,6 +182,7 @@
     }
     .acreBody{padding:16px}
 
+    /* Mulch card */
     .miniCard{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
       padding:16px;
@@ -205,419 +197,30 @@
       .sectionTitle{flex-direction:column;align-items:flex-start}
       .miniCard{flex-direction:column;align-items:flex-start}
     }
-
-    /* MOBILE-ONLY REDESIGN */
-    .mobile-site,.mobile-footer,.mobile-sticky-cta{display:none}
-    .mobile-eyebrow{
-      display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;
-      text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;
-      color:var(--accent);font-weight:900;margin-bottom:10px
-    }
-    .mobile-eyebrow::before{
-      content:"";width:28px;height:2px;background:var(--gold);border-radius:999px;
-    }
-    .mobile-hero-card{
-      padding:22px 18px;
-      border-radius:22px;
-      background:
-        linear-gradient(180deg,rgba(21,42,36,.92),rgba(21,42,36,.84)),
-        radial-gradient(circle at top right, rgba(183,255,74,.18), transparent 38%);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--glow-soft);
-    }
-    .mobile-hero-title{
-      font-size:2rem;line-height:1.02;margin:0 0 10px;font-weight:900;
-      letter-spacing:-.03em;
-    }
-    .mobile-hero-sub{color:#dbe6e1;opacity:.92;line-height:1.5;margin:0}
-    .mobile-hero-image{
-      margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--glow-soft);
-    }
-    .mobile-hero-image img{display:block;width:100%;height:240px;object-fit:cover}
-    .mobile-btn-row{display:grid;gap:10px;margin-top:16px}
-    .mobile-btn-row .btn,.mobile-btn-row .btnGhost{
-      width:100%;text-align:center;border-radius:14px;padding:14px 16px;font-size:1rem
-    }
-    .mobile-section{padding:18px 0}
-    .mobile-section-head{margin-bottom:14px}
-    .mobile-section-kicker{
-      display:inline-block;color:var(--gold);font-weight:900;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px
-    }
-    .mobile-section-title{
-      font-size:1.55rem;line-height:1.1;margin:0 0 8px;font-weight:900
-    }
-    .mobile-section-copy{margin:0;color:var(--muted);line-height:1.5}
-    .mobile-card{
-      padding:16px;border-radius:18px;background:linear-gradient(180deg,var(--bg2),rgba(21,42,36,.72));
-      border:1px solid rgba(255,255,255,.08);box-shadow:var(--glow-soft)
-    }
-    .mobile-plan-grid{display:grid;gap:12px}
-    .mobile-plan{
-      overflow:hidden;border-radius:18px;background:linear-gradient(180deg,var(--bg2),rgba(21,42,36,.72));
-      border:1px solid rgba(255,255,255,.08);box-shadow:var(--glow-soft)
-    }
-    .mobile-plan img{display:block;width:100%;height:154px;object-fit:cover}
-    .mobile-plan .body{padding:14px}
-    .mobile-plan h3{margin:8px 0 6px;font-size:1.05rem}
-    .mobile-plan p{margin:0;color:var(--muted);line-height:1.4}
-    .mobile-plan .btn,.mobile-plan .btnGhost{
-      margin-top:12px;width:100%;text-align:center;border-radius:12px;padding:12px 13px
-    }
-    .mobile-bullet-list{display:grid;gap:10px}
-    .mobile-bullet{
-      display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:16px;
-      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)
-    }
-    .mobile-check{
-      width:30px;height:30px;border-radius:999px;display:grid;place-items:center;
-      background:rgba(183,255,74,.14);color:var(--accent);font-weight:900;flex:0 0 auto
-    }
-    .mobile-bullet h4{margin:0 0 4px;font-size:1rem}
-    .mobile-bullet p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.4}
-    .mobile-contact-actions{display:grid;gap:10px;margin-top:14px}
-    .mobile-contact-actions .btn,.mobile-contact-actions .btnGhost{
-      width:100%;text-align:center;border-radius:14px;padding:13px 14px
-    }
-    .mobile-sticky-cta{
-      position:fixed;left:12px;right:12px;bottom:12px;z-index:1000;
-    }
-    .mobile-sticky-cta-inner{
-      display:grid;grid-template-columns:1fr 1fr;gap:10px;
-      background:rgba(11,22,19,.86);backdrop-filter:blur(7px);
-      border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:10px;
-      box-shadow:0 18px 40px rgba(0,0,0,.35)
-    }
-    .mobile-sticky-cta .btn,.mobile-sticky-cta .btnGhost{
-      width:100%;text-align:center;border-radius:13px;padding:13px 14px;font-size:.98rem
-    }
-
-    @media(max-width:700px){
-      .desktop-site{display:none}
-      .mobile-site,.mobile-footer,.mobile-sticky-cta{display:block}
-      .top{
-        padding:12px 16px;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        gap:8px;
-        text-align:center;
-      }
-      .brandWrap{
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        gap:6px;
-      }
-      .brandDivider{display:none}
-      .brandLogo{width:50px;height:50px}
-      .brandText{align-items:center;text-align:center}
-      .top > div:last-child{
-        margin-left:0 !important;
-        justify-content:center;
-        width:100%;
-      }
-      .wrap{padding:16px 16px 92px}
-    }
   </style>
 </head>
 
 <body>
   <header>
     <div class="top">
-      <div class="brandWrap">
-        <img class="brandLogo" src="assets/images/Herbalawn Front Logo A5.png" alt="HerbaLawn logo">
-        <span class="brandDivider" aria-hidden="true"></span>
-        <div class="brand brandText">
-          <div class="muted" style="font-size:12px;">LANDSCAPING / TREE SERVICE</div>
-          <div style="font-size:18px;">HERBALAWN LLC — Schedule</div>
-        </div>
+      <div class="brand">
+        <div class="muted" style="font-size:12px;">LANDSCAPING / TREE SERVICE</div>
+        <div style="font-size:18px;">HERBALAWN LLC — Schedule</div>
       </div>
       <div style="margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;">
         <a href="policies.html" class="btnGhost">Policies</a>
+        <!-- CHANGED: bubble button instead of plain text -->
         <a href="index.html" class="btnGhost">← Back to Home</a>
       </div>
     </div>
   </header>
 
-  <main class="wrap mobile-site">
-    <section class="mobile-section" style="padding-top:4px">
-      <div class="mobile-hero-card">
-        <div class="mobile-eyebrow">Schedule Your Service</div>
-        <h1 class="mobile-hero-title">Book Lawn Care, Tree Service & Mulch in Waco</h1>
-        <p class="mobile-hero-sub">Choose the service you need, pick your yard size, and get to the right page fast on mobile.</p>
+  <main class="wrap">
 
-        <div class="mobile-btn-row">
-          <a class="btn" style="background:var(--gold)" href="tree.html">Free Tree Quote</a>
-          <a class="btnGhost" href="index.html">Back to Home</a>
-        </div>
-
-        <div class="mobile-hero-image">
-          <img loading="lazy" src="assets/images/MediumYard.jpg" alt="HerbaLawn lawn scheduling">
-        </div>
-      </div>
-    </section>
-
-<section class="mobile-section">
-      <div class="mobile-section-head">
-        <div class="mobile-section-kicker">Tree Services</div>
-        <h2 class="mobile-section-title">Safe, insured work with fast quotes</h2>
-        <p class="mobile-section-copy">Need trimming or removal? We do it the right way, put safety first, and can quote multiple trees too.</p>
-      </div>
-
-      <div class="mobile-card">
-        <div class="mobile-bullet-list">
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Free quotes</h4>
-              <p>Send the details online or call/text us if you have more than one tree.</p>
-            </div>
-          </div>
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Insured and professional</h4>
-              <p>We handle tree work the proper way and keep safety first from start to finish.</p>
-            </div>
-          </div>
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Contract before job day</h4>
-              <p>Quotes are free, and tree work requires a contract before the work begins.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mobile-contact-actions">
-          <a class="btn" href="tree.html">Free Tree Quote</a>
-          <a class="btnGhost" href="tel:2543014883">Call/Text: 254-301-4883</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="mobile-section">
-      <div class="mobile-section-head">
-        <div class="mobile-section-kicker">Lawn Care</div>
-        <h2 class="mobile-section-title">Pick your yard size and book faster</h2>
-        <p class="mobile-section-copy">Tap the right size below and go straight to the page for your plan.</p>
-      </div>
-
-      <div class="mobile-plan-grid">
-        <div class="mobile-plan">
-          <img loading="lazy" src="assets/images/SmallYard.jpg" alt="Small yard">
-          <div class="body">
-            <span class="label">Small Yard</span>
-            <h3>GreenStart</h3>
-            <p>Best for small or typical yards that need a simple clean cut.</p>
-            <a class="btn" href="greenstart.html">Choose Small →</a>
-          </div>
-        </div>
-
-        <div class="mobile-plan">
-          <img loading="lazy" src="assets/images/MediumYard.jpg" alt="Medium yard">
-          <div class="body">
-            <span class="label">Medium Yard</span>
-            <h3>LawnPro</h3>
-            <p>Best for medium yards that need regular mowing and clean finishing.</p>
-            <a class="btn" href="lawnpro.html">Choose Medium →</a>
-          </div>
-        </div>
-
-        <div class="mobile-plan">
-          <img loading="lazy" src="assets/images/LargeYard.jpg" alt="Large yard">
-          <div class="body">
-            <span class="label">Large Yard</span>
-            <h3>EliteCut</h3>
-            <p>Best for larger yards that need more time and more coverage.</p>
-            <a class="btn" href="elitecut.html">Choose Large →</a>
-          </div>
-        </div>
-
-        <div class="mobile-plan">
-          <img loading="lazy" src="/acre.png" alt="Acreage or complex property">
-          <div class="body">
-            <span class="label">Acreage / Complex</span>
-            <h3>Custom Quote</h3>
-            <p>For properties over 12,000 sq ft or anything more complex, contact us directly.</p>
-            <a class="btn" href="tel:2543014883">Call/Text for Quote</a>
-            <a class="btnGhost" href="mailto:HerbaLawn.Contactor@herbalawn.com">Email Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-<section class="mobile-section">
-      <div class="mobile-section-head">
-        <div class="mobile-section-kicker">Tree Services</div>
-        <h2 class="mobile-section-title">Safe, insured work with fast quotes</h2>
-        <p class="mobile-section-copy">Need trimming or removal? We do it the right way, put safety first, and can quote multiple trees too.</p>
-      </div>
-
-      <div class="mobile-card">
-        <div class="mobile-bullet-list">
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Free quotes</h4>
-              <p>Send the details online or call/text us if you have more than one tree.</p>
-            </div>
-          </div>
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Insured and professional</h4>
-              <p>We handle tree work the proper way and keep safety first from start to finish.</p>
-            </div>
-          </div>
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Contract before job day</h4>
-              <p>Quotes are free, and tree work requires a contract before the work begins.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mobile-contact-actions">
-          <a class="btn" href="tree.html">Free Tree Quote</a>
-          <a class="btnGhost" href="tel:2543014883">Call/Text: 254-301-4883</a>
-        </div>
-      </div>
-    </section>
-<section class="mobile-section">
-      <div class="mobile-section-head">
-        <div class="mobile-section-kicker">Tree Services</div>
-        <h2 class="mobile-section-title">Safe, insured work with fast quotes</h2>
-        <p class="mobile-section-copy">Need trimming or removal? We do it the right way, put safety first, and can quote multiple trees too.</p>
-      </div>
-
-      <div class="mobile-card">
-        <div class="mobile-bullet-list">
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Free quotes</h4>
-              <p>Send the details online or call/text us if you have more than one tree.</p>
-            </div>
-          </div>
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Insured and professional</h4>
-              <p>We handle tree work the proper way and keep safety first from start to finish.</p>
-            </div>
-          </div>
-          <div class="mobile-bullet">
-            <div class="mobile-check">✓</div>
-            <div>
-              <h4>Contract before job day</h4>
-              <p>Quotes are free, and tree work requires a contract before the work begins.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mobile-contact-actions">
-          <a class="btn" href="tree.html">Free Tree Quote</a>
-          <a class="btnGhost" href="tel:2543014883">Call/Text: 254-301-4883</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="mobile-section">
-      <div class="mobile-section-head">
-        <div class="mobile-section-kicker">Lawn Care</div>
-        <h2 class="mobile-section-title">Pick your yard size and book faster</h2>
-        <p class="mobile-section-copy">Tap the right size below and go straight to the page for your plan.</p>
-      </div>
-
-      <div class="mobile-plan-grid">
-        <div class="mobile-plan">
-          <img loading="lazy" src="assets/images/SmallYard.jpg" alt="Small yard">
-          <div class="body">
-            <span class="label">Small Yard</span>
-            <h3>GreenStart</h3>
-            <p>Best for small or typical yards that need a simple clean cut.</p>
-            <a class="btn" href="greenstart.html">Choose Small →</a>
-          </div>
-        </div>
-
-        <div class="mobile-plan">
-          <img loading="lazy" src="assets/images/MediumYard.jpg" alt="Medium yard">
-          <div class="body">
-            <span class="label">Medium Yard</span>
-            <h3>LawnPro</h3>
-            <p>Best for medium yards that need regular mowing and clean finishing.</p>
-            <a class="btn" href="lawnpro.html">Choose Medium →</a>
-          </div>
-        </div>
-
-        <div class="mobile-plan">
-          <img loading="lazy" src="assets/images/LargeYard.jpg" alt="Large yard">
-          <div class="body">
-            <span class="label">Large Yard</span>
-            <h3>EliteCut</h3>
-            <p>Best for larger yards that need more time and more coverage.</p>
-            <a class="btn" href="elitecut.html">Choose Large →</a>
-          </div>
-        </div>
-
-        <div class="mobile-plan">
-          <img loading="lazy" src="/acre.png" alt="Acreage or complex property">
-          <div class="body">
-            <span class="label">Acreage / Complex</span>
-            <h3>Custom Quote</h3>
-            <p>For properties over 12,000 sq ft or anything more complex, contact us directly.</p>
-            <a class="btn" href="tel:2543014883">Call/Text for Quote</a>
-            <a class="btnGhost" href="mailto:HerbaLawn.Contactor@herbalawn.com">Email Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mobile-section">
-      <div class="mobile-card">
-        <div class="mobile-section-kicker">Mulch</div>
-        <h3 style="margin:0 0 8px">Need mulch too?</h3>
-        <p class="muted" style="margin:0">Use the mulch calculator page and schedule a visit from there.</p>
-        <div class="mobile-contact-actions">
-          <a class="btn" href="mulch.html">Go to Mulch Page</a>
-        </div>
-      </div>
-    </section>
-
-    
-
-    <section class="mobile-section">
-      <div class="mobile-card">
-        <div class="mobile-section-kicker">Mulch</div>
-        <h3 style="margin:0 0 8px">Need mulch too?</h3>
-        <p class="muted" style="margin:0">Use the mulch calculator page and schedule a visit from there.</p>
-        <div class="mobile-contact-actions">
-          <a class="btn" href="mulch.html">Go to Mulch Page</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="mobile-sticky-cta" aria-hidden="false">
-    <div class="mobile-sticky-cta-inner">
-      <a class="btn" style="background:var(--gold)" href="tree.html">Tree Quote</a>
-      <a class="btnGhost" href="tel:2543014883">Call Now</a>
-    </div>
-  </div>
-
-  <footer class="mobile-footer" style="padding:0 16px 16px;">
-    <div class="mobile-card">
-      <h3 style="margin-top:0">HerbaLawn LLC</h3>
-      <p class="muted" style="margin:0">Serving Waco, TX and surrounding areas.</p>
-    </div>
-  </footer>
-
-  <main class="wrap desktop-site">
-
+    <!-- TREE SERVICES TOP -->
     <div class="sectionTitle">
       <h2>Tree Services</h2>
+      <!-- CHANGED: removed FREE QUOTE pill from here -->
     </div>
 
     <div class="card">
@@ -626,6 +229,7 @@
         Get a free quote online or call/text us if it’s multiple trees so we can give you the best quote possible.
       </p>
 
+      <!-- CHANGED: FREE TREE QUOTE moved next to Call/Text -->
       <div class="row">
         <a class="btnGhost" href="tel:2543014883">Call/Text: 254-301-4883</a>
         <a class="btn" href="tree.html">FREE TREE QUOTE →</a>
@@ -634,12 +238,14 @@
       <p class="note">Tree work requires a contract to start the job, but quotes are free.</p>
     </div>
 
+    <!-- MOWING -->
     <div class="card" style="margin-top:14px;">
       <h1>Book a Lawn Cut</h1>
       <p class="muted">Tap your yard size to choose a plan. Scheduling and payments are handled securely through Cal.com.</p>
     </div>
 
     <div class="grid">
+      <!-- Small -->
       <a class="plan" href="greenstart.html" aria-label="Small yard scheduling">
         <div class="img" style="background-image:url('assets/images/SmallYard.jpg')"></div>
         <div class="inner">
@@ -650,6 +256,7 @@
         </div>
       </a>
 
+      <!-- Medium -->
       <a class="plan" href="lawnpro.html" aria-label="Medium yard scheduling">
         <div class="img" style="background-image:url('assets/images/MediumYard.jpg')"></div>
         <div class="inner">
@@ -660,6 +267,7 @@
         </div>
       </a>
 
+      <!-- Large -->
       <a class="plan" href="elitecut.html" aria-label="Large yard scheduling">
         <div class="img" style="background-image:url('assets/images/LargeYard.jpg')"></div>
         <div class="inner">
@@ -671,7 +279,9 @@
       </a>
     </div>
 
+    <!-- Acreage / Complex under the mowing ones -->
     <div class="card acre">
+      <!-- ONLY CHANGE BELOW: use absolute path so it loads from site root -->
       <div class="acreTop" style="background-image:url('/acre.png')"></div>
       <div class="acreBody">
         <span class="label">Acreage / Complex</span>
@@ -687,6 +297,7 @@
       </div>
     </div>
 
+    <!-- MULCH BUTTON/CARD AT THE BOTTOM -->
     <div class="card miniCard" style="margin-top:14px;">
       <div>
         <h2 style="margin:0 0 6px;">Mulch</h2>
@@ -699,4 +310,5 @@
   </main>
 </body>
 </html>
+
 
