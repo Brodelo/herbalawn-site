@@ -519,13 +519,27 @@
     .desktop-site,.footer{display:none}
     .mobile-site,.mobile-footer,.mobile-sticky-cta{display:block}
     .container{padding:16px}
-    .nav{flex-direction:row;justify-content:space-between;align-items:center;gap:10px;padding:10px 0}
+    .nav{
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      padding:10px 0;
+      text-align:center;
+    }
     .menu{display:none}
-    .brand{gap:10px;min-width:0}
-    .brand-logo{width:42px;height:42px}
-    .brand-divider{height:40px}
-    .brand-kicker{font-size:11px}
-    .brand-name{font-size:16px}
+    .brand{
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      min-width:0;
+    }
+    .brand-divider{display:none}
+    .brand-logo{width:48px;height:48px}
+    .brand-text{align-items:center;text-align:center}
+    .brand-kicker{font-size:12px}
+    .brand-name{font-size:17px}
     main.container{padding-top:14px;padding-bottom:92px}
   }
   @media (max-width:420px){
@@ -637,8 +651,8 @@
   <section class="mobile-section">
     <div class="mobile-section-head">
       <div class="mobile-section-kicker">Why HerbaLawn</div>
-      <h2 class="mobile-section-title">Trusted In Waco, Texas</h2>
-      <p class="mobile-section-copy">Trusted by property owners across Waco — we take the time to get it done right and exactly how you want it.</p>
+      <h2 class="mobile-section-title">What makes people trust you fast</h2>
+      <p class="mobile-section-copy">Trusted by property owners in Waco — we make sure every job is done right and exactly how you want it.</p>
     </div>
 
     <div class="mobile-trust-grid">
@@ -669,8 +683,8 @@
   <section class="mobile-section">
     <div class="mobile-section-head">
       <div class="mobile-section-kicker">Recent Work</div>
-      <h2 class="mobile-section-title">Work done across Waco</h2>
-      <p class="mobile-section-copy">Trusted results from real HerbaLawn jobs.</p>
+      <h2 class="mobile-section-title">Real results. No guesswork.</h2>
+      <p class="mobile-section-copy">This is what your yard can look like.</p>
     </div>
 
     <div class="mobile-work-grid">
@@ -708,21 +722,21 @@
             <strong>Small Yard</strong>
             <span>Up to about 4,000 sq ft</span>
           </div>
-          <b>From $45</b>
+          <b>From $30</b>
         </div>
         <div class="mobile-price-row">
           <div>
             <strong>Medium Yard</strong>
             <span>About 4,001–8,000 sq ft</span>
           </div>
-          <b>From $45</b>
+          <b>From $35</b>
         </div>
         <div class="mobile-price-row">
           <div>
             <strong>Large Yard</strong>
             <span>About 8,001–12,000 sq ft</span>
           </div>
-          <b>From $55</b>
+          <b>From $40</b>
         </div>
       </div>
     </div>
@@ -977,7 +991,7 @@
           <button class="cta" type="button" onclick="openEstimatorModal()">Show Price</button>
         </div>
 
-        <p class="disclaimer">Weekly: $30/$45/$55 • Bi-Weekly: $45/$45/$55 • One-Time: $70/$80/$90 • Acreage quoted on-site</p>
+        <p class="disclaimer">Weekly: $30/$35/$40 • Bi-Weekly: $65/$75/$85 • One-Time: $70/$80/$90 • Acreage quoted on-site</p>
       </div>
     </div>
   </section>
@@ -1212,6 +1226,19 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
